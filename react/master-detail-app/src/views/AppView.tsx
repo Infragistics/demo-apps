@@ -50,9 +50,6 @@ export default class AppView extends React.Component<any, any> {
         this.onLoad = this.onLoad.bind(this);
         this.onMasterItemClick = this.onMasterItemClick.bind(this);
 
-        // defaulting to first person in the array of sales people
-        this.state = { salesData: this.salesPeople[0].Sales,};
-
         this.sizeScale = new IgrSizeScale({});
         this.sizeScale.minimumValue = 5;
         this.sizeScale.maximumValue = 25;
@@ -73,6 +70,9 @@ export default class AppView extends React.Component<any, any> {
             const person =  this.salesPeople[i];
             this.salesList.push(this.renderItem(person, i));
         }
+
+        // defaulting to first person in the array of sales people
+        this.state = { salesData: this.salesPeople[0].Sales,};
     }
 
     public render() {
@@ -240,6 +240,7 @@ export default class AppView extends React.Component<any, any> {
         const newId = event.currentTarget.id;
         const newData = this.salesPeople[newId].Sales;
 
+        this.grid.scrollToRowByIndex(0);
         this.setState({salesData: newData});
 
         // for (let i = 0; i < this.state.data.length; i++)
