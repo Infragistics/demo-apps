@@ -80,7 +80,7 @@ export default class AppView extends React.Component<any, any> {
 
         return (
             <div className="container">
-                <div  className="masterSide">
+                <div  className="masterView">
                     <div className="masterHeader">
                         <img src={this.getHeaderIcon()}/>
                         <label>Global Sales Team</label>
@@ -90,7 +90,7 @@ export default class AppView extends React.Component<any, any> {
                     </div>
                 </div>
 
-                <div className="detailSide">
+                <div className="detailView">
                     {/* <div className="map" >
                     </div> */}
                     <div className="map">

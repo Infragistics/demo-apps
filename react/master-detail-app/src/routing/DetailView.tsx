@@ -49,7 +49,7 @@ export default class DetailView extends React.Component {
         console.log("DetailView... render");
 
         return (
-            <div className="detailSide">
+            <div className="detailView">
                 <div className="map" >
                     <IgrGeographicMap
                         ref={this.onMapRef}

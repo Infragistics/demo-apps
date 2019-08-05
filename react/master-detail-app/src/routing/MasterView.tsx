@@ -55,7 +55,7 @@ export default class MasterView extends React.Component<any, any> {
         }
 
         return (
-            <div className="masterSide">
+            <div className="masterView">
                 <div className="masterHeader">
                     <img src={this.getHeaderIcon()}/>
                     <label>World Sales Team</label>
