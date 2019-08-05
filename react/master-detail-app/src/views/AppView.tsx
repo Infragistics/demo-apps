@@ -36,6 +36,7 @@ export default class AppView extends React.Component<any, any> {
     public map: IgrGeographicMap;
     public grid: IgrLiveGrid;
     public salesPeople: any[];
+    public salesData: any[];
     public salesList: JSX.Element[] = [];
 
     public sizeScale: IgrSizeScale;
@@ -72,7 +73,7 @@ export default class AppView extends React.Component<any, any> {
         }
 
         // defaulting to first person in the array of sales people
-        this.state = { salesData: this.salesPeople[0].Sales,};
+        this.salesData = this.salesPeople[0].Sales;
     }
 
     public render() {
@@ -91,8 +92,6 @@ export default class AppView extends React.Component<any, any> {
                 </div>
 
                 <div className="detailView">
-                    {/* <div className="map" >
-                    </div> */}
                     <div className="map">
                         <IgrGeographicMap
                             ref={this.onMapRef}
@@ -101,7 +100,6 @@ export default class AppView extends React.Component<any, any> {
                             zoomable="true" >
 
                             <IgrGeographicProportionalSymbolSeries name="sales"
-                            dataSource={this.state.salesData}
                             radiusScale={this.sizeScale}
                             fillScale={this.fillScale}
                             fillMemberPath="OrderValue"
@@ -122,11 +120,7 @@ export default class AppView extends React.Component<any, any> {
                             selectionMode="SingleRow"
                             rowHeight="35"
                             headerHeight="35"
-                            autoGenerateColumns="false"
-                            columnShowingAnimationMode="slideFromRightAndFadeIn"
-                            columnHidingAnimationMode="slideToRightAndFadeOut"
-                            columnPropertyUpdatingAnimationMode="Interpolate"
-                            dataSource={this.state.salesData}>
+                            autoGenerateColumns="false" >
                             <IgrTextColumn propertyPath="ID" width="*>70"/>
                             <IgrDateTimeColumn propertyPath="OrderDate" headerText="Date"  width="*>100" horizontalAlignment="right" />
                             <IgrNumericColumn propertyPath="OrderPrice" headerText="Price" width="*>90" positivePrefix="$" maxFractionDigits="0"/>
@@ -146,23 +140,25 @@ export default class AppView extends React.Component<any, any> {
     }
 
     public onLoad() {
-        if (this.grid === undefined) {
-            return;
+        if (this.grid !== undefined) {
+            const group = new ColumnGroupDescription();
+            group.propertyPath = "Region";
+            group.displayName = "Region";
+            group.sortDirection = ListSortDirection.Descending;
+            this.grid.groupDescriptions.add(group);
         }
-
-        const group = new ColumnGroupDescription();
-        group.propertyPath = "Region";
-        group.displayName = "Region";
-        group.sortDirection = ListSortDirection.Descending;
-        this.grid.groupDescriptions.add(group);
     }
 
     public onGridRef(grid: IgrLiveGrid) {
         this.grid = grid;
+        this.grid.dataSource = this.salesData;
+        this.grid.flush();
+        this.grid.scrollToRowByIndex(0);
     }
 
     public onMapRef(map: IgrGeographicMap) {
         this.map = map;
+        this.map.dataSource = this.salesData;
         this.map.zoomToGeographic({ left: -120, top: -30, width: 180, height: 90});
 
         // this.map.windowRect = { left: 0.25, top: 0.1, width: 0.5, height: 0.5 };
@@ -200,14 +196,6 @@ export default class AppView extends React.Component<any, any> {
             <div className="tooltipBox">
                 <div className="tooltipTitle" >{dataItem.City}, {dataItem.CountryName}</div>
 
-                {/* <div className="tooltipRow">
-                    <div className="tooltipLbl">City:</div>
-                    <div className="tooltipVal">{dataItem.City}</div>
-                </div>
-                <div className="tooltipRow">
-                    <div className="tooltipLbl">Country:</div>
-                    <div className="tooltipVal">{dataItem.CountryName}</div>
-                </div> */}
                 <div className="tooltipRow">
                     <div className="tooltipLbl">Latitude:</div>
                     <div className="tooltipVal">{lat}</div>
@@ -216,16 +204,12 @@ export default class AppView extends React.Component<any, any> {
                     <div className="tooltipLbl">Longitude:</div>
                     <div className="tooltipVal">{lon}</div>
                 </div>
-                {/* <div className="tooltipRow">
-                    <div className="tooltipLbl">Location:</div>
-                    <div className="tooltipVal">{lon} {lat}</div>
-                </div> */}
                 <div className="tooltipRow">
                     <div className="tooltipLbl">Orders:</div>
                     <div className="tooltipVal">{dataItem.OrderCount}</div>
                 </div>
                 <div className="tooltipRow">
-                    <div className="tooltipLbl">Order Value:</div>
+                    <div className="tooltipLbl">Value:</div>
                     <div className="tooltipVal">{val}</div>
                 </div>
             </div>
@@ -238,10 +222,12 @@ export default class AppView extends React.Component<any, any> {
         event.preventDefault();
         console.log("onMasterItemClick " + event.currentTarget.id);
         const newId = event.currentTarget.id;
-        const newData = this.salesPeople[newId].Sales;
+        this.salesData = this.salesPeople[newId].Sales;
 
+        this.map.dataSource = this.salesData;
+        this.grid.dataSource = this.salesData;
+        this.grid.flush();
         this.grid.scrollToRowByIndex(0);
-        this.setState({salesData: newData});
 
         // for (let i = 0; i < this.state.data.length; i++)
         // {
