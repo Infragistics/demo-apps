@@ -1,0 +1,153 @@
+.masterSide {
+    height: 100%;
+    overflow: hidden;
+}
+
+.masterHeader {
+    height: 50px;
+    max-width: 270px;
+    background: #2275f1;
+    color: #eeeeee;
+
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: auto 1fr;
+    padding: 3px;
+}
+
+.masterHeader img {
+    height: 45px;
+    width: 45px;
+}
+
+.masterHeader label {
+    font-size: 20pt;
+    font-family: 'Anton', sans-serif;
+    /* font-family: 'Kanit', sans-serif; */
+    margin-top: 2px;
+    margin-left: 5px;
+}
+
+.masterList {
+    background: #eeeeee;
+    background: rgb(187, 187, 187);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: calc(100% - 50px);
+    max-width: 275px;
+}
+
+.masterList a {
+    /* padding: 6px 8px 6px 16px; */
+    text-decoration: none;
+}
+
+.masterListItem {
+    display: grid;
+    grid-gap: 0px;
+    /* grid-template-columns: auto 1fr 1fr; */
+    grid-template-columns: auto 1fr;
+    /* grid-template-rows: 1fr; */
+    /* align-items: center; */
+    padding: 3px;
+    /* grid-gap: 1px; */
+}
+
+.masterListButton {
+    margin-top: 0.5px;
+    margin-bottom: 0.5px;
+    width: 100%;
+    height: 70px;
+    background-color: #fafafa;
+
+    border-color: transparent;
+    border:  none;
+    outline: none;
+    /* text-decoration: none; */
+    cursor: pointer;
+}
+.masterListButton:focus {
+    background-color: #dddddd;
+}
+.masterListButton:active {
+    background-color: #dddddd;
+}
+.masterListButton:hover {
+    background-color: #dddddd;
+}
+
+.masterListInfo {
+    color: #383838;
+
+    margin-left: 10px;
+    /* margin-top: 5px; */
+    text-align: start;
+    /* vertical-align: top; */
+    vertical-align: middle;
+    padding: 3px;
+}
+
+.masterListInfo span {
+    display: block;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.masterListInfo label {
+    font-size: 10pt;
+    margin-left: 2px;
+    margin-top: 0px;
+    vertical-align: top;
+}
+
+.masterListInfo img {
+    width: 15px;
+    height: 15px;
+}
+
+.masterListInfoName {
+    font-size: 13pt;
+}
+
+.masterListAvatar {
+    width: 50px;
+    height: 50px;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    vertical-align: middle;
+    margin-top: 5px;
+    overflow: hidden;
+    border-width: 3px;
+    border-color: white;
+}
+
+/* scrollbar styles */
+
+::-webkit-scrollbar
+{
+    width: 10px;
+    background: #eeeeee;
+    /* background: #2ff12f; */
+}
+::-webkit-scrollbar-track
+{
+    border-radius: 1px;
+    background: #dddddd;
+    /* background: red; */
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+ }
+::-webkit-scrollbar-thumb
+{
+    border-radius: 5px;
+    background: #838383;
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2275f1;
+}

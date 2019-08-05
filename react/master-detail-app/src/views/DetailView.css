@@ -1,0 +1,100 @@
+
+.container {
+    /* background: #bd554e; */
+    height: 100%;
+
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr;
+    /* align-items: center; */
+}
+
+.detailSide {
+    /* background: #aa4ebd; */
+    height: 100%;
+    height: calc(100% - 0px);
+
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    /* align-items: center; */
+    overflow: hidden;
+}
+
+.grid {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    min-width: 300px;
+    /* background: #f8877f; */
+    overflow: hidden;
+
+    /* height: 300px; */
+}
+
+.flex {
+    flex: 1;
+}
+
+.map {
+    background: #aad3df;
+    height: 100%;
+    width: 100%;
+}
+
+.tooltipBox {
+  font-size: 10pt;
+  font-weight: normal;
+  font-family: 'Kanit', sans-serif;
+}
+
+.tooltipTitle {
+  display: block;
+  font-weight: bold;
+  font-size: 10pt;
+  margin-left: 0px;
+}
+
+.tooltipTable {
+  display: table;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  border-spacing: 2px;
+  font-size: 10pt;
+}
+
+.tooltipRow {
+  display: table-row;
+}
+
+.tooltipVal {
+  display: table-cell;
+  text-align: left;
+  /* font-weight: bold; */
+  padding-left: 5px;
+}
+
+.tooltipLbl {
+  display: table-cell;
+  text-align: left;
+}
+
+.tooltipFlagImage {
+  display: inline-block;
+  object-fit: fill;
+  height: 50px;
+  width: 70px;
+}
+
+.tooltipFlagBoarder {
+  display: inline-block;
+  padding: 0px;
+  border-width: 0.5;
+  border-color: rgb(177, 177, 177);
+  border-style: solid;
+  height: 50px;
+  width: 70px;
+}
