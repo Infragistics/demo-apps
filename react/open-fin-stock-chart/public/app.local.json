@@ -1,0 +1,41 @@
+{
+    "devtools_port": 9090,
+    "startup_app": {
+        "name": "React Stock Chart Development",
+        "uuid": "IgStockCharts",
+        "minWidth": 300,
+        "minHeight": 300,
+        "defaultWidth": 900,
+        "defaultHeight": 500,
+        "frame": true,
+        "resizable": true,
+        "maximizable": true,
+        "showTaskbarIcon": true,
+        "url": "http://localhost:3400/index.html",
+        "autoShow" : true,
+        "applicationIcon": "http://localhost:3400/favicon.ico"
+    },
+    "services": [
+        {
+            "name": "layouts",
+            "config": {
+              "features": {
+                "dock": true,
+                "snap": true,
+                "tab": false
+              }
+            }
+        }
+    ],
+    "runtime": {
+        "arguments": "--enable-aggressive-domstorage-flushing --enable-experimental-web-platform-features",
+        "version": "beta"
+    },
+    "shortcut": {
+        "company": "Infragistics",
+        "description": "Infragistics Chart app with dark theme hosted in OpenFin window.",
+        "name": "React Stock Chart",
+        "icon": "http://localhost:3400/favicon.ico"
+    },
+    "splashScreenImage": "http://localhost:3400/images/splashscreen.png"
+}

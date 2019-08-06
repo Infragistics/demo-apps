@@ -1,0 +1,107 @@
+
+.StockMenuItem {
+  background: #5a5a5a;
+  /* background: #9b9b9b; */
+  color: #c9c9c9;
+
+  border-radius: 6px;
+  /* width: 100%; */
+  display: grid;
+  padding: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  grid-gap: 2px;
+  align-items: center;
+  /* grid-template-columns: 1fr minmax(150px, 1fr); */
+  /* grid-template-columns: 1fr 150px; */
+  /* grid-template-columns: auto 1fr 150px; */
+  /* grid-template-columns: 2fr 1fr; */
+  /* grid-template-columns: 1fr; */
+  /* grid-template-columns: minmax(250px, 1fr)  1fr ; */
+
+  /* grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr; */
+  grid-template-columns: [col1-start] auto [col2-start] auto [col3-start] 1fr [col4-start] auto [col4-end];
+  grid-template-rows:    [row1-start] auto [row2-start] auto [row2-end];
+
+  /* opacity: 0.9; */
+
+  /* disable text selection */
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
+  -o-user-select:none;
+}
+
+.StockMenuItem:hover {
+  /* background: #5a5a5a; */
+  /* background: #929292c4; */
+  /* background: #747373;  */
+  opacity: 1.0;
+  /* color: #e0e0e0; */
+}
+
+.StockMenuItemName, .StockMenuItemActions, .StockMenuItemPriceValue, .StockMenuItemPriceChange {
+  /* background-color: #028028; */
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 0px;
+}
+
+.StockMenuItemBadge {
+  grid-column: col1-start;
+  grid-row: row1-start / row2-end;
+  width: 8px;
+  margin-left: 2px;
+  margin-right: 2px;
+  border-radius: 6px;
+  /* height: 10px; */
+  height: 100%;
+}
+
+.StockMenuItemName {
+  grid-column: col2-start / col4-start;
+  grid-row: row1-start;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.StockMenuItemActions {
+  margin: 0px;
+  grid-column: col4-start ;
+  grid-row: row1-start / row2-end;
+  display: inline-grid;
+}
+.StockMenuItemPriceValue {
+  grid-column: col2-start;
+  grid-row: row2-start ;
+}
+.StockMenuItemPriceChange {
+  grid-column: col3-start ;
+  grid-row: row2-start ;
+  margin-left: 5px;
+}
+
+
+
+.StockMenuItemButton {
+  padding: 0px;
+  margin: 4px;
+  color: #949494 !important;
+  /* background-color: #5feb5a; */
+  /* position: absolute; */
+  /* right: 0px; */
+}
+
+.StockMenuItemButton:hover {
+  color: #308df7 !important;
+  /* color: #171718 !important; */
+  /* background-color: #c2c2c2 !important; */
+  /* background-color: #555555 !important; */
+  /* background-image: url('@{baseImgDir}/closed_tabs_small_active.png'); */
+}

@@ -1,0 +1,96 @@
+/* NOT USED */
+
+body {
+  -webkit-app-region: drag;
+
+  background: #97f7ac;
+  margin: 2px;
+  padding: 2px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* #toolbar {
+  background-color: #2d2d2d;
+  background-color: #df1818;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  width: 95%;
+  display: inline-block;
+}
+.draggable{
+  -webkit-app-region: drag;
+} */
+
+
+
+
+.winRoot {
+  background-color: #2267ce;
+  padding:0;
+  margin: 0;
+  font-family: Helvetica Neue, Helvetica, Arial;
+  font-size: 15px;
+  overflow: hidden;
+}
+
+.winContent {
+  background-color: #979797;
+  margin: 10;
+}
+
+
+.WinToolbar {
+  -webkit-app-region: drag;
+  background-color: #353434;
+  width: 100%;
+  display: grid;
+  grid-gap: 2px;
+  align-items: center;
+  /* grid-template-columns: 2fr 1fr; */
+  grid-template-columns: 1fr minmax(150px, 1fr);
+  /* grid-template-columns: 1fr; */
+  grid-template-rows: 1fr;
+  /* grid-template-columns: minmax(250px, 1fr)  1fr ; */
+}
+
+.WinToolbarTitle {
+  color: white;
+  /* background-color: #f79393; */
+  justify-self: start;
+  margin-left: 4px;
+  white-space: nowrap;
+
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
+  -o-user-select:none;
+
+  /* grid-row: 1;         */
+}
+
+.WinToolbarActions {
+  /* background-color: #cbfa95; */
+  justify-self: end;
+  padding: 0px;
+  white-space: nowrap;
+  /* position: absolute; */
+  /* right: 0px; */
+
+  /* grid-row: 1;    */
+  z-index: 20;
+}
+
+.WinToolbarButton {
+  padding: 0px;
+  margin: 4px;
+  /* position: absolute; */
+  /* right: 0px; */
+
+}
