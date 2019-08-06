@@ -1,0 +1,12 @@
+
+# react apps
+/*/*/dist/
+/*/*/tmp/
+/*/*/dist/
+/*/*/node_modules/
+
+# wpf apps
+/*/*/.vs/
+/*/*/*/bin/
+/*/*/*/obj/
+/*/*/packages/
