@@ -1,6 +1,6 @@
 ## WPF Stock Chart Trigger
 
-This repository demonstrates how create and connect WPF application to [OpenFin](https://openfin.co/) desktop runtime and send [ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro) intent messages via [FDC3](https://fdc3.finos.org/docs/1.0/fdc3-intro) protocol. Also, this application listens and displays all messages sent using this protocol. This is useful to test other applications such as
+This repository demonstrates how create and connect WPF application to [OpenFin](https://openfin.co/) desktop runtime and send [ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro) intent messages via [FDC3](https://fdc3.finos.org/docs/1.0/fdc3-intro) protocol. Also, this application displays all messages sent using this protocol. This is useful to test other applications such as
 [React Stock Chart](https://github.com/Infragistics/demo-apps/tree/master/react/open-fin-stock-chart) app hosted in OpenFin launcher.
 
 ## Table of Contents
@@ -16,16 +16,17 @@ This repository demonstrates how create and connect WPF application to [OpenFin]
 Setup this project by following these instructions:
 
 - open **VS 2017** as administrator
-- open OpenFinStockChartTrigger.sln
-- in solution exploerer, right click on solution
-- select Restore NuGet Packages menu item
-- run this command to install required packages and Ignite UI for React packages from npm website
+- open **OpenFinStockChartTrigger.sln**
+- in solution exploerer, right click on the solution
+- select **Restore NuGet Packages** menu item
 
 ## Running
 
-- select Debug - Start (Without) Debugging or
+- select **Debug** - **Start (Without) Debugging** menu item
+
+or
 - press `CTRL` + `F5` keys
-- wait for the app to connect to OpenFin desktop runtime
+- wait for the app to connect to **OpenFin** desktop runtime
 
 
 ## Testing
