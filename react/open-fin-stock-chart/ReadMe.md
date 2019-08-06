@@ -1,6 +1,6 @@
 ## React Stock Chart App
 
-This repository demonstrates how create and host React app in [OpenFin](https://openfin.co/) launcher and use [FDC3](https://fdc3.finos.org/docs/1.0/fdc3-intro) protocol to display [React Financial Chart](https://infragistics.com/reactsite/components/financialchart.html) component.
+This repository contains implementation of React app that is hosted in [OpenFin](https://openfin.co/) window, where it can respond to [ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro) intent messages sent via [FDC3](https://fdc3.finos.org/docs/1.0/fdc3-intro) protocol to display [React Financial Chart](https://infragistics.com/reactsite/components/financialchart.html) component with stock prices.
 
 ## Table of Contents
 
@@ -45,6 +45,6 @@ This will start **OpenFin** launcher and host the app in **OpenFin** window, whe
 
 ## Testing
 
-While this React app is running in **OpenFin** launcher, you can also run other applications that use [FDC3](https://fdc3.finos.org/docs/1.0/fdc3-intro) protocol. For example, you can run WPF app called [OpenFin Stock Chart Trigger](https://github.com/Infragistics/demo-apps/tree/master/wpf/open-fin-stock-chart-trigger) to send stock symbol using [FDC3 ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro) to this React app. Also you can see content of those messages.
+While this React app is running in **OpenFin** launcher, you can also run other applications that use [FDC3](https://fdc3.finos.org/docs/1.0/fdc3-intro) protocol. For example, you can run WPF app called [OpenFin Stock Chart Trigger](https://github.com/Infragistics/demo-apps/tree/master/wpf/open-fin-stock-chart-trigger) to send stock symbol using [ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro) to this React app. Also, this WPF app shows content of all messages sent via [FDC3](https://fdc3.finos.org/docs/1.0/fdc3-intro) protocol so you can use it in development of your own app.
 
 <img src="./public/images/chart-trigger.gif" width="750" />
