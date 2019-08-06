@@ -45,6 +45,6 @@ This will start **OpenFin** launcher and host the app in **OpenFin** window, whe
 
 ## Testing
 
-While this React app is running in **OpenFin** launcher, you can also run other applications that use [FDC3](https://fdc3.finos.org/docs/1.0/fdc3-intro) protocol. For example, you can run WPF app called [OpenFin Stock Chart Trigger](https://github.com/Infragistics/demo-apps/tree/master/wpf/open-fin-stock-chart-trigger) to send stock symbol using [ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro) to this React app. Also, this WPF app shows content of all messages sent via [FDC3](https://fdc3.finos.org/docs/1.0/fdc3-intro) protocol so you can use it in development of your own app.
+While this React app is running in **OpenFin** window, you can also run other applications that use [FDC3](https://fdc3.finos.org/docs/1.0/fdc3-intro) protocol. For example, you can run WPF app called [OpenFin Stock Chart Trigger](https://github.com/Infragistics/demo-apps/tree/master/wpf/open-fin-stock-chart-trigger) to send stock symbol using [ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro) to this React app. Also, this WPF app shows content of all messages sent via [FDC3](https://fdc3.finos.org/docs/1.0/fdc3-intro) protocol so you can use it in development of your own app.
 
 <img src="./public/images/chart-trigger.gif" width="750" />
