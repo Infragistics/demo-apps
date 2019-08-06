@@ -8,7 +8,7 @@ import "./index.css";
 import AppView from './views/AppView'
 import RegisterServiceWorker from './ServiceWorker';
 
-console.log("Starting app in " + process.env.NODE_ENV + " environment");
+console.log("App in " + process.env.NODE_ENV + " environment");
 
 ReactDOM.render(
   <BrowserRouter basename={AppView.basename}>

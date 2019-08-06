@@ -51,10 +51,20 @@ export default class AppView extends React.Component<any, any> {
         this.onLoad = this.onLoad.bind(this);
         this.onMasterItemClick = this.onMasterItemClick.bind(this);
 
+
+        this.salesPeople = DataUtil.getEmployees(100);
+        this.salesList = [];
+        for (let i = 0; i < this.salesPeople.length; i++) {
+            const person =  this.salesPeople[i];
+            this.salesList.push(this.renderItem(person, i));
+        }
+        // defaulting to first person in the array of sales people
+        this.salesData = this.salesPeople[0].Sales;
+
+        // creating scales for geo-map
         this.sizeScale = new IgrSizeScale({});
         this.sizeScale.minimumValue = 5;
         this.sizeScale.maximumValue = 25;
-
         const brushes = [
             "rgba(252, 32, 32, 0.4)",  // semi-transparent red
             "rgba(252, 170, 32, 0.4)", // semi-transparent orange
@@ -64,16 +74,6 @@ export default class AppView extends React.Component<any, any> {
         this.fillScale.brushes = brushes;
         this.fillScale.minimumValue = 20000;
         this.fillScale.maximumValue = 100000;
-
-        this.salesPeople = DataUtil.getEmployees(100);
-        this.salesList = [];
-        for (let i = 0; i < this.salesPeople.length; i++) {
-            const person =  this.salesPeople[i];
-            this.salesList.push(this.renderItem(person, i));
-        }
-
-        // defaulting to first person in the array of sales people
-        this.salesData = this.salesPeople[0].Sales;
     }
 
     public render() {

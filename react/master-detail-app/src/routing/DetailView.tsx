@@ -10,6 +10,7 @@ import { IgrDateTimeColumn } from 'igniteui-react-grids/ES5/igr-date-time-column
 import { IgrImageColumn } from 'igniteui-react-grids/ES5/igr-image-column';
 import { ColumnGroupDescription } from 'igniteui-react-grids/ES5/igr-column-group-description';
 import { ListSortDirection } from "igniteui-react-core/ES5/ListSortDirection";
+import { GridSelectedItemsChangedEventArgs } from 'igniteui-react-grids/ES5/igr-grid-selected-items-changed-event-args';
 
 // map modules:
 import { IgrGeographicMapModule } from "igniteui-react-maps/ES5/igr-geographic-map-module";
@@ -66,6 +67,7 @@ export default class DetailView extends React.Component {
                         rowHeight="35"
                         headerHeight="35"
                         autoGenerateColumns="false"
+                        selectedItemsChanged={this.selectedItemsChanged}
                         dataSource={this.data}>
                         <IgrTextColumn propertyPath="ID" width="*>70"/>
                         <IgrDateTimeColumn propertyPath="OrderDate" headerText="Date"  width="*>100" horizontalAlignment="right" />
@@ -78,6 +80,10 @@ export default class DetailView extends React.Component {
                 </div>
             </div>
         );
+    }
+
+    public selectedItemsChanged(s: IgrLiveGrid, e: GridSelectedItemsChangedEventArgs) {
+        console.log("selectedItemsChanged");
     }
 
     public componentDidMount() {

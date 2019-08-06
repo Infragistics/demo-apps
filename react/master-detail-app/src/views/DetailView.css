@@ -13,7 +13,7 @@
 .detailView {
     /* background: #aa4ebd; */
     height: 100%;
-    height: calc(100% - 0px);
+    height: 100%;
 
     display: grid;
     grid-gap: 0px;

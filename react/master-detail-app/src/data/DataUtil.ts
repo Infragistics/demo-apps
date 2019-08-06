@@ -67,10 +67,15 @@ export default class DataUtil {
     }
 
     public static getPerson(id: number): any {
-        const age: number = Math.round(this.getRandomNumber(20, 40));
-        const gender: string = this.getRandomGender();
-        const firstName: string = this.getRandomNameFirst(gender);
-        const lastName: string = this.getRandomNameLast();
+        let age: number = Math.round(this.getRandomNumber(20, 40));
+        let gender: string;
+        if (id % 2 === 0) {
+            gender = "male";
+        } else {
+            gender = "female";
+        }
+        let firstName: string = this.getRandomNameFirst(gender);
+        let lastName: string = this.getRandomNameLast();
         let photoPath: string;
         if (gender === "male") {
             photoPath = this.getPhotoMale((id % 25) + 1);

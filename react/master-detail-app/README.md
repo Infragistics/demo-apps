@@ -1,12 +1,11 @@
-## Introduction
 
-This repository contains implementation of React master-detail view using of Ignite UI for React components.
+This repository contains implementation of React master-detail app using of Ignite UI for React components.
 
-![alt text](./blog/md-app-animation.gif "Preview")
+<img src="./blog/md-app-animation.gif" width="750" />
+
 
 ## Table of Contents
 
-- [Introduction](#Introduction)
 - [Background](#Background)
 - [Setup](#Setup)
 - [Building Project](#Building-Project)
