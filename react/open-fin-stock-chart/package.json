@@ -4,12 +4,16 @@
   "author": "Infragistics",
   "version": "0.1.0",
   "homepage": ".",
-  "keywords": ["OpenFin","Infragistics","Stock","Chart","FDC3"],
+  "keywords": [
+    "OpenFin",
+    "Infragistics",
+    "Stock",
+    "Chart",
+    "FDC3"
+  ],
   "private": true,
   "dependencies": {
     "@babel/polyfill": "^7.2.3",
-    "@infragistics/igniteui-react-charts": "19.1.0-dev.544",
-    "@infragistics/igniteui-react-core": "19.1.0-dev.544",
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "@material-ui/system": "^3.0.0-alpha.2",
@@ -23,6 +27,8 @@
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.6",
     "d3fc": "^14.0.21",
+    "igniteui-react-core": "16.6.12",
+    "igniteui-react-charts": "16.6.12",
     "isomorphic-fetch": "^2.1.1",
     "jquery": "^1.11.1",
     "lodash.defaults": "^4.2.0",
