@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "outDir": "build/dist",
+    "experimentalDecorators": true,
+    "allowUnreachableCode": true,
+    "downlevelIteration": true,
+    "module": "esnext",
+    "target": "es5",
+    "lib": ["es6", "dom", "scripthost"],
+    "sourceMap": true,
+    "allowJs": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "noImplicitAny": false,
+    "forceConsistentCasingInFileNames": true,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "exclude": [
+    "node_modules",
+    "gulpfile.js",
+    "build",
+    "scripts",
+    "webpack",
+    "jest",
+    "src/setupTests.ts",
+    "src/sources/*.*"
+  ]
+}
