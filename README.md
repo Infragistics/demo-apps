@@ -10,3 +10,4 @@ In each folder, you will find a few applications demonstrating some of best feat
 - React [Master-Detail View](https://github.com/Infragistics/demo-apps/blob/master/react/master-detail-app/README.md) app 
 - OpenFin/React [Stock Chart Trading](https://github.com/Infragistics/demo-apps/tree/master/react/open-fin-stock-chart/README.md) app 
 - OpenFin/WPF [Stock Chart Trigger](https://github.com/Infragistics/demo-apps/tree/master/react/open-fin-stock-chart/README.md) app 
+- Xamarin [Population Charts](https://github.com/Infragistics/demo-apps/tree/master/xamarin/population-charts/README.md) app 
