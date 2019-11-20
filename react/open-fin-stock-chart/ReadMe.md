@@ -1,7 +1,9 @@
 
 #### Infragistics Stock Chart App with FDC3 data adapter
 
-This repository contains implementation of React application with Infragistics components. This application demonstrate how to use [Financial Chart](https://infragistics.com/reactsite/components/financial-chart.html)  components with [FDC3 Data Adapter](https://www.npmjs.com/package/igniteui-react-fdc3) to handle [ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro) intent messages sent via [OpenFin FDC3](https://developers.openfin.co/docs/fdc3) service. You can run this application locally in [OpenFin](https://developers.openfin.co/docs/openfin-os/) window by following [these](https://github.com/Infragistics/demo-apps/tree/master/react/open-fin-stock-chart#running) instructions. Also, you can run this application with other applications that use OpenFin FDC3 service to communicate with each other.
+The React Stock Chart application demonstrates how to use [Financial Chart](https://infragistics.com/reactsite/components/financial-chart.html) component with [FDC3 Data Adapter](https://www.npmjs.com/package/igniteui-react-fdc3) to handle [ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro) intent messages sent via [OpenFin FDC3](https://developers.openfin.co/docs/fdc3) service. Also, it shows how you can send single and multiple financial stock instruments as context of ViewChart intent message.
+
+You can run this application locally in [OpenFin](https://developers.openfin.co/docs/openfin-os/) window by following [these](https://github.com/Infragistics/demo-apps/tree/master/react/open-fin-stock-chart#running) instructions. Also, you can run this application with other applications that use OpenFin FDC3 service to communicate with each other.
 
 <img src="./public/images/chart-app.png" width="700" />
 
