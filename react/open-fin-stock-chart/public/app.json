@@ -1,12 +1,12 @@
 {
     "devtools_port": 9090,
     "startup_app": {
-        "name": "React Stock Chart Development",
+        "name": "IG Stock Chart with FDC3",
         "uuid": "IgStockCharts",
         "minWidth": 300,
         "minHeight": 300,
         "defaultWidth": 900,
-        "defaultHeight": 500,
+        "defaultHeight": 700,
         "frame": true,
         "resizable": true,
         "maximizable": true,
@@ -16,8 +16,8 @@
         "applicationIcon": "https://infragistics.com/react-apps/stock-market-chart/favicon.ico"
     },
     "services": [
-        {
-            "name": "layouts",
+        {   "name": "fdc3" },
+        {   "name": "layouts",
             "config": {
               "features": {
                 "dock": true,
@@ -33,8 +33,8 @@
     },
     "shortcut": {
         "company": "Infragistics",
-        "description": "Infragistics Chart app with dark theme hosted in OpenFin window.",
-        "name": "React Stock Chart",
+        "description": "Infragistics Chart app with FDC3 data adapter hosted in OpenFin window.",
+        "name": "IG Stock Dashboard with OpenFin FDC3",
         "icon": "https://infragistics.com/react-apps/stock-market-chart/favicon.ico"
     },
     "splashScreenImage": "https://infragistics.com/react-apps/stock-market-chart/images/splashscreen.png"

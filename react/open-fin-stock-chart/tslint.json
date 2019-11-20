@@ -1,31 +1,25 @@
 {
-    "extends": "./node_modules/gts/tslint.json",
-    "linterOptions": {
-      "exclude": [
-        "config/**/*.js",
-        "node_modules/**/*.ts"
-      ]
-    },
-    "rules": {
-        "interface-name": false,
-        "jsx-no-lambda": false,
-        "ordered-imports": false,
-        "object-literal-sort-keys": false,
-        "max-classes-per-file": 4,
-        "member-access": true,
-        "no-console": false,
-        "no-inferrable-types": false,
-        "no-var-requires": false
-    },
-    "jsRules": {
-        "interface-name": false,
-        "jsx-no-lambda": false,
-        "ordered-imports": false,
-        "object-literal-sort-keys": false,
-        "max-classes-per-file": 4,
-        "member-access": true,
-        "no-console": false,
-        "no-inferrable-types": false,
-        "no-var-requires": false
-    }
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts",
+      "coverage/lcov-report/*.js",
+      "src/**/*.*",
+      "src/sources/*.*",
+      "src/igr/**/*.*"
+    ]
+  },
+  "rules": {
+    "no-console": false,
+    "jsx-no-lambda": false,
+    "ordered-imports": false,
+    "max-classes-per-file": 4
+  },
+  "jsRules": {
+    "no-console": false,
+    "jsx-no-lambda": false,
+    "ordered-imports": false,
+    "max-classes-per-file": 4
+  }
 }

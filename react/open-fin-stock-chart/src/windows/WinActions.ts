@@ -1,6 +1,6 @@
 
 // import React from 'react';
-import { WindowBoundsChange } from 'openfin/_v2/api/events/window';
+// import { WindowBoundsChange } from 'openfin/_v2/api/events/window';
 
 export default class WinActions {
 
@@ -13,6 +13,16 @@ export default class WinActions {
         }
         return false;
     }
+
+    public static async maximize(windowID: string) {
+        this.log(windowID, "maximized...");
+        let win = await fin.Window.getCurrent();
+        if (this.isMatch(windowID, win)) {
+            win.maximize();
+            this.log(windowID, "maximized... done");
+        }
+    }
+
     public static async minimize(windowID: string) {
 
         this.log(windowID, "minimize...");
@@ -29,15 +39,6 @@ export default class WinActions {
         // } else {
         //     win.minimize();
         // }
-    }
-
-    public static async maximize(windowID: string) {
-        this.log(windowID, "maximized...");
-        let win = await fin.Window.getCurrent();
-        if (this.isMatch(windowID, win)) {
-            win.maximize();
-            this.log(windowID, "maximized... done");
-        }
     }
 
     public static async close(windowID: string) {
@@ -97,35 +98,47 @@ export default class WinActions {
         console.log(winInfo + " " + action);
     }
 
+    public static isRunning(): boolean {
+        return window.hasOwnProperty("fin");
+    }
+
     static windowCounter = 0;
-    public static async explode(windowID: string) {
+    public static async open(windowID: string, width?: number, height?: number) {
         this.log(windowID, "explode... " + location.href);
 
-        this.windowCounter++;
         if (!window.hasOwnProperty("fin")) {
             this.log(windowID, "explode... failed - OpenFin not found");
-        } else {
-            var win = new fin.desktop.Window({
-                // url: "http://localhost:3400/index.html",
-                // name: "IgStockChild|" + stockID,
-                url: location.href,
-                name: "IgStockCharts|Child" + this.windowCounter,
-                defaultWidth: 900,
-                defaultHeight: 500,
-                defaultCentered: true,
-                autoShow: false,
-                frame: true, // show/hide OS title bar
-                showTaskbarIcon: true,
-                resizable: true,
-                minimizable: true,
-                maximizable: true,
-                // hideOnClose: false,
-                // saveWindowState: false,
-            }, function() {
-                var winFrame = win.getNativeWindow();
-                console.log(windowID, 'explode show');
-                win.show();
-            });
+            return;
         }
+
+        if (width === undefined)
+            width = 700;
+
+        if (height === undefined)
+            height = 600;
+
+        this.windowCounter++;
+        var win = new fin.desktop.Window({
+            // url: "http://localhost:3500/index.html",
+            // name: "IgStockChild|" + stockID,
+            url: location.href,
+            name: "IgStockCharts|" + windowID,
+            defaultWidth: width,
+            defaultHeight: height,
+            defaultCentered: true,
+            autoShow: false,
+            frame: true, // show/hide OS title bar
+            showTaskbarIcon: true,
+            resizable: true,
+            minimizable: true,
+            maximizable: true,
+            // hideOnClose: false,
+            // saveWindowState: false,
+        }, function() { // on window created
+            var winFrame = win.getNativeWindow();
+            console.log("WinActions '" + windowID, "' explode show");
+            win.show();
+        });
+
     }
 }

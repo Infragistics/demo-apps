@@ -1,15 +1,16 @@
 {
-  "name": "stock-market-chart",
-  "description": "Infragistics Stock Market Chart with FDC3 support",
+  "name": "ig-stock-chart-fdc3",
+  "description": "Infragistics Chart with FDC3 support",
   "author": "Infragistics",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": ".",
   "keywords": [
     "OpenFin",
     "Infragistics",
     "Stock",
     "Chart",
-    "FDC3"
+    "FDC3",
+    "Data Adapter"
   ],
   "private": true,
   "dependencies": {
@@ -18,50 +19,53 @@
     "@material-ui/icons": "^3.0.2",
     "@material-ui/system": "^3.0.0-alpha.2",
     "@types/classnames": "^2.2.7",
-    "@types/jest": "24.0.11",
-    "@types/node": "11.12.0",
-    "@types/openfin": "^39.0.1",
-    "@types/react": "16.8.10",
-    "@types/react-dom": "16.8.3",
+    "@types/openfin": "39.0.1",
     "@types/react-router-dom": "^4.3.1",
+    "@types/react-transition-group": "^2.0.15",
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.6",
-    "d3fc": "^14.0.21",
-    "igniteui-react-core": "16.6.12",
-    "igniteui-react-charts": "16.6.12",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-flatten": "^0.4.0",
+    "igniteui-react-charts": "^16.11.4",
+    "igniteui-react-core": "^16.11.4",
+    "igniteui-react-fdc3": "^16.11.4",
     "isomorphic-fetch": "^2.1.1",
     "jquery": "^1.11.1",
+    "json-loader": "^0.5.7",
     "lodash.defaults": "^4.2.0",
-    "openfin-launcher": "^1.4.8",
-    "openfin-layouts": "^1.0.0",
+    "openfin-fdc3": "0.2.0",
+    "openfin-launcher": "1.4.8",
+    "openfin-layouts": "1.0.0",
     "prop-types": "15.6.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-redux": "^4.4.4",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.8",
-    "react-select": "^2.4.2",
-    "reselect": "^2.5.3",
-    "typescript": "3.3.4000"
+    "react-scripts-ts": "3.1.0",
+    "reselect": "^2.5.3"
   },
   "scripts": {
-    "start": "set PORT=3400 && react-scripts start",
+    "start": "set PORT=3500 && react-scripts-ts start",
     "openfin": "node scripts/openfin.dev.js",
     "openfin:dev": "node scripts/openfin.dev.js",
     "openfin:staging": "node scripts/openfin.staging.js",
     "openfin:prod": "node scripts/openfin.prod.js",
-    "build": "react-scripts build",
+    "build": "react-scripts-ts build",
     "postbuild": "node iisConfig/copyIISConfig.js",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@types/jest": "^23.3.9",
+    "@types/node": "^10.12.9",
+    "@types/react": "^16.7.6",
+    "@types/react-dom": "^16.0.9",
+    "typescript": "^3.1.6"
+  }
 }

@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "IG Stock Chart",
+  "name": "IG Stock Chart with OpenFin FDC3",
   "icons": [
     {
       "src": "favicon.ico",

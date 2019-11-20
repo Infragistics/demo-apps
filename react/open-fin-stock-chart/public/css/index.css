@@ -2,42 +2,197 @@ html {
   width: 100%;
   height: 100%;
   /* background: #fa2d2d; */
-  /* background: #2dfa3e; */
   /* background: green; */
-  background: black;
-
-  /* scrollbar-face-color: #646464;
-  scrollbar-base-color: #646464;
-  scrollbar-3dlight-color: #646464;
-  scrollbar-highlight-color: #646464;
-  scrollbar-track-color: #000;
-  scrollbar-arrow-color: #db4d4d;
-  scrollbar-shadow-color: #646464;
-  scrollbar-dark-shadow-color: #646464; */
+  /* background: white; */
+  background: #000000;
+  flex-flow: column;
+  justify-content: stretch;
+  display: flex;
 }
 
-/* ::-webkit-scrollbar { width: 8px; height: 3px;}
-::-webkit-scrollbar-button {  background-color: #666; }
-::-webkit-scrollbar-track {  background-color: #646464;}
-::-webkit-scrollbar-track-piece { background-color: #000;}
-::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 3px;}
-::-webkit-scrollbar-corner { background-color: #646464;}}
-::-webkit-resizer { background-color: #666;} */
+body {
+  flex-flow: column;
+  justify-content: stretch;
+  display: flex;
 
-/* https://codepen.io/GhostRider/pen/GHaFw */
+  width: 100%;
+  height: 100%;
+  /* background: white; */
+  /* background: #1E1E1E; */
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Verdana', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  Arial, sans-serif;
+  /* -webkit-font-smoothing: antialiased; */
+  /* -moz-osx-font-smoothing: grayscale; */
+
+  /* --color_0202: #a76cff6b;
+  --color_020:  #a76cff;
+  --color_021: #c4dd35;
+  --color_022: #f96232;
+  --color_023: #3cbdc9;
+  --color_024: #dc3f76;
+  --color_025: #ff9800;
+  --color_026: #6178f8;
+  --color_027: #54c25a;
+  --color_029: #aaaaaa; */
+}
+
+.chartWindow {
+  /* background: lightgray; */
+  height: calc(100% - 1rem);
+  width:  calc(100% - 1rem);
+  padding: 0.5rem;
+  margin: 0px;
+  /* overflow: hidden; */
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.chartContainer {
+  width:  100%;
+  height: 100%;
+  padding: 0px;
+  /* background: lightgray; */
+}
+
+.openfinNote {
+  color: black;
+  background: gray;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width:  calc(100% - 2rem);
+  /* width:  100%; */
+  /* padding: 1rem; */
+  /* margin: 1rem; */
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+
+  /* disable text selection */
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
+  -o-user-select:none;
+}
+
+.buttonContainer {
+  width:  calc(100% - 2rem);
+  margin-right:  1rem;
+  /* margin-left:   1rem; */
+  display: flex;
+  flex-flow: row;
+
+  justify-content: flex-start;
+  vertical-align: bottom;
+  align-content: center;
+  align-items: center;
+  align-content: center;
+
+  /* disable text selection */
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
+  -o-user-select:none;
+}
+
+.buttonViewStocks {
+  background: #5ba2fd;
+  color: black;
+  height: 1rem;
+  width: 145px;
+  padding: 0.5rem;
+  /* padding-top: 1rem; */
+  margin-top: 8px;
+  margin-right: 8px;
+  font: 13px Verdana;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buttonViewMultiple {
+  background: rgb(138, 88, 214);
+  color: black;
+  height: 1rem;
+  width: 150px;
+  padding: 0.5rem;
+  /* padding-top: 1rem; */
+  margin-top: 8px;
+  margin-right: 8px;
+  font: 13px Verdana;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buttonClearChart {
+  color: black;
+  background: #2cd448;
+  height: 1rem;
+  width: 100px;
+  padding: 0.5rem;
+  /* padding-top: 1rem; */
+  margin-top: 8px;
+  margin-right: 8px;
+  font: 13px Verdana;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buttonClearEvents {
+  color: black;
+  background: #2cd448;
+  height: 1rem;
+  width: 100px;
+  padding: 0.5rem;
+  /* padding-top: 1rem; */
+  margin-top: 8px;
+  margin-right: 8px;
+  font: 13px Verdana;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.eventsTitle {
+  /* background: rgba(49, 49, 49, 0.75); */
+  color: #bebebe;
+  padding: 5px;
+}
+
+.eventsContainer {
+  background: rgba(49, 49, 49, 0.75);
+  color: #bebebe;
+  height: calc(100% - 1rem);
+  width:  calc(100% - 1rem);
+  padding: 0.5rem;
+  margin: 0px;
+  font: 14px "Consolas";
+  overflow-y: auto;
+  overflow-x: hidden;
+  white-space: pre;
+}
+
 
 ::-webkit-scrollbar-track
 {
-	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
 	-webkit-box-shadow: inset 0 0 6px rgba(46, 45, 45, 0.692);
 	border-radius: 3px;
-	/* background-color: #F5F5F5; */
 	background-color: #5a5a5a;
 }
 ::-webkit-scrollbar
 {
 	width: 8px;
-	/* background-color: #F5F5F5; */
 	background-color: #5a5a5a;
 }
 ::-webkit-scrollbar-thumb
@@ -47,145 +202,3 @@ html {
 	background-color: #a3a1a1;
 }
 
-body {
-  width: 100%;
-  height: 100%;
-  background: orange;
-  background: #1E1E1E;
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Verdana', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  --color_0202: #a76cff6b;
-  --color_020:  #a76cff;
-  --color_021: #c4dd35;
-  --color_022: #f96232;
-  --color_023: #3cbdc9;
-  --color_024: #dc3f76;
-  --color_025: #ff9800;
-  --color_026: #6178f8;
-  --color_027: #54c25a;
-  --color_029: #aaaaaa;
-}
-
-.AppWebCode {
-  padding: 10px;
-  background: #444444;
-  color: #f5e506;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-.AppWebInfo {
-  color: #b6b6b3;
-  /* background: #444444; */
-}
-
-.AppToolbarWrapper {
-  /* background: rgb(110, 218, 116); */
-  /* color: rgb(22, 97, 236); */
-  display: block;
-  /* margin-top: 6px; */
-  /* height: 100%; */
-  /* width: 100%; */
-}
-
-.AppToolbarContent {
-  /* -webkit-app-region: drag; */
-  background: #353434;
-  background: #1E1E1E;
-
-  width: 100%;
-  display: grid;
-  grid-gap: 2px;
-  align-items: center;
-  /* grid-template-columns: 1fr minmax(150px, 1fr); */
-  /* grid-template-columns: 1fr 150px; */
-  /* grid-template-columns: auto 1fr 150px; */
-  /* grid-template-columns: auto auto 1fr auto; */
-  grid-template-columns: auto auto auto 1fr auto auto auto auto auto auto;
-  grid-template-rows: 1fr;
-
-  /* grid-template-columns: 2fr 1fr; */
-  /* grid-template-columns: 1fr; */
-  /* grid-template-columns: minmax(250px, 1fr)  1fr ; */
-}
-
-.AppToolbarSearch {
-  border-radius: 6px;
-  background: #555555;
-  color: #f3f2f2;
-  margin-left: 0px;
-  width: 100%;
-  font-size: 11pt;
-  margin: 3px;
-}
-
-.AppToolbarTitle {
-  color: white;
-  /* background-color: #f79393; */
-  justify-self: start;
-  margin-left: 4px;
-  white-space: nowrap;
-
-  /* disable text selection */
-  -webkit-user-select: none;  /* Chrome all / Safari all */
-  -moz-user-select: none;     /* Firefox all */
-  -ms-user-select: none;      /* IE 10+ */
-  user-select: none;          /* Likely future */
-  -o-user-select:none;
-}
-
-.AppBarSettings {
-  -webkit-app-region: no-drag !important;
-  /* background-color: #cbfa95; */
-  justify-self: end;
-  padding: 0px;
-}
-
-.AppToolbarMenu {
-  margin-top: 20px;
-}
-
-.AppToolbarMenuHeader {
-  color: white;
-  background: #353434;
-  font-size: 10pt;
-  text-align: center;
-  padding: 4px;
-  padding-left: 8px;
-  padding-right: 8px;
-
-  /* disable text selection */
-  -webkit-user-select: none;  /* Chrome all / Safari all */
-  -moz-user-select: none;     /* Firefox all */
-  -ms-user-select: none;      /* IE 10+ */
-  user-select: none;          /* Likely future */
-  -o-user-select:none;
-}
-
-.AppToolbarMenuItem {
-  color: #a5a4a4;
-  font-size: 10pt;
-  text-align: left;
-  padding: 4px;
-  padding-left: 8px;
-  padding-right: 8px;
-
-  /* disable text selection */
-  -webkit-user-select: none;  /* Chrome all / Safari all */
-  -moz-user-select: none;     /* Firefox all */
-  -ms-user-select: none;      /* IE 10+ */
-  user-select: none;          /* Likely future */
-  -o-user-select:none;
-
-  /* opacity: 0.9; */
-}
-
-/* .AppToolbarMenuItem:hover {
-  opacity: 1.0;
-} */

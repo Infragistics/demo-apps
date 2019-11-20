@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <!-- <meta name="theme-color" content="#000000" /> -->
-    <meta name="theme-color" content="#FFFFFF" />
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="theme-color" content="#000000" />
+
     <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
-    <link rel="manifest"   href="%PUBLIC_URL%/manifest.json" />
+    <link rel="manifest"   href="%PUBLIC_URL%/manifest.json">
     <link rel="stylesheet" href="%PUBLIC_URL%/css/index.css">
-    <link rel="stylesheet" href="%PUBLIC_URL%/css/stocks.css">
-    <link rel="stylesheet" href="%PUBLIC_URL%/css/window.css">
-    <!-- <link rel="stylesheet" href="%PUBLIC_URL%/css/CategoryChart.css"> -->
-    <link rel="stylesheet" href="%PUBLIC_URL%/css/FinancialChart.css">
+
+    <!-- comment out these 3 links to use default royal light theme: -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/css/dark-theme-legend.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/css/dark-theme-tooltips.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/css/dark-theme-financial-chart.css">
+
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -28,19 +28,23 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React Stock Chart</title>
+    <title>IG Stock Chart with FDC3 data adapter</title>
 
     <style type="text/css">
       .rootStyle {
-        /* background-color: #d38b8b; */
         margin: 0;
         width: 100%;
         height: 100%;
+        flex-flow: column;
+        justify-content: stretch;
+        display: flex;
       }
     </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
     <div id="root" class="rootStyle"></div>
     <!--
       This HTML file is a template.

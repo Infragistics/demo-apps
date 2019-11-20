@@ -1,3 +1,3 @@
 const launcher = require('./launcher');
 
-launcher('http://localhost:3400/app.local.json');
+launcher('http://localhost:3500/app.local.json');
