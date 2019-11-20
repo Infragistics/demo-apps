@@ -31,7 +31,7 @@
     "igniteui-react-core": "^16.11.4",
     "igniteui-react-fdc3": "^16.11.4",
     "isomorphic-fetch": "^2.1.1",
-    "jquery": "^1.11.1",
+    "jquery": "^3.4.0",
     "json-loader": "^0.5.7",
     "lodash.defaults": "^4.2.0",
     "openfin-fdc3": "0.2.0",
