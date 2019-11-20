@@ -18,17 +18,24 @@ This repository contains implementation of React application with Infragistics c
 
 This application is using the following Infragistics components:
 
-- Financial Chart
-- Zoom Slider
-- FDC3 Data Adapter
+- [Financial Chart](https://infragistics.com/reactsite/components/financial-chart.html)
+- [Zoom Slider](https://infragistics.com/reactsite/components/zoomslider-overview.html)
+- [FDC3 Data Adapter](https://www.npmjs.com/package/igniteui-react-fdc3)
 
-## Code
+## Creating FDC3 Data Adapter
 
-The following code snippet shows how to create FDC3 data adapter and binding its data to Infragistics [React Financial Chart](https://infragistics.com/reactsite/components/financial-chart.html) component.
+The following code snippet shows how to create FDC3 data adapter and subscribe to ViewChart intent which will be handled and generate data for binding to Infragistics [React Financial Chart](https://infragistics.com/reactsite/components/financial-chart.html) component.
 
 ```ts
-// creating an instance of FDC3 data adapter
-this.FDC3adapter = new Fdc3DataAdapter();
+import { Fdc3DataAdapter } from "igniteui-react-fdc3/ES5/Fdc3DataAdapter"
+import { Fdc3Message } from 'igniteui-react-fdc3/ES5/Fdc3Message';
+
+// importing OpenFin FDC3 service
+import * as openfinFdc3 from "openfin-fdc3";
+
+
+// creating FDC3 data adapter with reference to openfin
+this.FDC3adapter = new new Fdc3DataAdapter(openfinFdc3);
 // subscribing to FDC3 "ViewChart" intent
 this.FDC3adapter.subscribe("ViewChart");
 // handling FDC3 intents sent via OpenFin's FDC3 service
@@ -37,10 +44,18 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
     this.financialChart.dataSource = this.FDC3adapter.stockPrices;
 };
 
+```
+
+## Sending FDC3 ViewChart Intent
+
+```ts
+import { Fdc3Instrument } from 'igniteui-react-fdc3/ES5/Fdc3Instrument';
+// ...
+
 // creating context for FDC3 message
 let context = new Fdc3Instrument();
 context.ticker = "TSLA";
-// sending FDC3 message with instrument as context to IgStockCharts app
+// sending FDC3 ViewChart intent with TSLA instrument as context to 'IgStockCharts' app
 this.FDC3adapter.sendInstrument("ViewChart", context, "IgStockCharts");
 ```
 
