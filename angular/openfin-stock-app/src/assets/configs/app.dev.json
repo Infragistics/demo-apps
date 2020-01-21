@@ -1,0 +1,33 @@
+{
+    "devtools_port": 9090,
+    "startup_app": {
+        "name": "IG StockChart FDC3",
+        "description": "IG Angular StockChart with OpenFin FDC3",
+        "uuid": "IgStockDashboardAppID",
+        "url": "http://localhost:4500",
+        "minWidth": 500,
+        "minHeight": 85,
+        "defaultWidth": 500,
+        "defaultHeight": 85,
+        "defaultTop": 0,
+        "defaultLeft": 0,
+        "frame": true,
+        "resizable": true,
+        "maximizable": true,
+        "showTaskbarIcon": true,
+        "autoShow": true
+    },
+    "services": [
+        {"name":"layouts"},
+        {"name":"fdc3"}
+    ],
+    "runtime": {
+        "arguments": "",
+        "version": "9.61.38.41"
+    },
+    "shortcut": {
+        "company": "Infragistics",
+        "name": "IG StockChart FDC3",
+        "description": "IG Angular StockChart with OpenFin FDC3"
+    }
+}

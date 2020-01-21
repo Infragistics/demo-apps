@@ -1,0 +1,46 @@
+<div class="main" igxLayout>
+    <igx-nav-drawer id="navigation" [isOpen]="false"
+    [pin]="false">
+        <ng-template igxDrawer>
+            <nav>
+                <span igxDrawerItem [isHeader]="true" >FDC3 ViewInstrument</span>
+                <span *ngFor="let item of viewInstrumentItems"
+                    igxDrawerItem [active]="item.symbol === selected"
+                    igxRipple (click)="ViewInstrument(item.symbol)">
+                    <igx-icon fontSet="material">poll</igx-icon>
+                    <span>{{ item.symbol }}</span>
+                </span>
+
+             </nav>
+        </ng-template>
+
+    </igx-nav-drawer>
+
+    <main igxFlex >
+      <igx-navbar title="Infragistics Data Grid" actionButtonIcon="menu"
+       [isActionButtonVisible]="true" (click)="drawerToggle()">
+    </igx-navbar>
+
+        <!-- igx-financial-chart -->
+        <div class="chart">
+            <igx-grid #grid
+              [data]="dataSource"
+              [autoGenerate]="false"
+              [paging]="true"
+              [perPage]="10"
+              height="100%" width="100%">
+
+              <igx-column field="ID" [dataType]="'number'" sortable="true"></igx-column>
+              <igx-column field="Symbol" [dataType]="'string'" sortable="false"></igx-column>
+              <igx-column field="Time" [dataType]="'string'" sortable="true"></igx-column>
+              <igx-column field="Open" [dataType]="'number'" sortable="true"></igx-column>
+              <igx-column field="Close" [dataType]="'number'" sortable="true"></igx-column>
+              <igx-column field="Volume" [dataType]="'number'" sortable="true"></igx-column>
+
+            </igx-grid>
+        </div>
+
+    </main>
+  </div>
+
+

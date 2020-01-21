@@ -1,0 +1,42 @@
+{
+    "devtools_port": 9090,
+    "startup_app": {
+        "name": "IG StockChart FDC3",
+        "description": "IG StockChart with FDC3 hosted in OpenFin window",
+        "uuid": "IgStockDashboardAppID",
+        "minWidth": 500,
+        "minHeight": 85,
+        "defaultWidth": 500,
+        "defaultHeight": 85,
+        "frame": true,
+        "resizable": true,
+        "maximizable": true,
+        "showTaskbarIcon": true,
+        "autoShow" : true,
+        "url": "https://staging.infragistics.local/react-apps/stock-market-chart/index.html",
+        "applicationIcon": "https://staging.infragistics.local/react-apps/stock-market-chart/favicon.ico"
+    },
+    "services": [
+        {   "name": "fdc3" },
+        {   "name": "layouts",
+            "config": {
+              "features": {
+                "dock": true,
+                "snap": true,
+                "tab": false
+              }
+            }
+        }
+    ],
+    "runtime": {
+        "arguments": "--enable-aggressive-domstorage-flushing --enable-experimental-web-platform-features",
+        "version": "beta"
+    },
+    "shortcut": {
+        "company": "Infragistics",
+        "description": "IG StockChart with FDC3 hosted in OpenFin window",
+        "name": "IG Stock Dashboard with OpenFin FDC3",
+        "icon": "https://staging.infragistics.local/react-apps/stock-market-chart/favicon.ico"
+    },
+    "splashScreenImage": "https://staging.infragistics.local/react-apps/stock-market-chart/images/splashscreen.png"
+}

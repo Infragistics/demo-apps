@@ -1,0 +1,54 @@
+<div class="explorer-root">
+
+    <div class="explorer-columns">
+
+        <div class="explorer-actions">
+            <span >FDC3 ViewChart</span>
+            <div *ngFor="let item of viewChartItems"
+                (click)="ViewChart(item.symbol)"   >
+                <div>
+                    <span class="button" igxButton="raised" igxButtonBackground="dodgerblue">
+                        <!-- <igx-icon fontSet="material">poll</igx-icon> -->
+                        <span class="button-text">{{ item.symbol }}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="explorer-actions">
+            <span >FDC3 ViewInstrument</span>
+            <div *ngFor="let item of viewInstrumentItems"
+                (click)="ViewInstrument(item.symbol)">
+                <div>
+                    <span class="button" igxButton="raised" igxButtonBackground="yellowgreen">
+                        <!-- <igx-icon fontSet="material">laptop_mac</igx-icon> -->
+                        <span class="button-text">{{ item.symbol }}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="explorer-history">
+        <span >FDC3 Message History:</span>
+        <div #messageHistory class="explorer-info"></div>
+    </div>
+
+</div>
+
+
+
+<!-- <h2>Here are some links to help you start: </h2>
+<ul>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
+  </li>
+</ul> -->
+
