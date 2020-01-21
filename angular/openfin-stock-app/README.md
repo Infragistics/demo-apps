@@ -9,7 +9,7 @@ You can run this application locally in [OpenFin](https://developers.openfin.co/
 ## Table of Contents
 
 - [Components](#Components)
-- [Code Snippets](#CodeSnippets)
+- [Code Snippets](#Code-Snippets)
 - [Installation](#Installation)
 - [Running](#Running)
 - [Testing](#Testing)
@@ -24,7 +24,7 @@ This application is using the following Infragistics components:
 - [Zoom Slider](https://infragistics.com/angularsite/components/zoomslider-overview.html)
 - [FDC3 Data Adapter](https://www.npmjs.com/package/igniteui-angular-fdc3)
 
-## Code Snippet
+## Code Snippets
 
 #### Creating FDC3 Data Adapter
 
