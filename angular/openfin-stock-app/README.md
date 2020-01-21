@@ -9,7 +9,7 @@ You can run this application locally in [OpenFin](https://developers.openfin.co/
 ## Table of Contents
 
 - [Components](#Components)
-- [Code Snippet](#Code)
+- [Code Snippets](#CodeSnippets)
 - [Installation](#Installation)
 - [Running](#Running)
 - [Testing](#Testing)
@@ -24,9 +24,11 @@ This application is using the following Infragistics components:
 - [Zoom Slider](https://infragistics.com/angularsite/components/zoomslider-overview.html)
 - [FDC3 Data Adapter](https://www.npmjs.com/package/igniteui-angular-fdc3)
 
-## Creating FDC3 Data Adapter
+## Code Snippet
 
-The following code snippet shows how to create FDC3 data adapter and subscribe to ViewChart intent which will be handled and generate data for binding to Infragistics [React Financial Chart](https://infragistics.com/angularsite/components/financial-chart.html) component.
+#### Creating FDC3 Data Adapter
+
+The following code snippet shows how to create FDC3 data adapter and subscribe to ViewChart intent which will be handled and generate data for binding to Infragistics [Angular Financial Chart](https://infragistics.com/angularsite/components/financial-chart.html) component.
 
 ```ts
 import { Fdc3DataAdapter } from "igniteui-angular-fdc3"
@@ -44,10 +46,12 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
     // binding financial chart to data
     this.financialChart.dataSource = this.FDC3adapter.stockPrices;
 };
-
 ```
 
-## Sending FDC3 ViewChart Intent
+#### Sending FDC3 Messages
+
+
+This code snippet show how to send FDC3 **ViewChart** intent that can be consumed by [Financial Chart](https://infragistics.com/angularsite/components/financial-chart.html) component.
 
 ```ts
 import { Fdc3Instrument } from 'igniteui-angular-fdc3';
@@ -56,8 +60,21 @@ import { Fdc3Instrument } from 'igniteui-angular-fdc3';
 // creating context for FDC3 message
 let context = new Fdc3Instrument();
 context.ticker = "TSLA";
-// sending FDC3 ViewChart intent with TSLA instrument as context to 'IgStockCharts' app
-this.FDC3adapter.sendInstrument("ViewChart", context, "IgStockCharts");
+// sending FDC3 ViewChart intent with TSLA instrument as context to 'IgStockAppUID' app
+this.FDC3adapter.sendInstrument("ViewChart", context, "IgStockAppUID");
+```
+
+This code snippet show how to send FDC3 **ViewInstrument** intent that can be consumed by [Data Grid](https://www.infragistics.com//angularsite/components/grid/grid.html) component.
+
+```ts
+import { Fdc3Instrument } from 'igniteui-angular-fdc3';
+// ...
+
+// creating context for FDC3 message
+let context = new Fdc3Instrument();
+context.ticker = "TSLA";
+// sending FDC3 ViewInstrument intent with TSLA instrument as context to 'IgStockAppUID' app
+this.FDC3adapter.sendInstrument("ViewInstrument", context, "IgStockAppUID");
 ```
 
 ## Installation
@@ -67,7 +84,7 @@ Set up this project by following these instructions:
 - open **VS Code** as administrator
 - open the folder that contains this repository, e.g. `C:\Github\openfin-stock-app`
 - select **Terminal** - **New Terminal** menu item
-- run this command to install required packages and Ignite UI for React packages from npm website
+- run this command to install required packages and Ignite UI for Angular packages from npm website
 
 ```
 npm install
