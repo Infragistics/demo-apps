@@ -18,10 +18,11 @@
 
     <main igxFlex >
       <igx-navbar title="Infragistics Data Grid" actionButtonIcon="menu"
-       [isActionButtonVisible]="true" (click)="drawerToggle()">
+       [isActionButtonVisible]="true" (click)="drawerToggle()"
+       style="background: red;">
     </igx-navbar>
 
-        <!-- igx-financial-chart -->
+        <!-- igx-grid -->
         <div class="chart">
             <igx-grid #grid
               [data]="dataSource"

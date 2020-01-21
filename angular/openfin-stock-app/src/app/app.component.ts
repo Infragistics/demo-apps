@@ -27,12 +27,12 @@ export class AppComponent implements AfterViewInit {
 
     public async OpenGrid(): Promise<void> {
         console.log("app OpenGrid");
-        Openfin.create("Grid Window", 900, 400, 0, 650);
+        Openfin.create("Grid Window", 900, 400, 0, 550);
     }
 
     public async OpenChart(): Promise<void> {
         console.log("app OpenChart");
-        Openfin.create("Chart Window", 900, 515, 0, 150);
+        Openfin.create("Chart Window", 900, 515, 0, 10);
     }
 
     public async OpenExplorer(): Promise<void> {

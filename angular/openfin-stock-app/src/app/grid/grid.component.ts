@@ -142,6 +142,9 @@ export class GridComponent implements AfterViewInit {
         console.log("app loaded");
 
         this.drawer.width = "240px";
+        // console.log("ngAfterViewInit");
+        const element = document.getElementsByClassName("igx-navbar")[0]; // as HTMLElement;
+        element.setAttribute("style", "background: yellowgreen");
 
         if (openfinFdc3 === undefined) {
             console.log("openfinFdc3 is undefined"); return;

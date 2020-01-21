@@ -52,8 +52,8 @@ async function initOpenfin(): Promise<void> {
 function initWeb(): void {
     console.log("app running in browser");
 
-    platformBrowserDynamic().bootstrapModule(AppModule)
-    .catch(err => console.error(err));
-    // platformBrowserDynamic().bootstrapModule(ChartModule)
-    //     .catch(err => console.error(err));
+    // platformBrowserDynamic().bootstrapModule(AppModule)
+    // .catch(err => console.error(err));
+    platformBrowserDynamic().bootstrapModule(ChartModule)
+        .catch(err => console.error(err));
 }

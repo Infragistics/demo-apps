@@ -1,10 +1,4 @@
 
-.chart {
-    width: 100%;
-    height: calc(100% - 70px);
-    // background: yellowgreen;
-}
-
 .main-toolbar {
     background: gray;
     width: 100%;
@@ -31,17 +25,6 @@
     width: 100%;
 }
 
-// .main {
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     bottom: 0;
-//     left: 0;
-//     overflow: hidden;
-// }
-// main {
-//     padding: 1rem 1rem;
-// }
 
 main.mini-padding {
     // padding: 1rem calc(1rem + 60px);
@@ -63,9 +46,7 @@ main.mini-padding {
     color: #484848;
     margin: 4px 0;
 }
-// .igx-nav-drawer {
-//     flex-basis: 180px;
-// }
+
 .igx-nav-drawer__aside::-webkit-scrollbar {
     width: 3px;
     background: #e4e4e4;

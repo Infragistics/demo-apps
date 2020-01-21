@@ -10,6 +10,8 @@ You can run this application locally in [OpenFin](https://developers.openfin.co/
 
 - [Components](#Components)
 - [Code Snippets](#Code-Snippets)
+    - [Creating FDC3 Data Adapter](#Creating-FDC3-Data-Adapter)
+    - [Sending FDC3 Messages](#Sending-FDC3-Messages)
 - [Installation](#Installation)
 - [Running](#Running)
 - [Testing](#Testing)
@@ -33,9 +35,9 @@ The following code snippet shows how to create FDC3 data adapter and subscribe t
 ```ts
 import { Fdc3DataAdapter } from "igniteui-angular-fdc3"
 import { Fdc3Message } from 'igniteui-angular-fdc3';
-
 // importing OpenFin FDC3 service
 import * as openfinFdc3 from "openfin-fdc3";
+// ...
 
 // creating FDC3 data adapter with reference to openfin
 this.FDC3adapter = new new Fdc3DataAdapter(openfinFdc3);
@@ -50,7 +52,6 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 
 #### Sending FDC3 Messages
 
-
 This code snippet show how to send FDC3 **ViewChart** intent that can be consumed by [Financial Chart](https://infragistics.com/angularsite/components/financial-chart.html) component.
 
 ```ts
@@ -60,7 +61,7 @@ import { Fdc3Instrument } from 'igniteui-angular-fdc3';
 // creating context for FDC3 message
 let context = new Fdc3Instrument();
 context.ticker = "TSLA";
-// sending FDC3 ViewChart intent with TSLA instrument as context to 'IgStockAppUID' app
+// sending FDC3 ViewChart intent to 'IgStockAppUID' app
 this.FDC3adapter.sendInstrument("ViewChart", context, "IgStockAppUID");
 ```
 
@@ -73,7 +74,7 @@ import { Fdc3Instrument } from 'igniteui-angular-fdc3';
 // creating context for FDC3 message
 let context = new Fdc3Instrument();
 context.ticker = "TSLA";
-// sending FDC3 ViewInstrument intent with TSLA instrument as context to 'IgStockAppUID' app
+// sending FDC3 ViewInstrument intent to 'IgStockAppUID' app
 this.FDC3adapter.sendInstrument("ViewInstrument", context, "IgStockAppUID");
 ```
 
@@ -92,20 +93,28 @@ npm install
 
 ## Running
 
-Run this command to host this app locally in a browser:
+1. Run this command to host this app locally in a browser:
 
 ```
 npm run-script start
 ```
 
-This will open a website in an internet browser at [localhost:4500](http://localhost:4500/) address. While running in
-a browser, the app does not support any **OpenFin** actions (e.g. [FDC3 ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro) intent) because they require connection to host it from **OpenFin** launcher. Therefore, you need to open a new terminal (**Terminal** - **New Terminal** menu item) and run this command:
+2. Wait until you see this message:
+
+**Angular Live Development Server is listening on localhost:4500**
+
+3. Open your browser at [localhost:4500](http://localhost:4500/) address.
+
+Note while running in a browser, the app does not support any **OpenFin** actions (e.g. [FDC3 ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro) intent) because they require connection to host it from **OpenFin** launcher.
+
+4. Therefore, you need to open a new terminal (**Terminal** - **New Terminal** menu item)
+
+5. Run this command to start **OpenFin** launcher and host the app in an **OpenFin** window, where all functionalities are enabled, e.g. [FDC3 ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro):
 
 ```
 npm run-script openfin
 ```
 
-This will start **OpenFin** launcher and host the app in an **OpenFin** window, where all functionalities are enabled, e.g. [FDC3 ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro)
 
 
 ## Testing
