@@ -4,11 +4,10 @@
 
         <div class="explorer-actions">
             <span >FDC3 ViewChart</span>
-            <div *ngFor="let item of viewChartItems"
+            <div *ngFor="let item of stockItems"
                 (click)="ViewChart(item.symbol)"   >
                 <div>
                     <span class="button" igxButton="raised" igxButtonBackground="dodgerblue">
-                        <!-- <igx-icon fontSet="material">poll</igx-icon> -->
                         <span class="button-text">{{ item.symbol }}</span>
                     </span>
                 </div>
@@ -17,11 +16,22 @@
 
         <div class="explorer-actions">
             <span >FDC3 ViewInstrument</span>
-            <div *ngFor="let item of viewInstrumentItems"
+            <div *ngFor="let item of stockItems"
                 (click)="ViewInstrument(item.symbol)">
                 <div>
                     <span class="button" igxButton="raised" igxButtonBackground="yellowgreen">
-                        <!-- <igx-icon fontSet="material">laptop_mac</igx-icon> -->
+                        <span class="button-text">{{ item.symbol }}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="explorer-actions">
+            <span >FDC3 ViewPosition</span>
+            <div *ngFor="let item of stockItems"
+                (click)="ViewPosition(item.symbol)">
+                <div>
+                    <span class="button" igxButton="raised" igxButtonBackground="orange">
                         <span class="button-text">{{ item.symbol }}</span>
                     </span>
                 </div>

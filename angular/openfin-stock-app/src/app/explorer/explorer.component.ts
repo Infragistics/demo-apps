@@ -6,9 +6,9 @@ import * as openfinFdc3 from "openfin-fdc3";
 // required imports for working with FDC3 data adapter:
 import { Fdc3DataAdapter } from "igniteui-angular-fdc3";
 // for sending ViewChart with single stock symbol:
+import { Fdc3Position } from "igniteui-angular-fdc3";
 import { Fdc3Instrument } from "igniteui-angular-fdc3";
-// for sending ViewChart with multiple stock symbols:
-import { Fdc3InstrumentList } from "igniteui-angular-fdc3";
+
 // for receiving ViewChart message:
 import { Fdc3Message } from "igniteui-angular-fdc3";
 
@@ -18,26 +18,17 @@ import { Fdc3Message } from "igniteui-angular-fdc3";
     styleUrls: ["./explorer.component.scss"]
 })
 export class ExplorerComponent implements AfterViewInit {
-    title = "Openfin-FDC3 Explorer";
+    title = "IG Openfin-FDC3 Explorer";
     public FDC3adapter: Fdc3DataAdapter;
 
     @ViewChild("messageHistory", { static: true })
     public messageHistory: ElementRef;
     public messageCount = 1;
 
-    public viewChartItems: any[] = [
+    public stockItems: any[] = [
         { text: "TSLA", symbol: "TSLA" },
         { text: "UBER", symbol: "UBER" },
         { text: "GOOG", symbol: "GOOG" },
-        { text: "AMZN", symbol: "AMZN" },
-        { text: "NVDA", symbol: "NVDA" },
-    ];
-    public viewInstrumentItems: any[] = [
-        { text: "TSLA", symbol: "TSLA" },
-        { text: "UBER", symbol: "UBER" },
-        { text: "GOOG", symbol: "GOOG" },
-        { text: "AMZN", symbol: "AMZN" },
-        { text: "NVDA", symbol: "NVDA" },
     ];
 
     constructor() {
@@ -107,25 +98,39 @@ export class ExplorerComponent implements AfterViewInit {
         }
     }
 
-    // public ViewInstruments(symbols: string[]): void {
-    //     // const symbols: string[] = ["MSFT", "TSLA"];
+    public ViewPosition(symbol: string): void {
 
-    //     if (window.hasOwnProperty("fin")) {
-    //         // creating context for FDC3 message
-    //         const context = new Fdc3InstrumentList();
-    //         for (const ticker of symbols) {
-    //             const instrument = new Fdc3Instrument();
-    //             instrument.ticker = ticker;
-    //             context.instruments.push(instrument);
-    //         }
-    //         // sending FDC3 message with multiple instruments as context to IgStockCharts app
-    //         this.FDC3adapter.sendInstrumentList("ViewInstrument", context, "IgStockDashboardAppID");
+        if (window.hasOwnProperty("fin")) {
+            const instrument = new Fdc3Instrument();
+            instrument.ticker = symbol;
 
-    //     } else {
-    //         // by-passing OpenFin service since it is not running
-    //         this.FDC3adapter.clearData();
-    //         this.FDC3adapter.stockSymbols = symbols;
-    //     }
-    // }
+            const details = this.GetStockDetails(symbol);
+            // creating context for FDC3 message
+            const context = new Fdc3Position();
+            context.instrument = instrument;
+            context.shares = 100;
+            context.price = details.marketPrice;
+            context.cost = details.marketPrice - (Math.random() * 5);
+            // tslint:disable-next-line:no-string-literal
+            context.id["sector"] = details.sector;
 
+            // sending FDC3 message with position as context to IgStockCharts app
+            this.FDC3adapter.sendPosition("ViewPosition", context, "IgStockDashboardAppID");
+
+        } else {
+            // by-passing OpenFin service since it is not running
+            this.FDC3adapter.clearData();
+            this.FDC3adapter.stockSymbols = [symbol];
+        }
+    }
+
+    public GetStockDetails(stockSymbol: string) {
+
+        for (const stock of this.FDC3adapter.stockDetails) {
+            if (stock.symbol === stockSymbol) {
+                return stock;
+            }
+        }
+        return this.FDC3adapter.stockDetails[0];
+    }
 }

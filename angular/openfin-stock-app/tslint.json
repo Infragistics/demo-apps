@@ -11,6 +11,7 @@
     "no-trailing-whitespace": false,
     "component-class-suffix": true,
     "contextual-lifecycle": true,
+    "no-string-literal": false,
     "directive-class-suffix": true,
     "directive-selector": [
       true,

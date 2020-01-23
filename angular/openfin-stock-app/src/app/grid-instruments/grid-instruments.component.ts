@@ -5,14 +5,13 @@ import * as openfinFdc3 from "openfin-fdc3";
 
 // required imports for working with FDC3 data adapter:
 import { Fdc3DataAdapter } from "igniteui-angular-fdc3";
-// for sending ViewChart with single stock symbol:
+// for sending ViewChart with single/multiple stock symbols:
 import { Fdc3Instrument } from "igniteui-angular-fdc3";
-// for sending ViewChart with multiple stock symbols:
-import { Fdc3InstrumentList } from "igniteui-angular-fdc3";
 // for receiving ViewChart message:
 import { Fdc3Message } from "igniteui-angular-fdc3";
 
 // required imports for working with IgxGridComponent
+import { SortingDirection  } from "igniteui-angular";
 import { IgxGridComponent  } from "igniteui-angular";
 import { IgxNavigationDrawerComponent } from "igniteui-angular";
 
@@ -22,12 +21,12 @@ import { StockPriceHistory } from "igniteui-angular-core";
 
 @Component({
     selector: "app-root",
-    templateUrl: "./grid.component.html",
-    styleUrls:  ["./grid.component.scss"]
+    templateUrl: "./grid-instruments.component.html",
+    styleUrls:  ["./grid-instruments.component.scss"]
 })
-export class GridComponent implements AfterViewInit {
+export class GridInstrumentsComponent implements AfterViewInit {
 
-    public title = "Openfin-FDC3 - Grid App";
+    public title = "IG Grid - FDC3 ViewInstrument";
     public dataSource: any[];
     public FDC3adapter: Fdc3DataAdapter;
 
@@ -37,7 +36,7 @@ export class GridComponent implements AfterViewInit {
     @ViewChild(IgxNavigationDrawerComponent, { static: true })
     public drawer: IgxNavigationDrawerComponent;
 
-    public selected = "TSLA";
+    public selected = "GOOG";
 
     public viewInstrumentItems: any[] = [
         { text: "TSLA", symbol: "TSLA" },
@@ -58,14 +57,18 @@ export class GridComponent implements AfterViewInit {
         // subscribing to FDC3 "ViewInstrument" intent
         this.FDC3adapter.subscribe("ViewInstrument");
 
-        // handling FDC3 intents sent via OpenFin's FDC3 service
+        // handling FDC3 intents sent via OpenFin"s FDC3 service
         this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
             // at this point, FDC3 data adapter has already processed FDC3 intent
             // and generated data for tickers embedded in context of FDC3 message
             // so we can just update the grid
-            this.UpdateGrid(this.FDC3adapter.stockPrices);
 
-            console.log("message received: \n" + msg.json);
+            console.log("FDC3 received message: \n" + msg.json);
+            console.log("FDC3 stockPrices: \n" + this.FDC3adapter.stockPrices[0].symbol);
+
+            this.UpdateGrid(this.FDC3adapter.stockPrices);
+            // this.grid.reflow();
+            // (this.grid as any).notifyChanges();
 
             // Optional access to properties of FDC3 message that can be used
             // for custom processing of FDC3 intent and its context:
@@ -78,7 +81,7 @@ export class GridComponent implements AfterViewInit {
         };
 
         // optional, initalizing adapter with some popular stocks
-        this.FDC3adapter.stockSymbols = ["TSLA"];
+        this.FDC3adapter.stockSymbols = ["GOOG"];
 
         this.UpdateGrid(this.FDC3adapter.stockPrices);
     }
@@ -102,47 +105,54 @@ export class GridComponent implements AfterViewInit {
     }
 
     public UpdateGrid(stockPrices: any[]) {
+
         const dataSource: any[] = [];
 
         for (const prices of stockPrices) {
             const symbol = (prices as any).symbol.toString();
             this.selected = symbol;
             const items = [];
-            let index = 0;
+            // let index = 0;
             for (const price of prices.toArray()) {
                 const date = (price.date as Date);
                 const day  = date.toLocaleDateString();
                 const time = date.toLocaleTimeString();
+                const month = "0" + date.getMonth() + " (" + date.toLocaleString("default", { month: "long" }) + ")";
                 const item = {
-                    ID: ++index,
-                    Symbol: symbol,
-                    Date: date,
-                    Time: day + " " + time,
-                    Open: price.open,
-                    High: price.high,
-                    Low: price.low,
+                    // ID: ++index,
+                    Symbol: price.symbol,
+                    Name: price.company,
+                    Year: date.getFullYear().toString(),
+                    Month: month,
+                    Date: day,
+                    Time: time,
+                    // Open: price.open,
+                    // High: price.high,
+                    // Low: price.low,
                     Close: price.close,
-                    Volume: price.volume
+                    // Volume: price.volume
                 };
                 items.push(item);
 
-                if (items.length > 1000) { break; }
+                if (items.length > 2500) { break; }
             }
             console.log("items.length " + items.length);
             dataSource.push(items);
         }
-        console.log("stock.length " + dataSource.length);
 
         if (this.grid === undefined) { return; }
 
         this.grid.data = dataSource[0];
+        this.grid.reflow();
+        // (this.grid as any).notifyChanges();
+
     }
 
     public ngAfterViewInit(): void {
-        console.log("app loaded");
+        console.log("openfin app loaded");
 
         this.drawer.width = "240px";
-        // console.log("ngAfterViewInit");
+
         const element = document.getElementsByClassName("igx-navbar")[0]; // as HTMLElement;
         element.setAttribute("style", "background: yellowgreen");
 
@@ -151,6 +161,11 @@ export class GridComponent implements AfterViewInit {
         } else {
             this.InitializeFDC3();
         }
+
+        // this.grid.groupingExpressions = [
+        //     { fieldName: "Month", dir: SortingDirection.Desc },
+        //     { fieldName: "Date", dir: SortingDirection.Desc }
+        // ];
     }
 
     public drawerToggle(): void {

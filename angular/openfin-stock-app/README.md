@@ -85,7 +85,12 @@ Set up this project by following these instructions:
 - open **VS Code** as administrator
 - open the folder that contains this repository, e.g. `C:\Github\openfin-stock-app`
 - select **Terminal** - **New Terminal** menu item
-- run this command to install required packages and Ignite UI for Angular packages from npm website
+- run this command to install openfin-cli
+```
+npm install -g openfin-cli
+```
+
+- run this command to install required packages for this app
 
 ```
 npm install

@@ -14,11 +14,11 @@ import {
     IgxNavigationDrawerModule,
 } from "igniteui-angular";
 
-import { GridComponent } from "./grid.component";
+import { GridPositionsComponent } from "./grid-positions.component";
 
 @NgModule({
     declarations: [
-        GridComponent
+        GridPositionsComponent
     ],
     imports: [
         BrowserModule,
@@ -37,9 +37,10 @@ import { GridComponent } from "./grid.component";
 
         // FormsModule,
         // ReactiveFormsModule,
-
     ],
     providers: [],
-    bootstrap: [GridComponent]
+    bootstrap: [
+        GridPositionsComponent
+    ]
 })
-export class GridModule { }
+export class GridPositionsModule { }

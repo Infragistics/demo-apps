@@ -27,7 +27,7 @@ import { StockPriceHistory } from "igniteui-angular-core";
 })
 export class ChartComponent implements AfterViewInit {
 
-    public title = "Openfin-FDC3 - Chart App";
+    public title = "IG Chart - FDC3 ViewChart";
     public dataSource: any[];
     public FDC3adapter: Fdc3DataAdapter;
 
@@ -70,7 +70,7 @@ export class ChartComponent implements AfterViewInit {
             // so we can just update the FinancialChart
             this.UpdateChart(this.FDC3adapter.stockPrices);
 
-            console.log("message received JSON: \n" + msg.json);
+            console.log("openfin received message: \n" + msg.json);
 
             // Optional access to properties of FDC3 message that can be used
             // for custom processing of FDC3 intent and its context:
@@ -164,7 +164,6 @@ export class ChartComponent implements AfterViewInit {
             console.log("items.length " + items.length);
             dataSource.push(items);
         }
-        console.log("stock.length " + dataSource.length);
 
         if (this.chart === undefined) { return; }
 
@@ -175,12 +174,12 @@ export class ChartComponent implements AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-        console.log("app loaded");
+        console.log("openfin app loaded");
 
         this.drawer.width = "240px";
 
         if (openfinFdc3 === undefined) {
-            console.log("openfinFdc3 is undefined"); return;
+            console.log("openfin FDC3 is undefined"); return;
         } else {
             this.InitializeFDC3();
         }

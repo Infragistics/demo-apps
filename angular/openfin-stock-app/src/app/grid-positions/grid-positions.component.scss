@@ -31,9 +31,9 @@ main.mini-padding {
     padding: 1rem;
 }
 
-// .drawer {
-//     flex-basis: 180px;
-// }
+.button {
+    margin-left: 2rem;
+}
 
 /* Sample styling */
 .setting-title {
@@ -45,6 +45,12 @@ main.mini-padding {
     font-size: 14px;
     color: #484848;
     margin: 4px 0;
+}
+
+.grid {
+    width: 100%;
+    height: calc(100% - 90px);
+    // background: yellowgreen;
 }
 
 .igx-nav-drawer__aside::-webkit-scrollbar {

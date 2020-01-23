@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from "@angular/core";
-import { Openfin } from "../openfin/utils";
+import { Openfin } from "../openfin/Openfin";
 
 // importing OpenFin FDC3 service
 import * as openfinFdc3 from "openfin-fdc3";
@@ -10,34 +10,38 @@ import * as openfinFdc3 from "openfin-fdc3";
     styleUrls:  ["./app.component.scss"],
 })
 export class AppComponent implements AfterViewInit {
-    public title = "Openfin-FDC3 Apps";
+    public title = "IG Openfin-FDC3 Apps";
 
     constructor() {
-        console.log("app ()");
         document.title = this.title;
     }
 
     public ngAfterViewInit(): void {
-        console.log("app loaded");
+        console.log("openfin app loaded");
 
         if (openfinFdc3 === undefined) {
-            console.log("openfinFdc3 is undefined"); return;
+            console.log("openfin FDC3 is undefined"); return;
         }
     }
 
-    public async OpenGrid(): Promise<void> {
-        console.log("app OpenGrid");
-        Openfin.create("Grid Window", 900, 400, 0, 550);
+    public async OpenGridInstruments(): Promise<void> {
+        console.log("openfin app OpenGridInstruments()");
+        Openfin.create("ViewInstrument Window", 600, 515, 0, 550);
+    }
+
+    public async OpenGridPositions(): Promise<void> {
+        console.log("openfin app OpenGridPositions()");
+        Openfin.create("ViewPosition Window", 600, 515, 0, 550);
     }
 
     public async OpenChart(): Promise<void> {
-        console.log("app OpenChart");
-        Openfin.create("Chart Window", 900, 515, 0, 10);
+        console.log("openfin app OpenChart()");
+        Openfin.create("ViewChart Window", 700, 515, 0, 10);
     }
 
     public async OpenExplorer(): Promise<void> {
-        console.log("app OpenExplorer");
-        Openfin.create("Explorer Window", 500, 640, 900, 150);
+        console.log("openfin app OpenExplorer()");
+        Openfin.create("Explorer Window", 500, 640, 700, 150);
     }
 
 }

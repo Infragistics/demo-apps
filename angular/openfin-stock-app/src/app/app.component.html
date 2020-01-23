@@ -1,13 +1,17 @@
 <div class="window">
   <div class="window-toolbar">
     <span (click)="OpenChart()" igxButton="raised" class="button"   igxRipple="gray" igxButtonBackground="dodgerblue" >
-        FDC3 Chart
+        ViewChart
     </span>
-    <span (click)="OpenGrid()" igxButton="raised" class="button"   igxRipple="gray" igxButtonBackground="yellowgreen">
-        FDC3 Grid
+    <span (click)="OpenGridInstruments()" igxButton="raised" class="button" igxRipple="gray" igxButtonBackground="yellowgreen">
+        ViewInstrument
     </span>
-    <span (click)="OpenExplorer()" igxButton="raised" class="button"   igxRipple="gray" >
-        FDC3 Explorer
+    <span (click)="OpenGridPositions()" igxButton="raised" class="button" igxRipple="gray" igxButtonBackground="orange">
+        ViewPosition
+    </span>
+
+    <span (click)="OpenExplorer()" igxButton="raised" class="button"   igxRipple="gray" igxButtonBackground="lightgray">
+        Explorer
     </span>
   </div>
 </div>
