@@ -31,7 +31,7 @@ export class AppComponent implements AfterViewInit {
 
     public async OpenGridPositions(): Promise<void> {
         console.log("openfin app OpenGridPositions()");
-        Openfin.create("ViewPosition Window", 600, 515, 0, 550);
+        Openfin.create("ViewPosition Window", 800, 615, 0, 350);
     }
 
     public async OpenChart(): Promise<void> {

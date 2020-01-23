@@ -67,8 +67,6 @@ export class GridInstrumentsComponent implements AfterViewInit {
             console.log("FDC3 stockPrices: \n" + this.FDC3adapter.stockPrices[0].symbol);
 
             this.UpdateGrid(this.FDC3adapter.stockPrices);
-            // this.grid.reflow();
-            // (this.grid as any).notifyChanges();
 
             // Optional access to properties of FDC3 message that can be used
             // for custom processing of FDC3 intent and its context:
@@ -92,7 +90,7 @@ export class GridInstrumentsComponent implements AfterViewInit {
             // creating context for FDC3 message
             const context = new Fdc3Instrument();
             context.ticker = symbol;
-            // sending FDC3 message with instrument as context to IgStockCharts app
+            // sending FDC3 message with instrument as context to IG Stock Dashboard app app
             this.FDC3adapter.sendInstrument("ViewInstrument", context, "IgStockDashboardAppID");
 
         } else {
@@ -112,25 +110,20 @@ export class GridInstrumentsComponent implements AfterViewInit {
             const symbol = (prices as any).symbol.toString();
             this.selected = symbol;
             const items = [];
-            // let index = 0;
+
             for (const price of prices.toArray()) {
                 const date = (price.date as Date);
                 const day  = date.toLocaleDateString();
                 const time = date.toLocaleTimeString();
                 const month = "0" + date.getMonth() + " (" + date.toLocaleString("default", { month: "long" }) + ")";
                 const item = {
-                    // ID: ++index,
                     Symbol: price.symbol,
                     Name: price.company,
                     Year: date.getFullYear().toString(),
                     Month: month,
                     Date: day,
                     Time: time,
-                    // Open: price.open,
-                    // High: price.high,
-                    // Low: price.low,
                     Close: price.close,
-                    // Volume: price.volume
                 };
                 items.push(item);
 
@@ -144,8 +137,6 @@ export class GridInstrumentsComponent implements AfterViewInit {
 
         this.grid.data = dataSource[0];
         this.grid.reflow();
-        // (this.grid as any).notifyChanges();
-
     }
 
     public ngAfterViewInit(): void {

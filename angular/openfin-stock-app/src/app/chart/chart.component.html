@@ -6,7 +6,7 @@
                 <span igxDrawerItem [isHeader]="true" >FDC3 ViewChart (Single)</span>
                 <span *ngFor="let item of viewSingleCharts"
                     igxDrawerItem [active]="item.text === selected"
-                    igxRipple (click)="View(item)">
+                    igxRipple (click)="ViewChart(item)">
                     <igx-icon fontSet="material">poll</igx-icon>
                     <span>{{ item.symbol }}</span>
                 </span>
@@ -14,7 +14,7 @@
                 <span igxDrawerItem [isHeader]="true">FDC3 ViewChart (Multiple)</span>
                 <span *ngFor="let item of viewMultipleCharts"
                     igxDrawerItem [active]="item.text === selected"
-                    igxRipple (click)="View(item)">
+                    igxRipple (click)="ViewMultiple(item)">
                     <igx-icon fontSet="material">poll</igx-icon>
                     <span>{{ item.text }}</span>
                 </span>

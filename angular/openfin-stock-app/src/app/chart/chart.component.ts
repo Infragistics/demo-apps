@@ -48,7 +48,7 @@ export class ChartComponent implements AfterViewInit {
     ];
     public viewMultipleCharts: any[] = [
         { text: "TSLA + UBER", symbols: ["TSLA", "UBER"] },
-        // { text: "AMZN + GOOG", symbols: ["AMZN", "GOOG"] },
+        { text: "AMZN + GOOG", symbols: ["AMZN", "GOOG"] },
     ];
 
     constructor() {
@@ -88,52 +88,43 @@ export class ChartComponent implements AfterViewInit {
         this.UpdateChart(this.FDC3adapter.stockPrices);
     }
 
-    public View(item) {
+    public ViewChart(item: any): void {
         this.selected = item.text;
-
-        if (item.symbol) {
-            this.ViewChart(item.symbol);
-        } else if (item.symbols) {
-            this.ViewMultiple(item.symbols);
-        }
-    }
-
-    public ViewChart(symbol: string): void {
 
         if (window.hasOwnProperty("fin")) {
             // creating context for FDC3 message
             const context = new Fdc3Instrument();
-            context.ticker = symbol;
-            // sending FDC3 message with instrument as context to IgStockCharts app
+            context.ticker =  item.symbol;
+            // sending FDC3 message with instrument as context to IG Stock Dashboard app app
             this.FDC3adapter.sendInstrument("ViewChart", context, "IgStockDashboardAppID");
 
         } else {
             // by-passing OpenFin service since it is not running
             this.FDC3adapter.clearData();
-            this.FDC3adapter.stockSymbols = [symbol];
+            this.FDC3adapter.stockSymbols = [ item.symbol];
 
             this.UpdateChart(this.FDC3adapter.stockPrices);
         }
     }
 
-    public ViewMultiple(symbols: string[]): void {
-        // const symbols: string[] = ["MSFT", "TSLA"];
+    public ViewMultiple(item: any): void {
+        this.selected = item.text;
 
         if (window.hasOwnProperty("fin")) {
             // creating context for FDC3 message
             const context = new Fdc3InstrumentList();
-            for (const ticker of symbols) {
+            for (const ticker of item.symbols) {
                 const instrument = new Fdc3Instrument();
                 instrument.ticker = ticker;
                 context.instruments.push(instrument);
             }
-            // sending FDC3 message with multiple instruments as context to IgStockCharts app
+            // sending FDC3 message with multiple instruments as context to IG Stock Dashboard app app
             this.FDC3adapter.sendInstrumentList("ViewChart", context, "IgStockDashboardAppID");
 
         } else {
             // by-passing OpenFin service since it is not running
             this.FDC3adapter.clearData();
-            this.FDC3adapter.stockSymbols = symbols;
+            this.FDC3adapter.stockSymbols = item.symbols;
             this.UpdateChart(this.FDC3adapter.stockPrices);
         }
     }
@@ -177,6 +168,9 @@ export class ChartComponent implements AfterViewInit {
         console.log("openfin app loaded");
 
         this.drawer.width = "240px";
+
+        const element = document.getElementsByClassName("igx-navbar")[0]; // as HTMLElement;
+        element.setAttribute("style", "background: #119dfa");
 
         if (openfinFdc3 === undefined) {
             console.log("openfin FDC3 is undefined"); return;

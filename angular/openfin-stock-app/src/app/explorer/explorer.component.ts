@@ -51,9 +51,11 @@ export class ExplorerComponent implements AfterViewInit {
         // creating FDC3 data adapter with reference to openfin
         this.FDC3adapter = new Fdc3DataAdapter(openfinFdc3);
 
-        // subscribing to FDC3 "ViewChart" and "ViewInstrument" intents
-        this.FDC3adapter.subscribe("ViewChart");
-        this.FDC3adapter.subscribe("ViewInstrument");
+        // subscribing to FDC3 intents
+        this.FDC3adapter.subscribe("ViewChart");        // used in IG Chart with FDC3 ViewChart window
+        this.FDC3adapter.subscribe("ViewInstrument");   // used in IG Grid with FDC3 ViewInstrument window
+        this.FDC3adapter.subscribe("ViewPosition");     // used in IG Grid with FDC3 ViewPosition window
+        this.FDC3adapter.subscribe("ViewPortfolio");    // used in IG Grid with FDC3 ViewPosition window
 
         // handling FDC3 intents sent via OpenFin's FDC3 service
         this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
@@ -73,7 +75,7 @@ export class ExplorerComponent implements AfterViewInit {
             // creating context for FDC3 message
             const context = new Fdc3Instrument();
             context.ticker = symbol;
-            // sending FDC3 message with instrument as context to IgStockCharts app
+            // sending FDC3 message with instrument as context to IG Stock Dashboard app app
             this.FDC3adapter.sendInstrument("ViewChart", context, "IgStockDashboardAppID");
 
         } else {
@@ -88,7 +90,7 @@ export class ExplorerComponent implements AfterViewInit {
             // creating context for FDC3 message
             const context = new Fdc3Instrument();
             context.ticker = symbol;
-            // sending FDC3 message with instrument as context to IgStockCharts app
+            // sending FDC3 message with instrument as context to IG Stock Dashboard app app
             this.FDC3adapter.sendInstrument("ViewInstrument", context, "IgStockDashboardAppID");
 
         } else {
@@ -114,7 +116,7 @@ export class ExplorerComponent implements AfterViewInit {
             // tslint:disable-next-line:no-string-literal
             context.id["sector"] = details.sector;
 
-            // sending FDC3 message with position as context to IgStockCharts app
+            // sending FDC3 message with position as context to IG Stock Dashboard app app
             this.FDC3adapter.sendPosition("ViewPosition", context, "IgStockDashboardAppID");
 
         } else {

@@ -8,6 +8,7 @@ import { Fdc3DataAdapter } from "igniteui-angular-fdc3";
 
 // for sending ViewChart with single/multiple stock positions:
 import { Fdc3Position } from "igniteui-angular-fdc3";
+import { Fdc3Portfolio } from "igniteui-angular-fdc3";
 import { Fdc3Instrument } from "igniteui-angular-fdc3";
 // for receiving ViewChart message:
 import { Fdc3Message } from "igniteui-angular-fdc3";
@@ -45,9 +46,16 @@ export class GridPositionsComponent implements AfterViewInit {
         { symbol: "UBER" },
         { symbol: "GOOG" },
         { symbol: "AMZN" },
-        { symbol: "NVDA" },
-        { symbol: "FB"   },
-        { symbol: "GM"   },
+    ];
+
+    public viewPortfolioItems: any[] = [
+        { sector: "Technology" },
+        { sector: "Transportation" },
+        { sector: "Communication" },
+        { sector: "Financial" },
+        { sector: "Industrial" },
+        { sector: "Materials" },
+        { sector: "Energy" },
     ];
 
     constructor() {
@@ -59,10 +67,10 @@ export class GridPositionsComponent implements AfterViewInit {
         // creating FDC3 data adapter with reference to openfin
         this.FDC3adapter = new Fdc3DataAdapter(openfinFdc3);
 
-        // subscribing to FDC3 "ViewPosition" and "ViewPortfolio" intents
+        // subscribing to FDC3 intents
         this.FDC3adapter.subscribe("ViewInstrument");
-        this.FDC3adapter.subscribe("ViewPosition");
-        // this.FDC3adapter.subscribe("ViewPortfolio");
+        this.FDC3adapter.subscribe("ViewPosition");  // used to buy positions with passed symbol
+        this.FDC3adapter.subscribe("ViewPortfolio"); // used to sell positions with passed sector
 
         // handling FDC3 intents sent via OpenFin's FDC3 service
         this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
@@ -72,10 +80,9 @@ export class GridPositionsComponent implements AfterViewInit {
 
             console.log("FDC3 received message: \n" + msg.json);
 
-            if (this.FDC3adapter.stockPositions.length === 0) {
-                return;
-            }
-
+            // if (this.FDC3adapter.stockPositions.length === 0) {
+            //     return;
+            // }
 
             if (this.grid !== undefined) {
                 this.grid.data = this.FDC3adapter.stockPositions;
@@ -90,17 +97,6 @@ export class GridPositionsComponent implements AfterViewInit {
             // let contextJson: string = msg.json;              // string representation of FDC3 context object
             // let tickerSymbols: string[] = msg.tickerSymbols; // array of ticker symbol(s) embedded in FDC3 context
             // let tickerNames: string[] = msg.tickerNames;     // array of ticker name(s) embedded in FDC3 context
-
-            // if (this.FDC3adapter.stockPositions.length > 0) {
-            //     const count = this.FDC3adapter.stockPositions.length;
-            //     const position = this.FDC3adapter.stockPositions[count - 1];
-
-            //     console.log("FDC3 stockPosition: \n" + position.symbol);
-            //     console.log("FDC3 stockPosition: costTotal \n" + position.costTotal);
-            //     console.log("FDC3 stockPosition: costPerShare \n" + position.costPerShare);
-            //     console.log("FDC3 stockPosition: marketPrice \n" + position.marketPrice);
-            //     console.log("FDC3 stockPosition: marketValue \n" + position.marketValue);
-            // }
         };
 
         // optional, initalizing adapter with some popular stocks
@@ -112,30 +108,58 @@ export class GridPositionsComponent implements AfterViewInit {
         this.grid.data = this.FDC3adapter.stockPositions;
     }
 
+    // using ViewPosition intent to buy stock positions with a given stock symbol/ticker
     public ViewPosition(symbol: string): void {
 
-        if (window.hasOwnProperty("fin")) {
-            const instrument = new Fdc3Instrument();
-            instrument.ticker = symbol;
+        const instrument = new Fdc3Instrument();
+        instrument.ticker = symbol;
 
-            const details = this.GetStockDetails(symbol);
-            // creating context for FDC3 message
-            const context = new Fdc3Position();
-            context.instrument = instrument;
-            context.shares = 100;
-            context.price = details.marketPrice;
-            context.cost = details.marketPrice - (Math.random() * 5);
-            // tslint:disable-next-line:no-string-literal
-            context.id["sector"] = details.sector;
+        const details = this.GetStockDetails(symbol);
+        // creating context for FDC3 message
+        const position = new Fdc3Position();
+        position.instrument = instrument;
+        // optional setting properties for purchase order:
+        position.shares = 100;
+        position.price = details.marketPrice;
+        position.cost = details.marketPrice - (Math.random() * 15);
 
-            // sending FDC3 message with position as context to IgStockCharts app
-            this.FDC3adapter.sendPosition("ViewPosition", context, "IgStockDashboardAppID");
+        // sending FDC3 message with position as context to IG Stock Dashboard app app
+        this.FDC3adapter.sendPosition("ViewPosition", position, "IgStockDashboardAppID");
 
-        } else {
-            // by-passing OpenFin service since it is not running
-            this.FDC3adapter.clearData();
-            this.FDC3adapter.stockSymbols = [symbol];
+        this.grid.groupingExpressions = [
+            { fieldName: "sector", dir: SortingDirection.Desc },
+            // { fieldName: "symbol", dir: SortingDirection.Desc }
+        ];
+    }
+
+    // using ViewPortfolio intent to show stock positions in a given market sector
+    public ViewPortfolio(sector: string): void {
+
+        // creating context for FDC3 message
+        const portfolio = new Fdc3Portfolio();
+
+        for (const stock of this.FDC3adapter.stockDetails) {
+            if (stock.sector === sector && portfolio.positions.length < 5) {
+                const instrument = new Fdc3Instrument();
+                instrument.ticker = stock.symbol;
+
+                const position = new Fdc3Position();
+                position.instrument = instrument;
+                position.shares = 100;
+                position.price = stock.marketPrice;
+                position.cost = stock.marketPrice - (Math.random() * 15);
+
+                portfolio.positions.push(position);
+            }
         }
+
+        // sending FDC3 message with portfolio as context to IG Stock Dashboard app app
+        this.FDC3adapter.sendPortfolio("ViewPortfolio", portfolio, "IgStockDashboardAppID");
+
+        this.grid.groupingExpressions = [
+            { fieldName: "sector", dir: SortingDirection.Desc },
+            // { fieldName: "symbol", dir: SortingDirection.Desc }
+        ];
     }
 
     public GetStockDetails(stockSymbol: string) {
@@ -162,10 +186,6 @@ export class GridPositionsComponent implements AfterViewInit {
             this.InitializeFDC3();
         }
 
-        this.grid.groupingExpressions = [
-            // { fieldName: "sector", dir: SortingDirection.Desc },
-            { fieldName: "symbol", dir: SortingDirection.Desc }
-        ];
     }
 
     public drawerToggle(): void {
@@ -174,10 +194,11 @@ export class GridPositionsComponent implements AfterViewInit {
         this.drawer.toggle();
     }
 
-    public SellPositions(): void {
-        this.FDC3adapter.stockSymbols = [];
-        this.FDC3adapter.stockPositions = [];
+    public ClearPositions(): void {
+
+        for (let i = this.FDC3adapter.stockPositions.length - 1; i >= 0; i--) {
+            this.FDC3adapter.removeStockPosition(i);
+        }
         this.grid.data = this.FDC3adapter.stockPositions;
-        this.grid.reflow();
     }
 }
