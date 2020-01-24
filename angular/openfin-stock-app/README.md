@@ -1,4 +1,19 @@
-#### Infragistics Stock Application with FDC3 data adapter
+## Infragistics Stock App with FDC3 Data Adapter
+
+## Table of Contents
+
+- [Introduction](#Introduction)
+- [Components](#Components)
+- [Instructions](#Instructions)
+    - [Installation](#Installation)
+    - [Running](#Running)
+    - [Testing](#Testing)
+- [Code Snippets](#Code-Snippets)
+    - [Creating FDC3 Data Adapter](#Creating-FDC3-Data-Adapter)
+    - [Sending FDC3 ViewChart](#Sending-FDC3-ViewChart)
+    - [Sending FDC3 ViewInstrument](#Sending-FDC3-ViewInstrument)
+    - [Sending FDC3 ViewPosition](#Sending-FDC3-ViewPosition)
+    - [Sending FDC3 ViewPortfolio](#Sending-FDC3-ViewPortfolio)
 
 ## Introduction
 
@@ -6,21 +21,7 @@ This repository contains Angular Stock application that demonstrates how to use 
 
 You can run this application locally in [OpenFin](https://developers.openfin.co/docs/openfin-os/) window by following [these](https://github.com/Infragistics/demo-apps/tree/master/angular/open-fin-stock-app#running) instructions. Also, you can run this application with other applications that use OpenFin FDC3 service to communicate with each other.
 
-<img src="./app_view_all.png" width="700" />
-
-## Table of Contents
-
-- [Introduction](#Introduction)
-- [Components](#Components)
-- [Installation](#Installation)
-- [Running](#Running)
-- [Testing](#Testing)
-- [Code Snippets](#Code-Snippets)
-    - [Creating FDC3 Data Adapter](#Creating-FDC3-Data-Adapter)
-    - [Sending FDC3 ViewChart](#Sending-FDC3-ViewChart)
-    - [Sending FDC3 ViewInstrument](#Sending-FDC3-ViewInstrument)
-    - [Sending FDC3 ViewPosition](#Sending-FDC3-ViewPosition)
-    - [Sending FDC3 ViewPortfolio](#Sending-FDC3-ViewPortfolio)
+<img src="./previews/app_view_all.png" width="700" />
 
 ## Components
 
@@ -79,7 +80,7 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 };
 ```
 
-<img src="./app_view_chart.png" width="700" />
+<img src="./previews/app_view_chart.png" width="700" />
 
 
 #### Sending FDC3 ViewInstrument
@@ -104,7 +105,7 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 };
 ```
 
-<img src="./app_view_instrument.png" width="700" />
+<img src="./previews/app_view_instrument.png" width="700" />
 
 #### Sending FDC3 ViewPosition
 
@@ -134,7 +135,7 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 };
 ```
 
-<img src="./app_view_position.png" width="700" />
+<img src="./previews/app_view_position.png" width="700" />
 
 #### Sending FDC3 ViewPortfolio
 
@@ -169,9 +170,11 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 };
 ```
 
-<img src="./app_view_portfolio.png" width="700" />
+<img src="./previews/app_view_portfolio.png" width="700" />
 
-## Installation
+## Instructions
+
+#### Installation
 
 Set up this project by following these instructions:
 
@@ -189,7 +192,7 @@ npm install -g openfin-cli
 npm install
 ```
 
-## Running
+#### Running
 
 1. Run this command to host this app locally in a browser:
 
@@ -213,13 +216,11 @@ Note while running in a browser, the app does not support any **OpenFin** action
 npm run-script openfin
 ```
 
-
-
-## Testing
+#### Testing
 
 While this Angular app is running in **OpenFin** window, you can send FDC3 messages from provided FDC3 Explorer window or you run other applications that use [OpenFin FDC3](https://developers.openfin.co/docs/fdc3) service.
 
-<img src="./app_view_all.png" width="700" />
+<img src="./previews/app_view_all.png" width="700" />
 
 
 ## Further help
