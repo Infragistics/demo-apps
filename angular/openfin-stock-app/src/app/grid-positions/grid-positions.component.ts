@@ -29,7 +29,7 @@ import { StockPriceHistory } from "igniteui-angular-core";
 })
 export class GridPositionsComponent implements AfterViewInit {
 
-    public title = "IG Grid - FDC3 ViewPosition";
+    public title = "IG Grid - FDC3 ViewPosition & ViewPortfolio";
     public dataSource: any[];
     public FDC3adapter: Fdc3DataAdapter;
 

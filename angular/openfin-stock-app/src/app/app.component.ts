@@ -41,7 +41,7 @@ export class AppComponent implements AfterViewInit {
 
     public async OpenExplorer(): Promise<void> {
         console.log("openfin app OpenExplorer()");
-        Openfin.create("Explorer Window", 500, 640, 700, 150);
+        Openfin.create("Explorer Window", 540, 640, 700, 150);
     }
 
 }

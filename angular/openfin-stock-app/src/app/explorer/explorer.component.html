@@ -1,6 +1,11 @@
 <div class="explorer-root">
 
-    <div class="explorer-columns">
+    <div class="explorer-history">
+        <span >FDC3 Message History:</span>
+        <div #messageHistory class="explorer-info"></div>
+    </div>
+
+    <div class="explorer-rows">
 
         <div class="explorer-actions">
             <span >FDC3 ViewChart</span>
@@ -38,27 +43,16 @@
             </div>
         </div>
 
+        <div class="explorer-actions">
+            <span (click)="ClearHistory()" igxButton="raised" class="button" igxRipple="gray" igxButtonBackground="lightgray">
+                Clear History
+            </span>
+        </div>
     </div>
 
-    <div class="explorer-history">
-        <span >FDC3 Message History:</span>
-        <div #messageHistory class="explorer-info"></div>
-    </div>
 
 </div>
 
 
 
-<!-- <h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul> -->
 

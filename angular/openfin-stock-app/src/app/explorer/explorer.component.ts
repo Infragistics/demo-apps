@@ -18,12 +18,12 @@ import { Fdc3Message } from "igniteui-angular-fdc3";
     styleUrls: ["./explorer.component.scss"]
 })
 export class ExplorerComponent implements AfterViewInit {
-    title = "IG Openfin-FDC3 Explorer";
+    title = "IG Explorer with FDC3 Intent Subscriptions";
     public FDC3adapter: Fdc3DataAdapter;
 
     @ViewChild("messageHistory", { static: true })
     public messageHistory: ElementRef;
-    public messageCount = 1;
+    public messageCount = 0;
 
     public stockItems: any[] = [
         { text: "TSLA", symbol: "TSLA" },
@@ -68,6 +68,11 @@ export class ExplorerComponent implements AfterViewInit {
             const old = this.messageHistory.nativeElement.textContent;
             this.messageHistory.nativeElement.textContent = info + old;
         };
+    }
+
+    public ClearHistory() {
+        this.messageCount = 0;
+        this.messageHistory.nativeElement.textContent = "";
     }
 
     public ViewChart(symbol: string): void {
