@@ -1,0 +1,67 @@
+
+.main-toolbar {
+    background: #119dfa;
+    background: gray;
+    width: 100%;
+    height: 2rem;
+    padding: 0.5rem;
+    margin: 0px;
+    display: flex;
+    flex-flow: row;
+}
+
+// drawer
+.main {
+    // position: absolute;
+    display: flex;
+    flex-flow: row nowrap;
+    // top: 0;
+    // right: 0;
+    // bottom: 0;
+    // left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.main > * {
+    width: 100%;
+}
+
+
+main.mini-padding {
+    // padding: 1rem calc(1rem + 60px);
+    padding: 1rem;
+}
+
+.button {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Sample styling */
+.setting-title {
+    margin-bottom: 0;
+    color: rgba(228, 28, 119, 0.8) /*#e41c77cc*/ ;
+}
+
+.setting-note {
+    font-size: 14px;
+    color: #484848;
+    margin: 4px 0;
+}
+
+.grid {
+    width: 100%;
+    height: calc(100% - 90px);
+    // background: yellowgreen;
+}
+
+.igx-nav-drawer__aside::-webkit-scrollbar {
+    width: 3px;
+    background: #e4e4e4;
+}
+.igx-nav-drawer__aside::-webkit-scrollbar-thumb {
+    background: #0375be;
+    border-radius: 0;
+}

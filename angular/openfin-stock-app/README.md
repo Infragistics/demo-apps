@@ -21,7 +21,7 @@ This repository contains Angular Stock application that demonstrates how to use 
 
 You can run this application locally in [OpenFin](https://developers.openfin.co/docs/openfin-os/) window by following [these](https://github.com/Infragistics/demo-apps/tree/master/angular/open-fin-stock-app#running) instructions. Also, you can run this application with other applications that use OpenFin FDC3 service to communicate with each other.
 
-<img src="./previews/app_view_all.png" width="700" />
+<img src="src/assets/images/previews/app_view_all.png" width="700" />
 
 ## Components
 
@@ -80,7 +80,7 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 };
 ```
 
-<img src="./previews/app_view_chart.png" width="700" />
+<img src="src/assets/images/previews/app_view_chart.png" width="700" />
 
 
 #### Sending FDC3 ViewInstrument
@@ -105,7 +105,7 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 };
 ```
 
-<img src="./previews/app_view_instrument.png" width="700" />
+<img src="src/assets/images/previews/app_view_instrument.png" width="700" />
 
 #### Sending FDC3 ViewPosition
 
@@ -135,7 +135,7 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 };
 ```
 
-<img src="./previews/app_view_position.png" width="700" />
+<img src="src/assets/images/previews/app_view_position.png" width="700" />
 
 #### Sending FDC3 ViewPortfolio
 
@@ -170,7 +170,7 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 };
 ```
 
-<img src="./previews/app_view_portfolio.png" width="700" />
+<img src="src/assets/images/previews/app_view_portfolio.png" width="700" />
 
 ## Instructions
 
@@ -202,15 +202,17 @@ npm run-script start
 
 2. Wait until you see this message:
 
-**Angular Live Development Server is listening on localhost:4500**
+**Angular Live Development Server is listening on localhost:4200**
 
-3. Open your browser at [localhost:4500](http://localhost:4500/) address.
+3. Open your browser at this address:
+
+[http://localhost:4200/angular-apps/stocks-dashboard/](http://localhost:4200/angular-apps/stocks-dashboard/)
 
 Note while running in a browser, the app does not support any **OpenFin** actions (e.g. [FDC3 ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro) intent) because they require connection to host it from **OpenFin** launcher.
 
 4. Therefore, you need to open a new terminal (**Terminal** - **New Terminal** menu item)
 
-5. Run this command to start **OpenFin** launcher and host the app in an **OpenFin** window, where all functionalities are enabled, e.g. [FDC3 ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro):
+5. Run the following command to start **OpenFin** launcher and host the app in an **OpenFin** window, where all functionalities are enabled, e.g. [FDC3 ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro):
 
 ```
 npm run-script openfin
@@ -220,7 +222,7 @@ npm run-script openfin
 
 While this Angular app is running in **OpenFin** window, you can send FDC3 messages from provided FDC3 Explorer window or you run other applications that use [OpenFin FDC3](https://developers.openfin.co/docs/fdc3) service.
 
-<img src="./previews/app_view_all.png" width="700" />
+<img src="src/assets/images/previews/app_view_all.png" width="700" />
 
 
 ## Further help

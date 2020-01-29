@@ -1,36 +1,19 @@
+/* tslint:disable */
+
+import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { FormsModule } from "@angular/forms";
 
-import {
-    IgxButtonModule, IgxIconModule, IgxInputGroupModule,
-    IgxLayoutModule, IgxRippleModule,   IgxSwitchModule,
-
-    IgxNavbarModule, IgxListModule,
-    IgxNavigationDrawerModule,
-} from "igniteui-angular";
-
-import { ExplorerComponent } from "./explorer.component";
+import { ExplorerRoutingModule } from "./explorer-routing.module";
+import { ExplorerActionsModule } from "./actions/explorer-actions.module";
 
 @NgModule({
-    declarations: [
-        ExplorerComponent
-    ],
     imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
+        CommonModule,
+        FormsModule,
 
-        IgxButtonModule,
-        IgxRippleModule,
-        IgxIconModule,
-        IgxLayoutModule,
-        IgxInputGroupModule,
-        IgxSwitchModule,
-        IgxListModule,
-        IgxNavbarModule,
-        IgxNavigationDrawerModule,
+        ExplorerRoutingModule,
+        ExplorerActionsModule
     ],
-    providers: [],
-    bootstrap: [ExplorerComponent]
 })
 export class ExplorerModule { }

@@ -1,3 +1,3 @@
 const launcher = require("./launcher");
 
-launcher("https://staging.infragistics.local/react-apps/stock-market-chart/app.staging.json");
+launcher("https://staging.infragistics.com/angular-apps/stocks-dashboard/assets/configs/app-staging.json");
