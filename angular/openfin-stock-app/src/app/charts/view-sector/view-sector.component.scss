@@ -1,0 +1,85 @@
+
+.treemap {
+    width: 100%;
+    height: calc(100% - 80px);
+    padding: 0.5rem;
+    // padding-top: 1.5rem;
+    background: #4e62cf;
+    background: #4e62cf;
+    background: #8a58d6;
+    background: #fa4d6a;
+    background: #f69904;
+    background: #18bd02;
+    background: transparent;
+}
+
+.main-toolbar {
+    background: gray;
+    width: 100%;
+    height: 2rem;
+    padding: 0.5rem;
+    margin: 0px;
+    display: flex;
+    flex-flow: row;
+}
+
+// drawer
+.main {
+    // position: absolute;
+    display: flex;
+    flex-flow: row nowrap;
+    // top: 0;
+    // right: 0;
+    // bottom: 0;
+    // left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.main > * {
+    width: 100%;
+}
+
+// .main {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     overflow: hidden;
+// }
+// main {
+//     padding: 1rem 1rem;
+// }
+
+main.mini-padding {
+    // padding: 1rem calc(1rem + 60px);
+    padding: 1rem;
+}
+
+// .drawer {
+//     flex-basis: 180px;
+// }
+
+/* Sample styling */
+.setting-title {
+    margin-bottom: 0;
+    color: rgba(228, 28, 119, 0.8) /*#e41c77cc*/ ;
+}
+
+.setting-note {
+    font-size: 14px;
+    color: #484848;
+    margin: 4px 0;
+}
+// .igx-nav-drawer {
+//     flex-basis: 180px;
+// }
+.igx-nav-drawer__aside::-webkit-scrollbar {
+    width: 3px;
+    background: #e4e4e4;
+}
+.igx-nav-drawer__aside::-webkit-scrollbar-thumb {
+    background: #0375be;
+    border-radius: 0;
+}

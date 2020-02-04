@@ -180,10 +180,10 @@ export class GridPositionsComponent implements AfterViewInit {
         const element = document.getElementsByClassName("igx-navbar")[0]; // as HTMLElement;
         element.setAttribute("style", "background: orange");
 
-        if (openfinFdc3 === undefined) {
-            console.log("openfinFdc3 is undefined"); return;
-        } else {
+        if (window.hasOwnProperty("fin")) {
             this.InitializeFDC3();
+        } else {
+            console.log("openfin FDC3 is undefined");
         }
 
     }

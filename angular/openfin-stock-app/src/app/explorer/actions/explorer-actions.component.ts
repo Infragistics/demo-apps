@@ -25,35 +25,44 @@ export class ExplorerActionsComponent implements AfterViewInit {
     @ViewChild("messageHistory", { static: true })
     public messageHistory: ElementRef;
     public messageCount = 0;
-
     public stockItems: any[] = [
         { text: "TSLA", symbol: "TSLA" },
         { text: "UBER", symbol: "UBER" },
         { text: "GOOG", symbol: "GOOG" },
     ];
+    public sectorNames: string[] = [
+        // "Transportation",
+        "Technology",
+        "Financial",
+        "All"
+    ];
+    public CurrentApp: any;
 
     constructor() {
         document.title = this.title;
     }
 
     public ngAfterViewInit(): void {
-        // enabling animation duration (in milliseconds)
-        // this.bulletGraph.transitionDuration = 500;
         console.log("explorer loaded");
 
         this.InitializeFDC3();
     }
 
-    public InitializeFDC3(): void {
+    public async InitializeFDC3(): Promise<void> {
+
+        if (window.hasOwnProperty("fin")) {
+            this.CurrentApp = await fin.Application.getCurrent();
+        }
 
         // creating FDC3 data adapter with reference to openfin
         this.FDC3adapter = new Fdc3DataAdapter(openfinFdc3);
 
         // subscribing to FDC3 intents
-        this.FDC3adapter.subscribe("ViewChart");        // used in IG Chart with FDC3 ViewChart window
-        this.FDC3adapter.subscribe("ViewInstrument");   // used in IG Grid with FDC3 ViewInstrument window
-        this.FDC3adapter.subscribe("ViewPosition");     // used in IG Grid with FDC3 ViewPosition window
-        this.FDC3adapter.subscribe("ViewPortfolio");    // used in IG Grid with FDC3 ViewPosition window
+        this.FDC3adapter.subscribe("ViewChart");      // used in IG Chart with FDC3 ViewChart window
+        this.FDC3adapter.subscribe("ViewInstrument"); // used in IG Grid with FDC3 ViewInstrument window
+        this.FDC3adapter.subscribe("ViewPosition");   // used in IG Grid with FDC3 ViewPosition window
+        this.FDC3adapter.subscribe("ViewPortfolio");  // used in IG Grid with FDC3 ViewPosition window
+        this.FDC3adapter.subscribe("ViewSector");  // used in IG Treemap with FDC3 ViewSector window
 
         // handling FDC3 intents sent via OpenFin's FDC3 service
         this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
@@ -81,10 +90,24 @@ export class ExplorerActionsComponent implements AfterViewInit {
             // creating context for FDC3 message
             const context = new Fdc3Instrument();
             context.ticker = symbol;
-            const app = await fin.Application.getCurrent();
-            const target = app.identity.uuid;
+            // const app = await fin.Application.getCurrent();
+            const target = this.CurrentApp.identity.uuid;
             // sending FDC3 message with instrument as context to IG Stock Dashboard app app
             this.FDC3adapter.sendInstrument("ViewChart", context, target);
+        }
+    }
+    public async ViewSector(name: string) {
+
+        if (!window.hasOwnProperty("fin")) {
+            this.ReportOpenFinIsMissing();
+        } else {
+            // creating context for FDC3 message
+            const context = new Fdc3Instrument();
+            context.name = name;
+            // const app = await fin.Application.getCurrent();
+            const target = this.CurrentApp.identity.uuid;
+            // sending FDC3 message with instrument as context to IG Stock Dashboard app app
+            this.FDC3adapter.sendInstrument("ViewSector", context, target);
         }
     }
 
@@ -96,8 +119,8 @@ export class ExplorerActionsComponent implements AfterViewInit {
             // creating context for FDC3 message
             const context = new Fdc3Instrument();
             context.ticker = symbol;
-            const app = await fin.Application.getCurrent();
-            const target = app.identity.uuid;
+            // const app = await fin.Application.getCurrent();
+            const target = this.CurrentApp.identity.uuid;
             // sending FDC3 message with instrument as context to IG Stock Dashboard app app
             this.FDC3adapter.sendInstrument("ViewInstrument", context, target);
         }
@@ -121,8 +144,8 @@ export class ExplorerActionsComponent implements AfterViewInit {
             // tslint:disable-next-line:no-string-literal
             context.id["sector"] = details.sector;
 
-            const app = await fin.Application.getCurrent();
-            const target = app.identity.uuid;
+            // const app = await fin.Application.getCurrent();
+            const target = this.CurrentApp.identity.uuid;
             // sending FDC3 message with position as context to IG Stock Dashboard app app
             this.FDC3adapter.sendPosition("ViewPosition", context, target);
         }

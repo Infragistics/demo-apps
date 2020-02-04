@@ -1,0 +1,36 @@
+{
+    "devtools_port": 9090,
+    "startup_app": {
+        "name": "IG Angular OpenFin-FDC3",
+        "description": "IG Angular apps with OpenFin-FDC3 hosted in OpenFin window",
+        "uuid": "IgStockDashboardAppID",
+        "url": "http://infragistics.com/angular-sample-apps/stocks-dashboard/home",
+        "applicationIcon": "http://infragistics.com/angular-sample-apps/stocks-dashboard/assets/favicon.ico",
+        "minWidth": 700,
+        "minHeight": 155,
+        "defaultWidth": 700,
+        "defaultHeight": 155,
+        "defaultTop": 10,
+        "defaultLeft": 10,
+        "frame": true,
+        "resizable": true,
+        "maximizable": true,
+        "showTaskbarIcon": true,
+        "autoShow" : true
+    },
+    "services": [
+        { "name":"layouts" },
+        { "name": "fdc3" }
+    ],
+    "runtime": {
+        "arguments": "--enable-aggressive-domstorage-flushing --enable-experimental-web-platform-features",
+        "version": "stable"
+    },
+    "shortcut": {
+        "company": "Infragistics",
+        "description": "IG Stock Dashboard with FDC3 hosted in OpenFin window",
+        "name": "IG Stock Dashboard with OpenFin FDC3",
+        "icon": "https://infragistics.com/angular-sample-apps/stocks-dashboard/assets/favicon.ico"
+    },
+    "splashScreenImage": "https://infragistics.com/angular-sample-apps/stocks-dashboard/assets/splashscreen.png"
+}

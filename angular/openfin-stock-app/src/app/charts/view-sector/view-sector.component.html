@@ -1,0 +1,44 @@
+<div class="main" igxLayout>
+    <igx-nav-drawer id="navigation" [isOpen]="false"
+    [pin]="false">
+        <ng-template igxDrawer>
+            <nav>
+                <span igxDrawerItem [isHeader]="true" >FDC3 ViewSector</span>
+                <span *ngFor="let name of sectorNames"
+                    igxDrawerItem [active]="name === selected"
+                    igxRipple (click)="ViewSector(name)">
+                    <igx-icon fontSet="material">poll</igx-icon>
+                    <span>{{ name }}</span>
+                </span>
+
+
+             </nav>
+        </ng-template>
+
+    </igx-nav-drawer>
+
+    <main igxFlex >
+      <igx-navbar title="IG Treemap with FDC3 ViewSector Intent" actionButtonIcon="menu"
+       [isActionButtonVisible]="true" (click)="drawerToggle()">
+    </igx-navbar>
+
+        <div class="treemap">
+            <igx-treemap #treemap
+                height="100%"
+                width="100%"
+                parentIdMemberPath="parent"
+                idMemberPath="id"
+                labelMemberPath="name"
+                valueMemberPath="marketCap"
+                customMemberPath="id"
+                transitionDuration="500"
+                rootTitle="Financial Sector"
+                fillScaleMode="Value"
+                fillBrushes="#fa4d6a #8a58d6"
+                isFillScaleLogarithmic="true">
+            </igx-treemap>
+        </div>
+    </main>
+  </div>
+
+

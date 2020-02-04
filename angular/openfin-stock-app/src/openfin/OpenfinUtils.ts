@@ -5,7 +5,7 @@ declare var fin: any; // openfin
 export class OpenfinUtils {
 
     static windowCounter = 0;
-    static windowBaseName = "/angular-apps/stocks-dashboard";
+    static windowBaseName = "/angular-sample-apps/stocks-dashboard";
 
     public static isRunning(): boolean {
         return window.hasOwnProperty("fin");
@@ -30,12 +30,10 @@ export class OpenfinUtils {
             windowOrigin += this.windowBaseName;
         }
         let windowUrl = windowOrigin + path;
-        let windowIcon = windowOrigin + "/assets/images/icon.png";
-
-        console.log(path, "location.hostname: \n" + location.hostname);
-        console.log(path, "location.origin: \n" + location.origin);
-        console.log(path, "location.host: \n" + location.host);
-        console.log(path, "location.href: \n" + location.href);
+        // console.log(path, "location.hostname: \n" + location.hostname);
+        // console.log(path, "location.origin: \n" + location.origin);
+        // console.log(path, "location.host: \n" + location.host);
+        // console.log(path, "location.href: \n" + location.href);
         console.log(path, "windowUrl: \n" + windowUrl);
 
         if (!this.isRunning()) {

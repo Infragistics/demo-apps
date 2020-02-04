@@ -1,0 +1,47 @@
+<div class="main" igxLayout>
+    <igx-nav-drawer id="navigation" [isOpen]="false"
+    [pin]="false">
+        <ng-template igxDrawer>
+            <nav>
+                <span igxDrawerItem [isHeader]="true" >FDC3 ViewChart (Single)</span>
+                <span *ngFor="let item of viewSingleCharts"
+                    igxDrawerItem [active]="item.text === selected"
+                    igxRipple (click)="ViewChart(item)">
+                    <igx-icon fontSet="material">poll</igx-icon>
+                    <span>{{ item.symbol }}</span>
+                </span>
+
+                <span igxDrawerItem [isHeader]="true">FDC3 ViewChart (Multiple)</span>
+                <span *ngFor="let item of viewMultipleCharts"
+                    igxDrawerItem [active]="item.text === selected"
+                    igxRipple (click)="ViewMultiple(item)">
+                    <igx-icon fontSet="material">poll</igx-icon>
+                    <span>{{ item.text }}</span>
+                </span>
+             </nav>
+        </ng-template>
+
+    </igx-nav-drawer>
+
+    <main igxFlex >
+      <igx-navbar title="IG Chart with FDC3 ViewChart Intent" actionButtonIcon="menu"
+       [isActionButtonVisible]="true" (click)="drawerToggle()">
+    </igx-navbar>
+
+        <!-- igx-financial-chart -->
+        <div class="chart">
+            <igx-financial-chart #chart
+              [dataSource]="dataSource"
+              height="100%" width="100%"
+              chartType="Candle"
+              zoomSliderType="Candle"
+              subtitle=""
+              subtitleTopMargin="10"
+              isWindowSyncedToVisibleRange="true">
+            </igx-financial-chart>
+        </div>
+
+    </main>
+  </div>
+
+

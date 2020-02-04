@@ -44,6 +44,20 @@
         </div>
 
         <div class="explorer-actions">
+            <span >FDC3 ViewPosition</span>
+            <div *ngFor="let item of sectorNames"
+                (click)="ViewSector(item)">
+                <div>
+                    <span class="button" igxButton="raised" igxButtonBackground="#c27bfb">
+                        <span class="button-text">{{ item }}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="explorer-actions">
+            <span > </span>
             <span (click)="ClearHistory()" igxButton="raised" class="button" igxRipple="gray" igxButtonBackground="lightgray">
                 Clear History
             </span>

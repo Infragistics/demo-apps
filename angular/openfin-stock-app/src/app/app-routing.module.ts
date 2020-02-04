@@ -31,7 +31,6 @@ export const samplesRoutes: Routes = [
 ];
 export const appRoutes: Routes = [
     {
-        // path: "", pathMatch: "full", redirectTo: "/samples/home"
         path: "", pathMatch: "full", redirectTo: "/home"
     },
     {

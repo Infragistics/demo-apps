@@ -1,4 +1,4 @@
 const launcher = require("./launcher");
 
-launcher("https://infragistics.com/angular-apps/stocks-dashboard/assets/configs/app-prod.json");
+launcher("https://infragistics.com/angular-sample-apps/stocks-dashboard/assets/config/app-prod.json");
 

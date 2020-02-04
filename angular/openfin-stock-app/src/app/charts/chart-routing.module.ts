@@ -3,14 +3,20 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
-import { ChartViewComponent } from "./chart-view/chart-view.component";
+import { ViewChartComponent } from "./view-chart/view-chart.component";
+import { ViewSectorComponent } from "./view-sector/view-sector.component";
 import { chartRoutesData } from "./chart-routes-data";
 
 export const chartRoutes: Routes = [
     {
-        component: ChartViewComponent,
-        data: chartRoutesData["chart-view"],
-        path: "chart-view"
+        component: ViewChartComponent,
+        data: chartRoutesData["view-chart"],
+        path: "view-chart"
+    },
+    {
+        component: ViewSectorComponent,
+        data: chartRoutesData["view-sector"],
+        path: "view-sector"
     },
 ];
 

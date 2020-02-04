@@ -73,8 +73,8 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "karmaConfig": "./src/config/karma.conf.js",
+            "main": "src/setup/test.ts",
+            "karmaConfig": "./src/setup/karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [],
@@ -109,7 +109,7 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "./src/config/protractor.conf.js",
+            "protractorConfig": "./src/setup/protractor.conf.js",
             "devServerTarget": "my-app:serve"
           }
         },

@@ -26,7 +26,7 @@ export class HomeComponent implements AfterViewInit {
         // if (!window.hasOwnProperty("fin")) {
         //     console.log("openfin FDC3 is undefined");
 
-        //     // let chartUrl = location.origin + "/pages/chart-view";
+        //     // let chartUrl = location.origin + "/pages/view-chart";
         //     // console.log("redirecting: " + chartUrl);
         //     // window.open(chartUrl, "_self"); window.open(link, "_blank");
         //     // this.router.navigateByUrl(chartUrl).then(e => {
@@ -39,23 +39,28 @@ export class HomeComponent implements AfterViewInit {
         // }
     }
 
-    public async OpenGridInstruments(): Promise<void> {
-        console.log("openfin app OpenGridInstruments()");
+    public async OnClickViewInstruments(): Promise<void> {
+        console.log("openfin app OnClick ViewInstruments");
         OpenfinUtils.open("/grids/grid-instruments", 600, 515, 0, 550);
     }
 
-    public async OpenGridPositions(): Promise<void> {
-        console.log("openfin app OpenGridPositions()");
+    public async OnClickViewPositions(): Promise<void> {
+        console.log("openfin app OnClick ViewPositions");
         OpenfinUtils.open("/grids/grid-positions", 800, 615, 0, 350);
     }
 
-    public async OpenChart(): Promise<void> {
-        console.log("openfin app OpenChart()");
-        OpenfinUtils.open("/charts/chart-view", 700, 555, 0, 10);
+    public async OnClickViewChart(): Promise<void> {
+        console.log("openfin app OnClick ViewChart");
+        OpenfinUtils.open("/charts/view-chart", 800, 555, 0, 10);
     }
 
-    public async OpenExplorer(): Promise<void> {
-        console.log("openfin app OpenExplorer()");
-        OpenfinUtils.open("/explorer/explorer-actions", 600, 670, 850, 150);
+    public async OnClickViewSector(): Promise<void> {
+        console.log("openfin app OnClick ViewSector");
+        OpenfinUtils.open("/charts/view-sector", 800, 555, 0, 10);
+    }
+
+    public async OnClickOpenExplorer(): Promise<void> {
+        console.log("openfin app OnClick Explorer");
+        OpenfinUtils.open("/explorer/explorer-actions", 600, 750, 850, 150);
     }
 }

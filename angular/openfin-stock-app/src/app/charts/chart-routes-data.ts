@@ -1,6 +1,7 @@
 /* tslint:disable */
 
 export const chartRoutesData = {
-    "chart-view": { displayName: "Chart - ViewChart", parentName: "FDC3" },
+    "view-chart": { displayName: "Chart - ViewChart", parentName: "FDC3" },
+    "view-sector": { displayName: "TreeMap - ViewSector", parentName: "FDC3" },
 
 };
