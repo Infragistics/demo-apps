@@ -41,7 +41,7 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 };
 ```
 
-<img src="../../../assets/images/previews/app_view_position.png" width="700" />
+<img src="../../../assets/images/previews/app_view_position.PNG" width="700" />
 
 #### Sending FDC3 ViewPortfolio
 
@@ -76,5 +76,5 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 };
 ```
 
-<img src="../../../assets/images/previews/app_view_portfolio.png" width="700" />
+<img src="../../../assets/images/previews/app_view_portfolio.PNG" width="700" />
 

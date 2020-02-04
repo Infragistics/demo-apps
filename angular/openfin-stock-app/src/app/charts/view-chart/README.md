@@ -26,5 +26,5 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 };
 ```
 
-<img src="../../../assets/images/previews/app_view_chart.png" width="700" />
+<img src="../../../assets/images/previews/app_view_chart.PNG" width="700" />
 
