@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 
-console.log("app.component loaded");
+// console.log("app.component loaded");
 
 @Component({
     selector: "app-root",
@@ -11,6 +11,6 @@ export class AppComponent {
     public title = "Samples";
 
     constructor() {
-        console.log("app.component ()");
+        // console.log("app.component ()");
     }
 }

@@ -51,13 +51,13 @@ export class IndexComponent implements OnInit, AfterViewInit {
     private allNavItems: INavigationItem[] = [];
 
     constructor(private router: Router, private cdr: ChangeDetectorRef) {
-        console.log("index (): \n" + this.router.url)
+        console.log("app index (): \n" + this.router.url)
         this.appRoutes = this.getAllSampleRoutes("/samples",
             router.config.filter((c) => c.path === "samples")[0].children, this.modulesRoutes);
     }
 
     public ngOnInit() {
-        console.log("index OnInit: \n" + this.router.url)
+        console.log("app index OnInit: \n" + this.router.url)
 
         const loadedRouteItem = this.appRoutes.filter(
             (route: any) => route.path === this.router.url)[0];

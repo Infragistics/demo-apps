@@ -3,13 +3,11 @@ import { AfterViewInit, Component, ViewChild } from "@angular/core";
 // required import for initalizing Fdc3DataAdapter:
 import * as openfinFdc3 from "openfin-fdc3";
 declare var fin: any; // openfin
+import { OpenfinUtils } from "../../../openfin/OpenfinUtils"
 
-// required imports for working with FDC3 data adapter:
-import { Fdc3DataAdapter } from "igniteui-angular-fdc3";
-// for sending ViewChart with single stock symbol:
-import { Fdc3Instrument } from "igniteui-angular-fdc3";
-// for receiving ViewChart message:
-import { Fdc3Message } from "igniteui-angular-fdc3";
+import { Fdc3DataAdapter } from "igniteui-angular-fdc3"; // for working with FDC3 data adapter
+import { Fdc3Instrument } from "igniteui-angular-fdc3"; // for sending ViewChart with single stock symbol
+import { Fdc3Message } from "igniteui-angular-fdc3"; // for receiving ViewChart message
 
 // required imports for working with Treemap
 import { IgxNavigationDrawerComponent } from "igniteui-angular";
@@ -37,7 +35,6 @@ export class ViewSectorComponent implements AfterViewInit {
         "Transportation", "Technology",
         "Financial", "Consumer Goods",
         "Communication", "Materials",
-        // "Industrial", "Energy",
         "All"
     ];
 
@@ -65,7 +62,14 @@ export class ViewSectorComponent implements AfterViewInit {
             // so we can just update the Treemap with name of the financial sector
             this.UpdateTreemap(msg.context.name);
 
-            console.log("openfin received message: \n" + msg.json);
+            // console.log("openfin received message: \n" + msg.json);
+
+            const title = "FDC3 " + msg.intentType + " intent";
+            let info = "";
+            // info += "\n intent: " + msg.intentType;
+            info += "\n sector: " + msg.context.name;
+            info += "\n context: " + msg.contextType;
+            OpenfinUtils.notify(title, info, "FDC3");
         };
 
         // default to show all sectors
@@ -147,7 +151,7 @@ export class ViewSectorComponent implements AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-        console.log("openfin app loaded");
+        console.log("app view loaded");
 
         this.drawer.width = "240px";
 

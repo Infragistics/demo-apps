@@ -8,7 +8,7 @@
         "applicationIcon": "http://localhost:4200/angular-sample-apps/stocks-dashboard/assets/favicon.ico",
         "minWidth": 700,
         "minHeight": 155,
-        "defaultWidth": 700,
+        "defaultWidth": 800,
         "defaultHeight": 155,
         "defaultTop": 10,
         "defaultLeft": 10,
@@ -20,7 +20,8 @@
     },
     "services": [
         { "name":"layouts" },
-        { "name": "fdc3" }
+        { "name": "fdc3" },
+        { "name": "notifications" }
     ],
     "runtime": {
         "arguments": "--enable-aggressive-domstorage-flushing --enable-experimental-web-platform-features",

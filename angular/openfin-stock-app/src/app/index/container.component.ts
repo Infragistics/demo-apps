@@ -10,7 +10,6 @@ import { Component, HostListener, Inject, OnInit } from "@angular/core";
 export class ContainerComponent {
 
     constructor() {
-        console.log("container ()");
-
+        // console.log("container ()");
     }
 }

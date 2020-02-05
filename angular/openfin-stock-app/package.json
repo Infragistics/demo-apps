@@ -45,6 +45,7 @@
     "openfin-fdc3": "^0.2.0",
     "openfin-launcher": "^1.4.9",
     "openfin-layouts": "^1.2.0",
+    "openfin-notifications": "^0.11.1",
     "rxjs": "^6.5.2",
     "rxjs-compat": "^6.1.0",
     "tslib": "^1.9.0",

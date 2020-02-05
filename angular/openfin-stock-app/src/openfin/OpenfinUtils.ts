@@ -1,4 +1,5 @@
 import { find } from 'rxjs/operators';
+import { addEventListener, create } from 'openfin-notifications';
 
 declare var fin: any; // openfin
 
@@ -78,7 +79,6 @@ export class OpenfinUtils {
         });
 
     }
-
 
     public static async create(windowID: string,
         width?: number, height?: number,
@@ -171,5 +171,40 @@ export class OpenfinUtils {
 
         console.log("openfin app uuid: " + app.identity.uuid);
         console.log("openfin win name: " + win.identity.name);
+    }
+
+
+    public static async notify(title: string, body: string, category: string) {
+
+        if (!window.hasOwnProperty("fin")) {
+            return;
+        }
+
+        let windowOrigin = location.origin;
+        if (!windowOrigin.endsWith(this.windowBaseName)) {
+             windowOrigin += this.windowBaseName;
+        }
+
+        const iconDismiss = windowOrigin + "/assets/images/notification/dismiss.png";
+        const iconAngular = windowOrigin + "/assets/images/notification/angular.png";
+
+        // creating Openfin notification
+        create({
+            title: title, // 'Reminder',
+            body: body, // 'Event "Weekly Meeting" is starting soon...',
+            category: category, // 'Upcoming Events',
+            icon: iconAngular,
+            buttons: [
+                // A button that closes the notification and doesn't prompt the user about this event again. Since the
+                // application doesn't need to do anything when the user clicks this button, we leave 'onClick' undefined
+                // rather than specifying a NotificationActionResult. This means that no action will be raised when the
+                // button is clicked, and hence no "notification-action" event will be fired
+                {
+                    title: 'Dismiss',
+                    // iconUrl: iconDismiss
+                    // iconUrl: 'https://www.example.com/cancel.png'
+                }
+            ]
+        });
     }
 }

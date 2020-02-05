@@ -4,14 +4,10 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 import * as openfinFdc3 from "openfin-fdc3";
 declare var fin: any; // openfin
 
-// required imports for working with FDC3 data adapter:
-import { Fdc3DataAdapter } from "igniteui-angular-fdc3";
-// for sending ViewChart with single stock symbol:
-import { Fdc3Position } from "igniteui-angular-fdc3";
+import { Fdc3DataAdapter } from "igniteui-angular-fdc3"; // for working with FDC3 data adapter
+import { Fdc3Position } from "igniteui-angular-fdc3"; // for sending ViewChart with single stock symbol
 import { Fdc3Instrument } from "igniteui-angular-fdc3";
-
-// for receiving ViewChart message:
-import { Fdc3Message } from "igniteui-angular-fdc3";
+import { Fdc3Message } from "igniteui-angular-fdc3"; // for receiving ViewChart message
 
 @Component({
     selector: "app-explorer-actions",

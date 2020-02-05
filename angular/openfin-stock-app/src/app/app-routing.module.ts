@@ -52,11 +52,11 @@ export class AppRoutingModule {
 
     constructor(private router: Router) {
 
-        console.log("AppRouting (): \n" + router.url)
+        // console.log("app routing (): \n" + router.url)
         router.events
             .filter((event) => event instanceof NavigationStart)
             .subscribe((event: NavigationStart) => {
-                console.log("AppRouting NavigationStart: \n" + event.url)
+                console.log("app routing NavigationStart: \n" + event.url)
                 this.setOverflow(event.url);
             });
     }

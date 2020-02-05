@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from "@angular/core";
 import { OpenfinUtils } from "../../openfin/OpenfinUtils";
 import { Router } from "@angular/router";
+import { addEventListener, create } from 'openfin-notifications';
 
 // importing OpenFin FDC3 service
 import * as openfinFdc3 from "openfin-fdc3";
@@ -21,10 +22,14 @@ export class HomeComponent implements AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-        console.log("openfin app loaded");
+        console.log("app view loaded");
+
+        if (!window.hasOwnProperty("fin")) {
+            console.log("openfin is undefined");
+        }
 
         // if (!window.hasOwnProperty("fin")) {
-        //     console.log("openfin FDC3 is undefined");
+        //     console.log("openfin is undefined");
 
         //     // let chartUrl = location.origin + "/pages/view-chart";
         //     // console.log("redirecting: " + chartUrl);
@@ -63,4 +68,11 @@ export class HomeComponent implements AfterViewInit {
         console.log("openfin app OnClick Explorer");
         OpenfinUtils.open("/explorer/explorer-actions", 600, 750, 850, 150);
     }
+
+    public async OnClickNotify(): Promise<void> {
+        console.log("openfin app OnClick Notify");
+
+        OpenfinUtils.notify("Reminder", 'Event "Weekly Meeting" is starting soon...', "category");
+    }
+
 }

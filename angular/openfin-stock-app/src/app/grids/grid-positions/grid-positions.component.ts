@@ -3,25 +3,18 @@ import { AfterViewInit, Component, ViewChild } from "@angular/core";
 // required import for initalizing Fdc3DataAdapter:
 import * as openfinFdc3 from "openfin-fdc3";
 declare var fin: any; // openfin
+import { OpenfinUtils } from "../../../openfin/OpenfinUtils"
 
-// required imports for working with FDC3 data adapter:
-import { Fdc3DataAdapter } from "igniteui-angular-fdc3";
-
-// for sending ViewChart with single/multiple stock positions:
-import { Fdc3Position } from "igniteui-angular-fdc3";
-import { Fdc3Portfolio } from "igniteui-angular-fdc3";
+import { Fdc3DataAdapter } from "igniteui-angular-fdc3"; // for working with FDC3 data adapter
+import { Fdc3Position } from "igniteui-angular-fdc3"; // for sending ViewChart with single stock position
+import { Fdc3Portfolio } from "igniteui-angular-fdc3"; // for sending ViewChart with multiple stock positions
 import { Fdc3Instrument } from "igniteui-angular-fdc3";
-// for receiving ViewChart message:
-import { Fdc3Message } from "igniteui-angular-fdc3";
+import { Fdc3Message } from "igniteui-angular-fdc3"; // for receiving ViewChart message
 
 // required imports for working with IgxGridComponent
 import { SortingDirection  } from "igniteui-angular";
 import { IgxGridComponent  } from "igniteui-angular";
 import { IgxNavigationDrawerComponent } from "igniteui-angular";
-
-// optional imports for overriding auto-generated data by FDC3 data adapter
-import { StockPricePoint } from "igniteui-angular-core";
-import { StockPriceHistory } from "igniteui-angular-core";
 
 @Component({
     selector: "app-root",
@@ -79,29 +72,22 @@ export class GridPositionsComponent implements AfterViewInit {
             // and generated data for tickers embedded in context of FDC3 message
             // so we can just update the grid
 
-            console.log("FDC3 received message: \n" + msg.json);
-
-            // if (this.FDC3adapter.stockPositions.length === 0) {
-            //     return;
-            // }
+            // console.log("FDC3 received message: \n" + msg.json);
 
             if (this.grid !== undefined) {
                 this.grid.data = this.FDC3adapter.stockPositions;
                 this.grid.groupingExpressions = [
-                    { fieldName: "sector", dir: SortingDirection.Desc },
-                    // { fieldName: "symbol", dir: SortingDirection.Desc }
+                    { fieldName: "sector", dir: SortingDirection.Desc }
                 ];
                 this.grid.reflow();
             }
 
-            // Optional access to properties of FDC3 message that can be used
-            // for custom processing of FDC3 intent and its context:
-            // let intentType: string = msg.intentType;         // FDC3 intent type, e.g. "ViewChart"
-            // let contextType: string = msg.contextType;       // FDC3 context type, e.g. "fdc3.instrument"
-            // let contextObject: Fdc3Context = msg.context;    // FDC3 context object
-            // let contextJson: string = msg.json;              // string representation of FDC3 context object
-            // let tickerSymbols: string[] = msg.tickerSymbols; // array of ticker symbol(s) embedded in FDC3 context
-            // let tickerNames: string[] = msg.tickerNames;     // array of ticker name(s) embedded in FDC3 context
+            const title = "FDC3 " + msg.intentType + " intent";
+            let info = "";
+            // info += "\n intent: " + msg.intentType;
+            info += "\n ticker: " + msg.tickerSymbols.join(", ");
+            info += "\n context: " + msg.contextType;
+            OpenfinUtils.notify(title, info, "FDC3");
         };
 
         // optional, initalizing adapter with some popular stocks
@@ -115,6 +101,10 @@ export class GridPositionsComponent implements AfterViewInit {
 
     // using ViewPosition intent to buy stock positions with a given stock symbol/ticker
     public async ViewPosition(symbol: string) {
+
+        if (!window.hasOwnProperty("fin")) {
+            return;
+        }
 
         const instrument = new Fdc3Instrument();
         instrument.ticker = symbol;
@@ -173,18 +163,18 @@ export class GridPositionsComponent implements AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-        console.log("openfin app loaded");
+        console.log("app view loaded");
 
         this.drawer.width = "240px";
 
         const element = document.getElementsByClassName("igx-navbar")[0]; // as HTMLElement;
         element.setAttribute("style", "background: orange");
 
-        if (window.hasOwnProperty("fin")) {
-            this.InitializeFDC3();
-        } else {
-            console.log("openfin FDC3 is undefined");
+        if (!window.hasOwnProperty("fin")) {
+            console.log("openfin is undefined");
         }
+
+        this.InitializeFDC3();
 
     }
 
