@@ -79,7 +79,7 @@ export class ViewChartComponent implements AfterViewInit {
             // let tickerSymbols: string[] = msg.tickerSymbols; // array of ticker symbol(s) embedded in FDC3 context
             // let tickerNames: string[] = msg.tickerNames;     // array of ticker name(s) embedded in FDC3 context
 
-            const title = "FDC3 :" + msg.intentType + " intent";
+            const title = "FDC3 " + msg.intentType + " intent";
             let info = "";
             // info += "\n intent: " + msg.intentType;
             info += "\n ticker: " + msg.tickerSymbols.join(", ");
