@@ -33,7 +33,7 @@
     "igniteui-react-gauges": "16.6.12",
     "igniteui-react-grids": "16.6.12",
     "igniteui-react-maps": "16.6.12",
-    "jquery": "^1.11.1",
+    "jquery": "^3.5.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
