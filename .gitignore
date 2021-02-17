@@ -1,9 +1,8 @@
 
 # react apps
-/*/*/dist/
-/*/*/tmp/
-/*/*/dist/
-/*/*/node_modules/
+/**/dist/
+/**/tmp/
+/**/node_modules/
 
 # wpf apps
 /**/.vs/
