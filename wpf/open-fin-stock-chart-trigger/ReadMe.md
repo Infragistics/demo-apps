@@ -9,7 +9,7 @@ This repository demonstrates how create and connect WPF application to [OpenFin]
 - [Running](#Running)
 - [Testing](#Testing)
 
-<img src="./OpenFinStockChartTrigger/chart-trigger.gif" width="750" />
+<img src="./chart-trigger.gif" width="750" />
 
 ## Setup
 
@@ -33,4 +33,4 @@ or
 
 While this WFP app is running, you can also run other applications that use [FDC3](https://fdc3.finos.org/docs/1.0/fdc3-intro) protocol. For example, you can run React app called [React Stock Chart](https://github.com/Infragistics/demo-apps/tree/master/react/open-fin-stock-chart) to send stock symbol using [FDC3 ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro) to this React app.
 
-<img src="./OpenFinStockChartTrigger/chart-trigger.gif" width="750" />
+<img src="./chart-trigger.gif" width="750" />
