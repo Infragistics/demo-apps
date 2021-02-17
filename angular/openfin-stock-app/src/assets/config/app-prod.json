@@ -2,7 +2,7 @@
     "devtools_port": 9090,
     "startup_app": {
         "name": "IG Angular OpenFin-FDC3",
-        "description": "IG Angular apps with OpenFin-FDC3 hosted in OpenFin window",
+        "description": "Stock Dashboard app with IgniteUI Angular FDC3 hosted in OpenFin windows",
         "uuid": "IgStockDashboardAppID",
         "url": "http://infragistics.com/angular-sample-apps/stocks-dashboard/home",
         "applicationIcon": "http://infragistics.com/angular-sample-apps/stocks-dashboard/assets/favicon.ico",
@@ -29,8 +29,8 @@
     },
     "shortcut": {
         "company": "Infragistics",
-        "description": "IG Stock Dashboard with FDC3 hosted in OpenFin window",
-        "name": "IG Stock Dashboard with OpenFin FDC3",
+        "name": "IG Stock Dashboard FDC3",
+        "description": "Stock Dashboard app with IgniteUI Angular FDC3 hosted in OpenFin windows",
         "icon": "https://infragistics.com/angular-sample-apps/stocks-dashboard/assets/favicon.ico"
     },
     "splashScreenImage": "https://infragistics.com/angular-sample-apps/stocks-dashboard/assets/splashscreen.png"
