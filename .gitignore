@@ -6,7 +6,8 @@
 /*/*/node_modules/
 
 # wpf apps
-/*/*/.vs/
-/*/*/*/bin/
-/*/*/*/obj/
-/*/*/packages/
+/**/.vs/
+/**/bin/
+/**/obj/
+/**/packages/
+*.csproj.user
