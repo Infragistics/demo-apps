@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ViewChild } from "@angular/core";
 import { OpenfinUtils } from "../../openfin/OpenfinUtils";
 import { Router } from "@angular/router";
-import { addEventListener, create } from 'openfin-notifications';
 
 // importing OpenFin FDC3 service
 import * as openfinFdc3 from "openfin-fdc3";

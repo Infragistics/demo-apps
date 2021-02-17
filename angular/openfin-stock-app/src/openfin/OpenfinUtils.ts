@@ -1,4 +1,3 @@
-import { find } from 'rxjs/operators';
 import { addEventListener, create } from 'openfin-notifications';
 
 declare var fin: any; // openfin
