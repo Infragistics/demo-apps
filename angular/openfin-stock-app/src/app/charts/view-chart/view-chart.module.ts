@@ -1,18 +1,17 @@
-import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
-import { NgModule } from "@angular/core";
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
 
-import {
-    IgxButtonModule, IgxIconModule, IgxInputGroupModule,
-    IgxLayoutModule, IgxRippleModule,   IgxSwitchModule,
+// import {
+//     IgxButtonModule, IgxIconModule, IgxInputGroupModule,
+//     IgxLayoutModule, IgxRippleModule,   IgxSwitchModule,
+//     IgxNavbarModule, IgxListModule,
+//     IgxNavigationDrawerModule
+// } from 'igniteui-angular';
+import { IgxFinancialChartModule } from 'igniteui-angular-charts';
+import { IgxZoomSliderDynamicModule } from 'igniteui-angular-charts';
 
-    IgxNavbarModule, IgxListModule,
-    IgxNavigationDrawerModule,
-} from "igniteui-angular";
-import { IgxFinancialChartModule } from "igniteui-angular-charts";
-import { IgxZoomSliderDynamicModule } from "igniteui-angular-charts";
-
-import { ViewChartComponent } from "./view-chart.component";
+import { ViewChartComponent } from './view-chart.component';
 
 @NgModule({
     declarations: [
@@ -23,17 +22,17 @@ import { ViewChartComponent } from "./view-chart.component";
         FormsModule,
 
         IgxFinancialChartModule,
-        IgxZoomSliderDynamicModule,
+        IgxZoomSliderDynamicModule
 
-        IgxButtonModule,
-        IgxRippleModule,
-        IgxIconModule,
-        IgxLayoutModule,
-        IgxInputGroupModule,
-        IgxSwitchModule,
-        IgxListModule,
-        IgxNavbarModule,
-        IgxNavigationDrawerModule,
-    ],
+        // IgxButtonModule,
+        // IgxRippleModule,
+        // IgxIconModule,
+        // IgxLayoutModule,
+        // IgxInputGroupModule,
+        // IgxSwitchModule,
+        // IgxListModule,
+        // IgxNavbarModule,
+        // IgxNavigationDrawerModule
+    ]
 })
 export class ViewChartModule { }

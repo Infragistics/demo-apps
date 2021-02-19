@@ -1,37 +1,38 @@
-import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
-import { NgModule } from "@angular/core";
+// // TODO uncomment when harmer gesture is fixed:
 
-import {
-    IgxButtonModule, IgxIconModule, IgxInputGroupModule,
-    IgxLayoutModule, IgxRippleModule,   IgxSwitchModule,
+// import { CommonModule } from '@angular/common';
+// import { FormsModule } from '@angular/forms';
+// import { NgModule } from '@angular/core';
 
-    IgxNavbarModule, IgxListModule,
-    IgxNavigationDrawerModule,
-} from "igniteui-angular";
-import { IgxGridModule } from "igniteui-angular";
+// import {
+//     IgxButtonModule, IgxIconModule, IgxInputGroupModule,
+//     IgxLayoutModule, IgxRippleModule,   IgxSwitchModule,
+//     IgxNavbarModule, IgxListModule,
+//     IgxNavigationDrawerModule
+// } from 'igniteui-angular';
+// import { IgxGridModule } from 'igniteui-angular';
 
-import { GridInstrumentsComponent } from "./grid-instruments.component";
+// import { GridInstrumentsComponent } from './grid-instruments.component';
 
-@NgModule({
-    declarations: [
-        GridInstrumentsComponent
-    ],
-    imports: [
-        CommonModule,
-        FormsModule,
+// @NgModule({
+//     declarations: [
+//         GridInstrumentsComponent
+//     ],
+//     imports: [
+//         CommonModule,
+//         FormsModule,
 
-        IgxGridModule,
+//         IgxGridModule,
 
-        IgxButtonModule,
-        IgxRippleModule,
-        IgxIconModule,
-        IgxLayoutModule,
-        IgxInputGroupModule,
-        IgxSwitchModule,
-        IgxListModule,
-        IgxNavbarModule,
-        IgxNavigationDrawerModule,
-    ],
-})
-export class GridInstrumentsModule { }
+//         IgxButtonModule,
+//         IgxRippleModule,
+//         IgxIconModule,
+//         IgxLayoutModule,
+//         IgxInputGroupModule,
+//         IgxSwitchModule,
+//         IgxListModule,
+//         IgxNavbarModule,
+//         IgxNavigationDrawerModule
+//     ]
+// })
+// export class GridInstrumentsModule { }

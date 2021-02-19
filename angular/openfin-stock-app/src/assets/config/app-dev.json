@@ -6,6 +6,7 @@
         "uuid": "IgStockDashboardAppID",
         "url": "http://localhost:4200/angular-sample-apps/stocks-dashboard/home",
         "applicationIcon": "http://localhost:4200/angular-sample-apps/stocks-dashboard/assets/favicon.ico",
+        "taskbarIcon": "http://localhost:4200/angular-sample-apps/stocks-dashboard/assets/favicon.png",
         "minWidth": 700,
         "minHeight": 155,
         "defaultWidth": 800,
@@ -19,7 +20,7 @@
         "autoShow": true
     },
     "services": [
-        { "name":"layouts" },
+        { "name": "layouts" },
         { "name": "fdc3" },
         { "name": "notifications" }
     ],
@@ -29,7 +30,7 @@
     },
     "shortcut": {
         "company": "Infragistics",
-        "name": "IG Stock Dashboard FDC3",
+        "name": "IG Angular OpenFin-FDC3",
         "description": "Stock Dashboard app with IgniteUI Angular FDC3 hosted in OpenFin windows",
         "icon": "http://localhost:4200/angular-sample-apps/stocks-dashboard/assets/favicon.ico"
     },

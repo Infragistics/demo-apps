@@ -4,10 +4,10 @@
 
 - [Introduction](#Introduction)
 - [Components](#Components)
-- [Instructions](#Instructions)
-    - [Installation](#Installation)
-    - [Running](#Running)
-    - [Testing](#Testing)
+- [Installation](#Installation)
+- [Hosting App Locally](#Hosting-App-Locally)
+- [Hosting App Remotely](#Hosting-App-Remotely)
+- [Testing](#Testing)
 - [Code Snippets](#Code-Snippets)
     - [Creating FDC3 Data Adapter](#Creating-FDC3-Data-Adapter)
     - [Sending FDC3 ViewChart](#Sending-FDC3-ViewChart)
@@ -219,9 +219,8 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 
 <img src="src/assets/images/previews/app_view_sector.PNG" width="700" />
 
-## Instructions
 
-#### Installation
+## Installation
 
 Set up this project by following these instructions:
 
@@ -230,7 +229,7 @@ Set up this project by following these instructions:
 - select **Terminal** - **New Terminal** menu item
 - run this command to install openfin-cli
 ```
-npm install -g openfin-cli
+npm install -g openfin-cli@3.0.2
 ```
 
 - run this command to install required packages for this app
@@ -239,13 +238,7 @@ npm install -g openfin-cli
 npm install
 ```
 
-#### Running
-
-1. Run this command to host this app locally in a browser:
-
-```
-npm run-script start
-```
+## Hosting App Locally
 
 2. Wait until you see this message:
 
@@ -253,19 +246,27 @@ npm run-script start
 
 3. Open your browser at this address:
 
-[http://localhost:4200/angular-sample-apps/stocks-dashboard/](http://localhost:4200/angular-sample-apps/stocks-dashboard/)
+***[http://localhost:4200/angular-sample-apps/stocks-dashboard/](http://localhost:4200/angular-sample-apps/stocks-dashboard/)***
 
-Note while running in a browser, the app does not support any **OpenFin** actions (e.g. [FDC3 ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro) intent) because they require connection to host it from **OpenFin** launcher.
+> Note while running in a browser, the app does not support any **OpenFin** actions (e.g. [FDC3 ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro) intent) because they require connection to host it from **OpenFin** launcher.
 
 4. Therefore, you need to open a new terminal (**Terminal** - **New Terminal** menu item)
 
 5. Run the following command to start **OpenFin** launcher and host the app in an **OpenFin** window, where all functionalities are enabled, e.g. [FDC3 ViewChart](https://fdc3.finos.org/docs/1.0/intents-intro):
 
 ```
-npm run-script openfin
+npm run-script openfin:dev
 ```
 
-#### Testing
+## Hosting App Remotely
+
+Alternative to instructions in above section, you can host this app in OpenFin window from [infragistics.com](http://infragistics.com/angular-sample-apps/stocks-dashboard/home) website by just running one command in VS Code terminal:
+
+```
+npm run-script openfin:prod
+```
+
+## Testing
 
 While this Angular app is running in **OpenFin** window, you can send FDC3 messages from provided FDC3 Explorer window or you run other applications that use [OpenFin FDC3](https://developers.openfin.co/docs/fdc3) service.
 

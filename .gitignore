@@ -1,10 +1,12 @@
 
-# react apps
+/**/BK/
+
+# WEB apps
 /**/dist/
 /**/tmp/
 /**/node_modules/
 
-# wpf apps
+# WPF apps
 /**/.vs/
 /**/bin/
 /**/obj/

@@ -9,29 +9,35 @@
 
         <div class="explorer-actions">
             <span >FDC3 ViewChart</span>
-            <div *ngFor="let item of stockItems"
+            <div class="explorer-items" *ngFor="let item of stockItems"
                 (click)="ViewChart(item.symbol)"   >
-                <div>
-                    <span class="button" igxButton="raised" igxButtonBackground="dodgerblue">
+                <!-- <div> -->
+                    <div class="app-button" style="background: dodgerblue">
+                      {{ item.symbol }}
+                    </div>
+                    <!-- <span class="button" igxButton="raised" igxButtonBackground="dodgerblue">
                         <span class="button-text">{{ item.symbol }}</span>
-                    </span>
-                </div>
+                    </span> -->
+                <!-- </div> -->
             </div>
         </div>
 
-        <div class="explorer-actions">
+        <!-- TODO uncomment when harmer gesture is fixed: -->
+        <!-- <div class="explorer-actions">
             <span >FDC3 ViewInstrument</span>
-            <div *ngFor="let item of stockItems"
+            <div class="explorer-items"  *ngFor="let item of stockItems"
                 (click)="ViewInstrument(item.symbol)">
-                <div>
+                    <div class="app-button" style="background: yellowgreen">
+                      {{ item.symbol }}
+                    </div>
                     <span class="button" igxButton="raised" igxButtonBackground="yellowgreen">
                         <span class="button-text">{{ item.symbol }}</span>
                     </span>
-                </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="explorer-actions">
+        <!-- TODO uncomment when harmer gesture is fixed: -->
+        <!-- <div class="explorer-actions">
             <span >FDC3 ViewPosition</span>
             <div *ngFor="let item of stockItems"
                 (click)="ViewPosition(item.symbol)">
@@ -41,32 +47,33 @@
                     </span>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="explorer-actions">
-            <span >FDC3 ViewPosition</span>
+            <span >FDC3 ViewSector</span>
             <div *ngFor="let item of sectorNames"
                 (click)="ViewSector(item)">
-                <div>
-                    <span class="button" igxButton="raised" igxButtonBackground="#c27bfb">
+                <!-- <div> -->
+                    <div class="app-button" style="background: #c27bfb">
+                      {{ item }}
+                    </div>
+                    <!-- <span class="button" igxButton="raised" igxButtonBackground="#c27bfb">
                         <span class="button-text">{{ item }}</span>
-                    </span>
-                </div>
+                    </span> -->
+                <!-- </div> -->
             </div>
         </div>
 
-
         <div class="explorer-actions">
             <span > </span>
-            <span (click)="ClearHistory()" igxButton="raised" class="button" igxRipple="gray" igxButtonBackground="lightgray">
+            <span class="app-button" style="background: lightgray" (click)="ClearHistory()">
                 Clear History
             </span>
+            <!-- <span (click)="ClearHistory()" igxButton="raised" class="button" igxRipple="gray" igxButtonBackground="lightgray">
+                Clear History
+            </span> -->
         </div>
     </div>
 
 
 </div>
-
-
-
-

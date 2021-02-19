@@ -1,25 +1,32 @@
 .explorer-root {
     // background: gray;
-    height: 100%;
-    width: 100%;
+    height: calc(100% - 2rem);
+    width: calc(100% - 2rem);
     padding: 1rem;
     margin: 0rem;
     display: flex;
     flex-flow: row;
-
+    font-family: 'Titillium Web';
     /* overflow: hidden; */
     // justify-content: center;
+}
+
+.explorer-rows > span {
+  font-family: 'Titillium Web';
 }
 
 .explorer-rows {
     // background: gray;
     height: 100%;
-    // width: 40%;
-    width: auto;
+    width: 100%;
     padding: 0rem;
     margin: 0rem;
     display: flex;
     flex-flow: column;
+}
+
+.explorer-items {
+  width: 100%;
 }
 
 .explorer-actions {
@@ -28,10 +35,14 @@
     width: 100%;
     padding: 0rem;
     padding-left: 1rem;
-    padding-right: 1rem;
+    // padding-right: 1rem;
 
     /* overflow: hidden; */
-    justify-content: center;
+    // justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-items: stretch;
 }
 
 .explorer-history {
@@ -39,7 +50,7 @@
     height: calc(100% - 2rem);
     width: 100%;
     // width: 60%;
-    padding-left: 1rem;
+    // padding-left: 1rem;
     /* overflow: hidden; */
     justify-content: center;
 }
