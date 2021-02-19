@@ -240,9 +240,15 @@ npm install
 
 ## Hosting App Locally
 
+1. Run this command to host this app locally in a browser:
+
+```
+npm run-script start
+```
+
 2. Wait until you see this message:
 
-**Angular Live Development Server is listening on localhost:4200**
+**Angular Live Development Server is listening**
 
 3. Open your browser at this address:
 
