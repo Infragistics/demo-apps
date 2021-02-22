@@ -1,0 +1,57 @@
+<div class="main" igxLayout>
+    <igx-nav-drawer id="navigation" [isOpen]="false" [pin]="false">
+        <ng-template igxDrawer>
+            <nav>
+                <span (click)="ClearPositions()" igxButton="raised" class="button" igxRipple="gray" igxButtonBackground="lightgray">
+                    Clear Positions
+                </span>
+
+                <span igxDrawerItem [isHeader]="true" >FDC3 ViewPosition</span>
+                <span *ngFor="let item of viewPositionItems"
+                    igxDrawerItem [active]="false"
+                    igxRipple (click)="ViewPosition(item.symbol)">
+                    <igx-icon fontSet="material">poll</igx-icon>
+                    <span>Buy {{ item.symbol }} stock</span>
+                </span>
+
+                <span igxDrawerItem [isHeader]="true" >FDC3 ViewPortfolio</span>
+                <span *ngFor="let item of viewPortfolioItems"
+                    igxDrawerItem [active]="false"
+                    igxRipple (click)="ViewPortfolio(item.sector)">
+                    <igx-icon fontSet="material">poll</igx-icon>
+                    <span>{{ item.sector }} sector</span>
+                </span>
+
+             </nav>
+        </ng-template>
+
+    </igx-nav-drawer>
+
+    <main igxFlex >
+        <igx-navbar title="IG Grid with FDC3 ViewPosition & ViewPortfolio Intents" actionButtonIcon="menu"
+        [isActionButtonVisible]="true" (click)="drawerToggle()" >
+        </igx-navbar>
+
+        <!-- [paging]="false" -->
+        <igx-grid #grid class="grid"
+          [autoGenerate]="false"
+          height="100%" width="100%">
+
+          <igx-column field="symbol" [dataType]="'string'" sortable="true"></igx-column>
+          <igx-column field="company" [dataType]="'string'" sortable="true"></igx-column>
+          <igx-column field="shares" [dataType]="'number'" sortable="true"></igx-column>
+          <!-- <igx-column field="marketPrice" [dataType]="'number'" sortable="true" header="price" ></igx-column> -->
+          <!-- <igx-column field="marketValue" [dataType]="'number'" sortable="true" header="value" ></igx-column> -->
+          <igx-column field="costPerShare" [dataType]="'number'" sortable="true" header="cost" ></igx-column>
+          <igx-column field="costTotal" [dataType]="'number'" sortable="true" header="value"></igx-column>
+          <igx-column field="gainValue" [dataType]="'number'" sortable="true" header="profit"></igx-column>
+          <!-- <igx-column field="tradeDate" [dataType]="'date'" sortable="true"></igx-column> -->
+          <igx-column field="sector" [dataType]="'string'" sortable="true"></igx-column>
+
+
+        </igx-grid>
+
+    </main>
+  </div>
+
+

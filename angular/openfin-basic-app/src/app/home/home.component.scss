@@ -1,0 +1,73 @@
+
+
+.window {
+    width: 100%;
+    height: 100%;
+    // background: yellowgreen;
+}
+
+.window-toolbar {
+    // height: 100%;
+    // width: calc(100% - 2rem);
+    // background: rgb(190, 190, 190);
+    // margin-left: 1rem;
+    // margin-right: 1rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    align-items: flex-start;
+    height: auto;
+}
+
+.button {
+    margin-right: 1rem;
+    text-transform: capitalize;
+    color: #fb3e3e;
+    color: black;
+    // background: yellowgreen;
+}
+
+.window-title {
+    color: rgb(70, 69, 69);
+    font-size: 1.25rem;
+    font-family: 'Titillium Web';
+    vertical-align: middle;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    // max-width: 300px;
+}
+
+// ==========================================
+img {
+    max-width:100%;
+}
+
+section {
+    padding-left: 56px;
+    padding-right: 56px;
+}
+
+.header {
+    // background: url("../../assets/images/home/hero-background.png") #09f no-repeat fixed;
+    background-size: contain;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.description {
+    color: white;
+    font-size: 20px;
+    max-width: 800px;
+}
+
+.code-snippet {
+    width: fit-content;
+    background-color: #EDEFF1;
+    justify-content: left;
+    text-align: left;
+    padding: 4px 6px 4px 6px;
+}
