@@ -41,22 +41,12 @@ The following code snippet shows how to create FDC3 data adapter and subscribe t
 
 ```ts
 import { Fdc3DataAdapter } from "igniteui-angular-fdc3"
-import { Fdc3Message } from 'igniteui-angular-fdc3';
-import { IgxFinancialChartComponent } from "igniteui-angular-charts";
-
 // importing OpenFin FDC3 service
 import * as openfinFdc3 from "openfin-fdc3";
-// ...
 
 // creating FDC3 data adapter with reference to openfin
-this.FDC3adapter = new new Fdc3DataAdapter(openfinFdc3);
-// subscribing to FDC3 "ViewChart" intent
-this.FDC3adapter.subscribe("ViewChart");
-// handling FDC3 intents sent via OpenFin's FDC3 service
-this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
-    // binding financial chart to data
-    this.chart.dataSource = this.FDC3adapter.stockPrices;
-};
+this.FDC3adapter = new Fdc3DataAdapter(openfinFdc3);
+
 ```
 
 #### Sending FDC3 ViewChart
@@ -65,20 +55,20 @@ This code snippet show how to send FDC3 **ViewChart** intent that can be consume
 
 ```ts
 import { Fdc3Instrument } from 'igniteui-angular-fdc3';
+import { Fdc3Message } from 'igniteui-angular-fdc3';
 import { IgxFinancialChartComponent } from "igniteui-angular-charts";
-// ...
 
-// creating context for FDC3 message
-let instrument = new Fdc3Instrument();
-instrument.ticker = "TSLA";
-// sending FDC3 ViewChart intent to "IgStockAppUID" app
-this.FDC3adapter.sendInstrument("ViewChart", instrument, "IgStockAppUID");
-
-// handling FDC3 ViewChart intent
+// subscribing to FDC3 "ViewChart" intent
 this.FDC3adapter.subscribe("ViewChart");
+// handling FDC3 intents sent via OpenFin's FDC3 service
 this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
     this.chart.dataSource = this.FDC3adapter.stockPrices;
 };
+
+// sending FDC3 ViewChart intent
+let instrument = new Fdc3Instrument();
+instrument.ticker = "TSLA";
+this.FDC3adapter.sendInstrument("ViewChart", instrument, "IgStockAppUID");
 ```
 
 <img src="src/assets/images/previews/app_view_chart.PNG" width="700" />
@@ -89,22 +79,22 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 This code snippet show how to send FDC3 **ViewInstrument** intent that can be consumed by [Data Grid](https://www.infragistics.com//angularsite/components/grid/grid.html) component.
 
 ```ts
-import { Fdc3DataAdapter } from "igniteui-angular-fdc3";
+import { Fdc3Message } from 'igniteui-angular-fdc3';
 import { Fdc3Instrument } from 'igniteui-angular-fdc3';
+import { Fdc3DataAdapter } from "igniteui-angular-fdc3";
 import { IgxGridComponent  } from "igniteui-angular";
-// ...
 
-// creating context for FDC3 message
-let instrument = new Fdc3Instrument();
-instrument.ticker = "TSLA";
-// sending FDC3 ViewInstrument intent to "IgStockAppUID" app
-this.FDC3adapter.sendInstrument("ViewInstrument", instrument, "IgStockAppUID");
-
-// handling FDC3 ViewInstrument intent
+// subscribing to FDC3 "ViewChart" intent
 this.FDC3adapter.subscribe("ViewInstrument");
+// handling FDC3 ViewInstrument intent
 this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
     this.grid.data = this.FDC3adapter.stockPositions;
 };
+
+// sending FDC3 ViewInstrument intent
+let instrument = new Fdc3Instrument();
+instrument.ticker = "TSLA";
+this.FDC3adapter.sendInstrument("ViewInstrument", instrument, "IgStockAppUID");
 ```
 
 <img src="src/assets/images/previews/app_view_instrument.PNG" width="700" />
@@ -112,30 +102,28 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 #### Sending FDC3 ViewPosition
 
 ```ts
-import { Fdc3DataAdapter } from "igniteui-angular-fdc3";
-import { Fdc3Instrument } from 'igniteui-angular-fdc3';
+import { Fdc3Message } from 'igniteui-angular-fdc3';
 import { Fdc3Position } from "igniteui-angular-fdc3";
-import { IgxGridComponent  } from "igniteui-angular";
-// ...
-
-let instrument = new Fdc3Instrument();
-instrument.ticker = "TSLA";
-
-// creating context for FDC3 message
-let position = new Fdc3Position();
-position.instrument = instrument;
-// optional setting properties for purchase order:
-position.shares = 100;
-position.price = details.marketPrice;
-
-// sending FDC3 ViewPosition intent to "IgStockAppUID" app
-this.FDC3adapter.sendPosition("ViewPosition", position, "IgStockAppUID");
+import { Fdc3Instrument } from 'igniteui-angular-fdc3';
+import { Fdc3DataAdapter } from "igniteui-angular-fdc3";
+import { IgxGridComponent } from "igniteui-angular";
 
 // handling FDC3 ViewPosition intent
 this.FDC3adapter.subscribe("ViewPosition");
 this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
     this.grid.data = this.FDC3adapter.stockPositions;
 };
+
+// sending FDC3 ViewPosition intent
+let instrument = new Fdc3Instrument();
+instrument.ticker = "TSLA";
+// creating context for FDC3 message
+let position = new Fdc3Position();
+position.instrument = instrument;
+// optional setting properties for purchase order:
+position.shares = 100;
+position.price = details.marketPrice;
+this.FDC3adapter.sendPosition("ViewPosition", position, "IgStockAppUID");
 ```
 
 <img src="src/assets/images/previews/app_view_position.PNG" width="700" />
@@ -143,17 +131,23 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 #### Sending FDC3 ViewPortfolio
 
 ```ts
-import { Fdc3DataAdapter } from "igniteui-angular-fdc3";
-import { Fdc3Instrument } from 'igniteui-angular-fdc3';
+import { Fdc3Message } from 'igniteui-angular-fdc3';
 import { Fdc3Position } from "igniteui-angular-fdc3";
+import { Fdc3Instrument } from 'igniteui-angular-fdc3';
+import { Fdc3DataAdapter } from "igniteui-angular-fdc3";
 import { IgxGridComponent  } from "igniteui-angular";
-// ...
 
+// handling FDC3 ViewPortfolio intent
+this.FDC3adapter.subscribe("ViewPortfolio");
+this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
+    this.grid.data = this.FDC3adapter.stockPositions;
+};
+
+// sending FDC3 ViewPortfolio intent
 let instrumentA = new Fdc3Instrument();
 instrumentA.ticker = "TSLA";
 let positionA = new Fdc3Position();
 positionA.instrument = instrument;
-
 let instrumentB = new Fdc3Instrument();
 instrumentB.ticker = "UBER";
 let positionB = new Fdc3Position();
@@ -164,14 +158,7 @@ const portfolio = new Fdc3Portfolio();
 portfolio.positions.push(positionA);
 portfolio.positions.push(positionB);
 
-// sending FDC3 ViewPortfolio intent to "IgStockAppUID" app
 this.FDC3adapter.sendPortfolio("ViewPortfolio", portfolio, "IgStockAppUID");
-
-// handling FDC3 ViewPortfolio intent
-this.FDC3adapter.subscribe("ViewPortfolio");
-this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
-    this.grid.data = this.FDC3adapter.stockPositions;
-};
 ```
 
 <img src="src/assets/images/previews/app_view_portfolio.PNG" width="700" />
@@ -181,17 +168,10 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 This code snippet show how to send custom FDC3 **ViewSector** intent that can be consumed by [Treemap](https://www.infragistics.com//angularsite/components/treemap-overview.html) component.
 
 ```ts
-import { Fdc3DataAdapter } from "igniteui-angular-fdc3";
+import { Fdc3Message } from 'igniteui-angular-fdc3';
 import { Fdc3Instrument } from 'igniteui-angular-fdc3';
+import { Fdc3DataAdapter } from "igniteui-angular-fdc3";
 import { IgxTreemapComponent } from "igniteui-angular-charts";
-
-// ...
-
-// creating context for FDC3 message
-let instrument = new Fdc3Instrument();
-instrument.name = "Technology";
-// sending FDC3 ViewSector intent to "IgStockAppUID" app
-this.FDC3adapter.sendInstrument("ViewSector", instrument, "IgStockAppUID");
 
 // handling FDC3 ViewSector intent
 this.FDC3adapter.subscribe("ViewSector");
@@ -199,13 +179,11 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
 
     let dataMap = new Map();
     for (const stock of this.FDC3adapter.stockDetails) {
-
         if (stock.sector === msg.context.name || msg.context.name === "All") {
             if (!dataMap.has(stock.sector)) {
                 const sectorParent = this.GetSectorParent(stock);
                 dataMap.set(stock.sector, sectorParent);
             }
-
             if (!dataMap.has(stock.symbol)) {
                 const sectorItem = this.GetSectorItem(stock);
                 dataMap.set(stock.symbol, sectorItem);
@@ -215,6 +193,12 @@ this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
     const dataSource = Array.from(dataMap.values());
     this.treemap.dataSource = dataSource;
 };
+
+// sending FDC3 ViewSector intent
+let instrument = new Fdc3Instrument();
+instrument.name = "Technology";
+this.FDC3adapter.sendInstrument("ViewSector", instrument, "IgStockAppUID");
+
 ```
 
 <img src="src/assets/images/previews/app_view_sector.PNG" width="700" />
