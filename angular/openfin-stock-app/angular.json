@@ -4,7 +4,6 @@
   "newProjectRoot": "projects",
   "projects": {
     "openfin-stock-app": {
-      "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
@@ -12,25 +11,26 @@
       },
       "root": "",
       "sourceRoot": "src",
+      "projectType": "application",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "allowedCommonJsDependencies": [ "rxjs", "rxjs-compat", "openfin-fdc3", "openfin-notifications" ],
             "baseHref": "/angular-sample-apps/stocks-dashboard/",
             "deployUrl": "/angular-sample-apps/stocks-dashboard/",
             "outputPath": "dist/openfin-stock-app",
             "index": "src/index.html",
             "main": "src/index.ts",
-            "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
+            "polyfills": "src/polyfills.ts",
             "progress": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets/favicon.ico"
             ],
             "styles": [
               "src/index.scss"
