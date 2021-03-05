@@ -1,11 +1,10 @@
-<div class="main" igxLayout>
+<div class="main" igxLayout [class.light-theme]="!darkTheme" [class.dark-theme]="darkTheme">
     <igx-nav-drawer id="navigation" [isOpen]="false" [pin]="false">
         <ng-template igxDrawer>
             <nav>
                 <span (click)="ClearPositions()" igxButton="raised" class="button" igxRipple="gray" igxButtonBackground="lightgray">
                     Clear Positions
                 </span>
-
                 <span igxDrawerItem [isHeader]="true" >FDC3 ViewPosition</span>
                 <span *ngFor="let item of viewPositionItems"
                     igxDrawerItem [active]="false"
@@ -13,7 +12,6 @@
                     <igx-icon fontSet="material">poll</igx-icon>
                     <span>Buy {{ item.symbol }} stock</span>
                 </span>
-
                 <span igxDrawerItem [isHeader]="true" >FDC3 ViewPortfolio</span>
                 <span *ngFor="let item of viewPortfolioItems"
                     igxDrawerItem [active]="false"
@@ -21,33 +19,42 @@
                     <igx-icon fontSet="material">poll</igx-icon>
                     <span>{{ item.sector }} sector</span>
                 </span>
-
              </nav>
         </ng-template>
-
     </igx-nav-drawer>
 
     <main igxFlex >
-        <igx-navbar title="IG Grid with FDC3 ViewPosition & ViewPortfolio Intents" actionButtonIcon="menu"
-        [isActionButtonVisible]="true" (click)="drawerToggle()" >
+        <igx-navbar [title]="title" actionButtonIcon="menu" [isActionButtonVisible]="true">
+
+            <button class="button" igxButton="raised"
+                [igxToggleAction]="dropdown" igxButtonBackground="transparent"
+                [igxToggleOutlet]="outlet"
+                [igxDropDownItemNavigation]="dropdown">Density
+            </button>
+            <igx-drop-down #dropdown (onSelection)="onDensityChange($event)">
+                <igx-drop-down-item *ngFor="let density of densityOptions" [value]="density">{{ density }}</igx-drop-down-item>
+            </igx-drop-down>
+            <div igxOverlayOutlet #outlet="overlay-outlet"></div>
+
+            <button igxButton="icon" (click)="themeChange()"><igx-icon>palette</igx-icon></button>
+
+            <igx-navbar-action><igx-icon (click)="drawerToggle()">menu</igx-icon></igx-navbar-action>
         </igx-navbar>
 
-        <!-- [paging]="false" -->
-        <igx-grid #grid class="grid"
-          [autoGenerate]="false"
-          height="100%" width="100%">
+        <igx-grid #grid class="grid" [data]="dataSource"
+          [autoGenerate]="false" [displayDensity]="densitySelected" [paging]="false"
+          height="calc(100% - 3.5rem)" width="100%">
 
-          <igx-column field="symbol" [dataType]="'string'" sortable="true"></igx-column>
-          <igx-column field="company" [dataType]="'string'" sortable="true"></igx-column>
-          <igx-column field="shares" [dataType]="'number'" sortable="true"></igx-column>
-          <!-- <igx-column field="marketPrice" [dataType]="'number'" sortable="true" header="price" ></igx-column> -->
-          <!-- <igx-column field="marketValue" [dataType]="'number'" sortable="true" header="value" ></igx-column> -->
-          <igx-column field="costPerShare" [dataType]="'number'" sortable="true" header="cost" ></igx-column>
-          <igx-column field="costTotal" [dataType]="'number'" sortable="true" header="value"></igx-column>
-          <igx-column field="gainValue" [dataType]="'number'" sortable="true" header="profit"></igx-column>
-          <!-- <igx-column field="tradeDate" [dataType]="'date'" sortable="true"></igx-column> -->
-          <igx-column field="sector" [dataType]="'string'" sortable="true"></igx-column>
-
+          <igx-column [dataType]="'string'" sortable="true" field="symbol" header="Symbol" ></igx-column>
+          <igx-column [dataType]="'number'" sortable="true" field="shares" header="Shares" ></igx-column>
+          <igx-column [dataType]="'number'" sortable="true" field="costPerShare" header="Price" ></igx-column>
+          <igx-column [dataType]="'number'" sortable="true" field="costTotal" header="Cost"></igx-column>
+          <igx-column [dataType]="'number'" sortable="true" field="marketValue" header="Value" ></igx-column>
+          <igx-column [dataType]="'number'" sortable="true" field="gainValue" header="Profit"></igx-column>
+          <igx-column [dataType]="'string'" sortable="true" field="sector" header="Sector"></igx-column>
+          <!-- <igx-column [dataType]="'number'" sortable="true" field="marketPrice" header="Price"></igx-column> -->
+          <!-- <igx-column [dataType]="'date'" sortable="true" field="tradeDate" ></igx-column> -->
+          <!-- <igx-column [dataType]="'string'" sortable="true" field="company" ></igx-column> -->
 
         </igx-grid>
 

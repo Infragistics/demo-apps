@@ -1,6 +1,5 @@
-<div class="main" igxLayout>
-    <!-- <igx-nav-drawer id="navigation" [isOpen]="false"
-    [pin]="false">
+<div class="main" igxLayout [class.light-theme]="!darkTheme" [class.dark-theme]="darkTheme">
+    <igx-nav-drawer id="navigation" [isOpen]="false" [pin]="false">
         <ng-template igxDrawer>
             <nav>
                 <span igxDrawerItem [isHeader]="true" >FDC3 ViewSector</span>
@@ -10,17 +9,28 @@
                     <igx-icon fontSet="material">poll</igx-icon>
                     <span>{{ name }}</span>
                 </span>
-
-
              </nav>
         </ng-template>
 
-    </igx-nav-drawer> -->
+    </igx-nav-drawer>
 
-    <!-- <main igxFlex >
-      <igx-navbar title="IG Treemap with FDC3 ViewSector Intent" actionButtonIcon="menu"
-       [isActionButtonVisible]="true" (click)="drawerToggle()">
-    </igx-navbar> -->
+    <main igxFlex >
+      <igx-navbar [title]="title" actionButtonIcon="menu" [isActionButtonVisible]="true" >
+
+        <button class="button" igxButton="raised"
+        [igxToggleAction]="dropdown" igxButtonBackground="transparent"
+        [igxToggleOutlet]="outlet"
+        [igxDropDownItemNavigation]="dropdown">Layout
+        </button>
+        <igx-drop-down #dropdown (onSelection)="onLayoutChange($event)">
+            <igx-drop-down-item *ngFor="let opt of layoutOptions" [value]="opt.value">{{ opt.text }}</igx-drop-down-item>
+        </igx-drop-down>
+        <div igxOverlayOutlet #outlet="overlay-outlet"></div>
+
+        <button igxButton="icon" (click)="themeChange()"><igx-icon>palette</igx-icon></button>
+
+       <igx-navbar-action><igx-icon (click)="drawerToggle()">menu</igx-icon></igx-navbar-action>
+    </igx-navbar>
 
         <div class="treemap">
             <igx-treemap #treemap
@@ -35,10 +45,28 @@
                 rootTitle="Financial Sector"
                 fillScaleMode="Value"
                 fillBrushes="#fa4d6a #8a58d6"
-                isFillScaleLogarithmic="true">
+                isFillScaleLogarithmic="true"
+                [layoutType]="layoutSelected"
+                layoutOrientation="Horizontal"
+
+                headerBackground="#E0F11F"
+                headerHoverBackground="#28E124"
+                headerDisplayMode="Overlay"
+                outline="white"
+                strokeThickness="1"
+                parentNodeLeftMargin="1"
+                parentNodeLeftPadding="0"
+                parentNodeRightMargin="1"
+                parentNodeRightPadding="0"
+                parentNodeTopMargin="1"
+                parentNodeTopPadding="0"
+                parentNodeBottomMargin="1"
+                parentNodeBottomPadding="0">
             </igx-treemap>
+            <!-- headerBackground="#E0F11F" -->
+            <!-- headerHoverBackground="#28E124" -->
         </div>
-    <!-- </main> -->
+    </main>
   </div>
 
 

@@ -1,14 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { NgModule } from "@angular/core";
 
-// TODO uncomment when harmer gesture is fixed:
-// import {
-//     IgxButtonModule, IgxIconModule, IgxInputGroupModule,
-//     IgxLayoutModule, IgxRippleModule,   IgxSwitchModule
-// } from 'igniteui-angular';
+import {
+    IgxButtonModule, IgxIconModule, IgxInputGroupModule,
+    IgxLayoutModule, IgxRippleModule,   IgxSwitchModule
+} from "igniteui-angular";
 
-import { ExplorerActionsComponent } from './explorer-actions.component';
+import { ExplorerActionsComponent } from "./explorer-actions.component";
 
 @NgModule({
     declarations: [
@@ -16,14 +15,14 @@ import { ExplorerActionsComponent } from './explorer-actions.component';
     ],
     imports: [
         CommonModule,
-        FormsModule
+        FormsModule,
 
-        // IgxButtonModule,
-        // IgxRippleModule,
-        // IgxIconModule,
-        // IgxLayoutModule,
-        // IgxInputGroupModule,
-        // IgxSwitchModule
-    ]
+        IgxButtonModule,
+        IgxRippleModule,
+        IgxIconModule,
+        IgxLayoutModule,
+        IgxInputGroupModule,
+        IgxSwitchModule
+    ],
 })
 export class ExplorerActionsModule { }

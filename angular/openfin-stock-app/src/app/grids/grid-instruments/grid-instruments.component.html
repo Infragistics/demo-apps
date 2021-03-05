@@ -1,4 +1,4 @@
-<div class="main" igxLayout>
+<div class="main" igxLayout [class.light-theme]="!darkTheme" [class.dark-theme]="darkTheme">
     <igx-nav-drawer id="navigation" [isOpen]="false" [pin]="false">
         <ng-template igxDrawer>
             <nav>
@@ -9,32 +9,42 @@
                     <igx-icon fontSet="material">poll</igx-icon>
                     <span>{{ item.symbol }}</span>
                 </span>
-
              </nav>
         </ng-template>
-
     </igx-nav-drawer>
 
     <main igxFlex >
-        <igx-navbar title="IG Grid with FDC3 ViewInstrument Intent" actionButtonIcon="menu"
-        [isActionButtonVisible]="true" (click)="drawerToggle()" >
+        <igx-navbar [title]="title" actionButtonIcon="menu"
+        [isActionButtonVisible]="true">
+
+            <button class="button" igxButton="raised"
+                [igxToggleAction]="dropdown" igxButtonBackground="transparent"
+                [igxToggleOutlet]="outlet"
+                [igxDropDownItemNavigation]="dropdown">Density
+            </button>
+            <igx-drop-down #dropdown (onSelection)="onDensityChange($event)">
+                <igx-drop-down-item *ngFor="let density of densityOptions" [value]="density">{{ density }}</igx-drop-down-item>
+            </igx-drop-down>
+            <div igxOverlayOutlet #outlet="overlay-outlet"></div>
+
+            <button igxButton="icon" (click)="themeChange()"><igx-icon>palette</igx-icon></button>
+            <igx-navbar-action><igx-icon (click)="drawerToggle()">menu</igx-icon></igx-navbar-action>
         </igx-navbar>
 
         <igx-grid #grid class="grid"
-          [autoGenerate]="false"
-          [paging]="false"
-          height="100%"
+          [autoGenerate]="false" [displayDensity]="densitySelected" [paging]="false"
+          height="calc(100% - 3.5rem)"
           width="100%">
 
-          <igx-column field="ID" [dataType]="'number'" sortable="true"></igx-column>
-          <igx-column field="Symbol" [dataType]="'string'" sortable="false"></igx-column>
-          <!-- <igx-column field="Volume" [dataType]="'number'" sortable="true"></igx-column> -->
-          <igx-column field="Close" [dataType]="'number'" sortable="true" header="Price" ></igx-column>
+          <igx-column [dataType]="'number'" sortable="true"  field="ID"></igx-column>
+          <igx-column [dataType]="'string'" sortable="false" field="Symbol"></igx-column>
+          <igx-column [dataType]="'number'" sortable="true"  field="Close" header="Price" ></igx-column>
           <!-- <igx-column field="Year" [dataType]="'string'" sortable="true"></igx-column> -->
           <!-- <igx-column field="Month" [dataType]="'string'" sortable="true"></igx-column> -->
-          <igx-column field="Date" [dataType]="'string'" sortable="true"></igx-column>
-          <igx-column field="Time" [dataType]="'string'" sortable="true"></igx-column>
-          <!-- <igx-column field="Open" [dataType]="'number'" sortable="true"></igx-column> -->
+          <igx-column [dataType]="'string'" sortable="true" field="Date"></igx-column>
+          <igx-column [dataType]="'string'" sortable="true" field="Time"></igx-column>
+          <!-- <igx-column [dataType]="'number'" sortable="true" field="Open"></igx-column> -->
+          <!-- <igx-column [dataType]="'number'" sortable="true" field="Volume" ></igx-column> -->
 
         </igx-grid>
 

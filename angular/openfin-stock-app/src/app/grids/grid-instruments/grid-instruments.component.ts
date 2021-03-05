@@ -1,166 +1,175 @@
-// // TODO uncomment when harmer gesture is fixed:
+import { AfterViewInit, Component, ViewChild } from "@angular/core";
 
-// import { AfterViewInit, Component, ViewChild } from '@angular/core';
+// required import for initalizing Fdc3DataAdapter:
+import * as openfinFdc3 from "openfin-fdc3";
+declare var fin: any; // openfin
+import { OpenfinUtils } from "../../../openfin/OpenfinUtils"
 
-// // required import for initalizing Fdc3DataAdapter:
-// import * as openfinFdc3 from 'openfin-fdc3';
-// declare var fin: any; // openfin
-// import { OpenfinUtils } from '../../../openfin/OpenfinUtils';
+import { Fdc3DataAdapter } from "igniteui-angular-fdc3"; // for working with FDC3 data adapter
+import { Fdc3Instrument } from "igniteui-angular-fdc3";  // for defining context of FDC3 message
+import { Fdc3Message } from "igniteui-angular-fdc3";     // for receiving FDC3 message
 
-// import { Fdc3DataAdapter } from 'igniteui-angular-fdc3'; // for working with FDC3 data adapter
-// import { Fdc3Instrument } from 'igniteui-angular-fdc3'; // for sending ViewChart with single stock symbol
-// import { Fdc3Message } from 'igniteui-angular-fdc3'; // for receiving ViewChart message
+// required imports for working with IgxGridComponent
+import { DisplayDensity, ISelectionEventArgs } from "igniteui-angular";
+import { IgxGridComponent  } from "igniteui-angular";
+import { IgxNavigationDrawerComponent } from "igniteui-angular";
 
-// // required imports for working with IgxGridComponent
-// import { SortingDirection  } from 'igniteui-angular';
-// import { IgxGridComponent  } from 'igniteui-angular';
-// import { IgxNavigationDrawerComponent } from 'igniteui-angular';
+@Component({
+    selector: "app-root",
+    templateUrl: "./grid-instruments.component.html",
+    styleUrls:  ["./grid-instruments.component.scss"]
+})
+export class GridInstrumentsComponent implements AfterViewInit {
 
-// @Component({
-//     selector: 'app-root',
-//     templateUrl: './grid-instruments.component.html',
-//     styleUrls:  ['./grid-instruments.component.scss']
-// })
-// export class GridInstrumentsComponent implements AfterViewInit {
+    public title = "Grid - FDC3 ViewInstrument";
+    public dataSource: any[];
+    public FDC3adapter: Fdc3DataAdapter;
 
-//     public title = 'IG Grid responding to FDC3 ViewInstrument';
-//     public dataSource: any[];
-//     public FDC3adapter: Fdc3DataAdapter;
+    @ViewChild("grid", { read: IgxGridComponent, static: true })
+    public grid: IgxGridComponent;
 
-//     @ViewChild('grid', { static: true })
-//     public grid: IgxGridComponent;
+    @ViewChild(IgxNavigationDrawerComponent, { static: true })
+    public drawer: IgxNavigationDrawerComponent;
 
-//     @ViewChild(IgxNavigationDrawerComponent, { static: true })
-//     public drawer: IgxNavigationDrawerComponent;
+    public darkTheme: boolean = false;
+    public densityOptions = [DisplayDensity.compact, DisplayDensity.cosy, DisplayDensity.comfortable];
+    public densitySelected = DisplayDensity.comfortable;
 
-//     public selected = 'GOOG';
+    public selected = "GOOG";
 
-//     public viewInstrumentItems: any[] = [
-//         { text: 'TSLA', symbol: 'TSLA' },
-//         { text: 'UBER', symbol: 'UBER' },
-//         { text: 'GOOG', symbol: 'GOOG' },
-//         { text: 'AMZN', symbol: 'AMZN' },
-//         { text: 'NVDA', symbol: 'NVDA' }
-//     ];
-//     constructor() {
-//         document.title = this.title;
-//     }
+    public viewInstrumentItems: any[] = [
+        { text: "TSLA", symbol: "TSLA" },
+        { text: "UBER", symbol: "UBER" },
+        { text: "GOOG", symbol: "GOOG" },
+        { text: "AMZN", symbol: "AMZN" },
+        { text: "NVDA", symbol: "NVDA" },
+    ];
+    constructor() {
+        document.title = this.title;
+    }
 
-//     public async InitializeFDC3(): Promise<void> {
 
-//         // creating FDC3 data adapter with reference to openfin
-//         this.FDC3adapter = new Fdc3DataAdapter(openfinFdc3);
+    public async InitializeFDC3(): Promise<void> {
 
-//         // subscribing to FDC3 'ViewInstrument' intent
-//         this.FDC3adapter.subscribe('ViewInstrument');
+        // creating FDC3 data adapter with reference to openfin
+        this.FDC3adapter = new Fdc3DataAdapter(openfinFdc3);
 
-//         // handling FDC3 intents sent via OpenFin's FDC3 service
-//         this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
-//             // at this point, FDC3 data adapter has already processed FDC3 intent
-//             // and generated data for tickers embedded in context of FDC3 message
-//             // so we can just update the grid
+        // subscribing to FDC3 "ViewInstrument" intent
+        this.FDC3adapter.subscribe("ViewInstrument");
 
-//             // console.log('FDC3 received message: \n' + msg.json);
-//             // console.log('FDC3 stockPrices: \n' + this.FDC3adapter.stockPrices[0].symbol);
+        // handling FDC3 intents sent via OpenFin"s FDC3 service
+        this.FDC3adapter.messageReceived = (msg: Fdc3Message) => {
+            // at this point, FDC3 data adapter has already processed FDC3 intent
+            // and generated data for tickers embedded in context of FDC3 message
+            // so we can just update the grid
 
-//             this.UpdateGrid(this.FDC3adapter.stockPrices);
+            // console.log("FDC3 received message: \n" + msg.json);
+            // console.log("FDC3 stockPrices: \n" + this.FDC3adapter.stockPrices[0].symbol);
 
-//             const title = 'FDC3 ' + msg.intentType + ' intent';
-//             let info = '';
-//             // info += '\n intent: ' + msg.intentType;
-//             info += '\n ticker: ' + msg.tickerSymbols.join(', ');
-//             info += '\n context: ' + msg.contextType;
-//             OpenfinUtils.notify(title, info, 'FDC3');
-//         };
+            this.UpdateGrid(this.FDC3adapter.stockPrices);
 
-//         // optional, initalizing adapter with some popular stocks
-//         this.FDC3adapter.stockSymbols = ['GOOG'];
+            const title = "FDC3 " + msg.intentType + " intent";
+            let info = "";
+            info += "\n ticker: " + msg.tickerSymbols.join(", ");
+            info += "\n context: " + msg.contextType;
+            OpenfinUtils.notify(title, info, "FDC3");
+        };
 
-//         this.UpdateGrid(this.FDC3adapter.stockPrices);
-//     }
+        // optional, initalizing adapter with some popular stocks
+        this.FDC3adapter.stockSymbols = ["GOOG"];
 
-//     public async ViewInstrument(symbol: string): Promise<void> {
+        this.UpdateGrid(this.FDC3adapter.stockPrices);
+    }
 
-//         if (window.hasOwnProperty('fin')) {
-//             // creating context for FDC3 message
-//             const context = new Fdc3Instrument();
-//             context.ticker = symbol;
-//             const app = await fin.Application.getCurrent();
-//             const target = app.identity.uuid;
-//             // sending FDC3 message with instrument as context to IG Stock Dashboard app app
-//             this.FDC3adapter.sendInstrument('ViewInstrument', context, target);
+    public async ViewInstrument(symbol: string) {
 
-//         } else {
-//             // by-passing OpenFin service since it is not running
-//             this.FDC3adapter.clearData();
-//             this.FDC3adapter.stockSymbols = [symbol];
+        if (window.hasOwnProperty("fin")) {
+            // creating context for FDC3 message
+            const context = new Fdc3Instrument();
+            context.ticker = symbol;
+            const app = await fin.Application.getCurrent();
+            const target = app.identity.uuid;
+            // sending FDC3 message with instrument as context to IG Stock Dashboard app app
+            this.FDC3adapter.sendInstrument("ViewInstrument", context, target);
 
-//             this.UpdateGrid(this.FDC3adapter.stockPrices);
-//         }
-//     }
+        } else {
+            // by-passing OpenFin service since it is not running
+            this.FDC3adapter.clearData();
+            this.FDC3adapter.stockSymbols = [symbol];
 
-//     public UpdateGrid(stockPrices: any[]): void {
+            this.UpdateGrid(this.FDC3adapter.stockPrices);
+        }
+    }
 
-//         const dataSource: any[] = [];
+    public UpdateGrid(stockPrices: any[]) {
 
-//         for (const prices of stockPrices) {
-//             const symbol = (prices as any).symbol.toString();
-//             this.selected = symbol;
-//             const items = [];
-//             let index = 0;
-//             for (const price of prices.toArray()) {
-//                 const date = (price.date as Date);
-//                 const day  = date.toLocaleDateString();
-//                 const time = date.toLocaleTimeString();
-//                 const month = '0' + date.getMonth() + ' (' + date.toLocaleString('default', { month: 'long' }) + ')';
-//                 const item = {
-//                     ID: ++index,
-//                     Symbol: price.symbol,
-//                     Name: price.company,
-//                     Year: date.getFullYear().toString(),
-//                     Month: month,
-//                     Date: day,
-//                     Time: time,
-//                     Close: price.close
-//                 };
-//                 items.push(item);
+        const dataSource: any[] = [];
 
-//                 if (items.length > 500) { break; }
-//             }
+        for (const prices of stockPrices) {
+            const symbol = (prices as any).symbol.toString();
+            this.selected = symbol;
+            const items = [];
+            let index = 0;
+            for (const price of prices.toArray()) {
+                const date = (price.date as Date);
+                const day  = date.toLocaleDateString();
+                const time = date.toLocaleTimeString();
+                const month = "0" + date.getMonth() + " (" + date.toLocaleString("default", { month: "long" }) + ")";
+                const item = {
+                    ID: ++index,
+                    Symbol: price.symbol,
+                    Name: price.company,
+                    Year: date.getFullYear().toString(),
+                    Month: month,
+                    Date: day,
+                    Time: time,
+                    Close: price.close,
+                };
+                items.push(item);
 
-//             dataSource.push(items);
-//         }
+                if (items.length > 500) { break; }
+            }
 
-//         if (this.grid === undefined) { return; }
+            dataSource.push(items);
+        }
 
-//         this.grid.data = dataSource[0];
-//         this.grid.reflow();
-//     }
+        if (this.grid === undefined) { return; }
 
-//     public ngAfterViewInit(): void {
-//         console.log('app view loaded');
+        this.grid.data = dataSource[0];
+        this.grid.reflow();
+    }
 
-//         this.drawer.width = '240px';
+    public ngAfterViewInit(): void {
+        console.log("app view loaded");
 
-//         const element = document.getElementsByClassName('igx-navbar')[0]; // as HTMLElement;
-//         element.setAttribute('style', 'background: yellowgreen');
+        this.drawer.width = "240px";
 
-//         if (!window.hasOwnProperty('fin')) {
-//             console.log('openfin is undefined');
-//         }
+        const element = document.getElementsByClassName("igx-navbar")[0]; // as HTMLElement;
+        element.setAttribute("style", "background: yellowgreen");
 
-//         this.InitializeFDC3();
+        if (!window.hasOwnProperty("fin")) {
+            console.log("OpenFin is offline");
+        }
 
-//         // this.grid.groupingExpressions = [
-//         //     { fieldName: 'Month', dir: SortingDirection.Desc },
-//         //     { fieldName: 'Date', dir: SortingDirection.Desc }
-//         // ];
-//     }
+        this.InitializeFDC3();
 
-//     public drawerToggle(): void {
-//         // this.drawer.width = '180px';
-//         this.drawer.pin = true;
-//         this.drawer.toggle();
-//     }
+        // this.grid.groupingExpressions = [
+        //     { fieldName: "Month", dir: SortingDirection.Desc },
+        //     { fieldName: "Date", dir: SortingDirection.Desc }
+        // ];
+    }
 
-// }
+    public drawerToggle(): void {
+        // this.drawer.width = "180px";
+        this.drawer.pin = true;
+        this.drawer.toggle();
+    }
+
+    public themeChange() {
+        this.darkTheme = !this.darkTheme;
+    }
+
+    public onDensityChange(event: ISelectionEventArgs) {
+        this.densitySelected = event.newSelection.value;
+    }
+}

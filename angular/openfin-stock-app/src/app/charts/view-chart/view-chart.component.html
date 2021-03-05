@@ -1,9 +1,9 @@
-<div class="main" igxLayout>
-    <!-- <igx-nav-drawer id="navigation" [isOpen]="false"
+<div class="main" igxLayout [class.light-theme]="!darkTheme" [class.dark-theme]="darkTheme">
+    <igx-nav-drawer id="navigation" [isOpen]="false"
     [pin]="false">
         <ng-template igxDrawer>
             <nav>
-                <span igxDrawerItem [isHeader]="true" >FDC3 ViewChart (Single)</span>
+                <span igxDrawerItem [isHeader]="true" >FDC3 ViewChart</span>
                 <span *ngFor="let item of viewSingleCharts"
                     igxDrawerItem [active]="item.text === selected"
                     igxRipple (click)="ViewChart(item)">
@@ -11,7 +11,7 @@
                     <span>{{ item.symbol }}</span>
                 </span>
 
-                <span igxDrawerItem [isHeader]="true">FDC3 ViewChart (Multiple)</span>
+                <span igxDrawerItem [isHeader]="true">FDC3 ViewChart</span>
                 <span *ngFor="let item of viewMultipleCharts"
                     igxDrawerItem [active]="item.text === selected"
                     igxRipple (click)="ViewMultiple(item)">
@@ -20,13 +20,17 @@
                 </span>
              </nav>
         </ng-template>
+    </igx-nav-drawer>
 
-    </igx-nav-drawer> -->
-
-    <!-- <main igxFlex >
-      <igx-navbar title="IG Chart with FDC3 ViewChart Intent" actionButtonIcon="menu"
-       [isActionButtonVisible]="true" (click)="drawerToggle()">
-    </igx-navbar> -->
+    <main igxFlex >
+        <igx-navbar [title]="title" actionButtonIcon="menu" [isActionButtonVisible]="true" >
+            <!-- <button igxButton="icon" (click)="themeChange()">
+                <igx-icon>palette</igx-icon>
+            </button> -->
+            <igx-navbar-action>
+                <igx-icon (click)="drawerToggle()">menu</igx-icon>
+            </igx-navbar-action>
+        </igx-navbar>
 
         <div class="chart">
             <igx-financial-chart #chart
@@ -40,7 +44,7 @@
             </igx-financial-chart>
         </div>
 
-    <!-- </main> -->
+    </main>
   </div>
 
 

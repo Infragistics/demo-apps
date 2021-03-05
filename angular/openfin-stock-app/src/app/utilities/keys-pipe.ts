@@ -1,6 +1,6 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from "@angular/core";
  //  https://stackoverflow.com/a/35750252/3516721
-@Pipe({name: 'keys'})
+@Pipe({name: "keys"})
 export class KeysPipe implements PipeTransform {
     public transform(value: any, args: string[]): any {
         const keys = [];
